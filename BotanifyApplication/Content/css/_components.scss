@@ -2,3 +2,85 @@
 @import '_utils.scss';
 @import '_fonts.scss';
 @import '_default.scss';
+
+//Call to action buttons
+@mixin btn-cta-style($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    margin: 0;
+    padding: clamp(0.65rem, 1vw, 0.75rem) clamp(1.25rem, 2vw, 2.5rem);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+
+    &:hover,
+    &:focus {
+        background-color: darken($bg-color, 10%);
+    }
+}
+
+.btn-cta-fill-accent {
+    @include btn-cta-style($accent-1, $primary-white);
+}
+.btn-cta-fill-white {
+    @include btn-cta-style($primary-white, $primary-font-color);
+}
+.btn-cta-fill-black {
+    @include btn-cta-style($primary-black, $primary-white);
+}
+
+//Icon buttons
+@mixin btn-icon-style($bg-color, $icon-color) {
+    width:fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: clamp(0.55rem, 1vw, 0.65rem);
+    background-color: $bg-color;
+    color: $icon-color;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.1s;
+
+    i {
+        font-size: 1.5rem;
+        background-color: transparent;
+        border: none;
+    }
+
+    &:focus,
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+}
+
+.btn-icon-accent {
+    @include btn-icon-style($accent-1,$primary-white)
+}
+.btn-icon-white {
+    @include btn-icon-style($primary-white,$primary-font-color)
+}
+.btn-icon-black {
+    @include btn-icon-style($primary-black,$primary-white)
+}
+
+//Default card
+.card-white {
+    width: clamp(200px, 20vw, 500px);
+    position: relative;
+    z-index: 10;
+    margin: 0;
+    padding: clamp(0.55rem, 2vw, 1.5rem);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
+}
+
+

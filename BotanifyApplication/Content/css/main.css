@@ -8,8 +8,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Onest:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
 html {
   font-size: clamp(10px, 2vw, 16px);
+}
+
+body {
+  background-color: #FEFEFE;
 }
 
 *,
@@ -18,7 +26,6 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #FEFEFE;
   font-family: "Noto Sans", sans-serif;
 }
 
@@ -31,6 +38,7 @@ ol {
 
 a {
   text-decoration: none;
+  color: #212121;
 }
 
 img {
@@ -64,145 +72,169 @@ img {
 .font-regular-xs {
   font-family: "Noto Sans", sans-serif;
   font-weight: 400;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 0.625rem;
 }
 
 .font-regular-s {
   font-family: "Noto Sans", sans-serif;
   font-weight: 400;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 0.75rem;
 }
 
 .font-regular-r {
   font-family: "Noto Sans", sans-serif;
   font-weight: 400;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 1rem;
 }
 
 .font-regular-m {
   font-family: "Noto Sans", sans-serif;
   font-weight: 400;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 1.5rem;
 }
 
 .font-regular-l {
   font-family: "Noto Sans", sans-serif;
   font-weight: 400;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 2rem;
 }
 
 .font-medium-xs {
   font-family: "Noto Sans", sans-serif;
   font-weight: 500;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 0.625rem;
 }
 
 .font-medium-s {
   font-family: "Noto Sans", sans-serif;
   font-weight: 500;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 0.75rem;
 }
 
 .font-medium-r {
   font-family: "Noto Sans", sans-serif;
   font-weight: 500;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 1rem;
 }
 
 .font-medium-m {
   font-family: "Noto Sans", sans-serif;
   font-weight: 500;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 1.5rem;
 }
 
 .font-medium-l {
   font-family: "Noto Sans", sans-serif;
   font-weight: 500;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 2rem;
 }
 
 .font-semibold-xs {
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 0.625rem;
 }
 
 .font-semibold-s {
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 0.75rem;
 }
 
-.font-semibold-r {
+.font-semibold-r, .navbar .col:nth-child(2) a:focus, .navbar .col:nth-child(2) a:hover {
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 1rem;
 }
 
 .font-semibold-m {
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 1.5rem;
 }
 
 .font-semibold-l {
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 2rem;
 }
 
 .font-bold-xs {
   font-family: "Noto Sans", sans-serif;
   font-weight: 700;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 0.625rem;
 }
 
 .font-bold-s {
   font-family: "Noto Sans", sans-serif;
   font-weight: 700;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 0.75rem;
 }
 
 .font-bold-r {
   font-family: "Noto Sans", sans-serif;
   font-weight: 700;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 1rem;
 }
 
 .font-bold-m {
   font-family: "Noto Sans", sans-serif;
   font-weight: 700;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 1.5rem;
 }
 
 .font-bold-l {
   font-family: "Noto Sans", sans-serif;
   font-weight: 700;
-  letter-spacing: normal;
+  letter-spacing: 0;
+  color: #212121;
   font-size: 2rem;
 }
 
 html {
   font-size: clamp(10px, 2vw, 16px);
+}
+
+body {
+  background-color: #FEFEFE;
 }
 
 *,
@@ -211,7 +243,6 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #FEFEFE;
   font-family: "Noto Sans", sans-serif;
 }
 
@@ -224,8 +255,565 @@ ol {
 
 a {
   text-decoration: none;
+  color: #212121;
 }
 
 img {
   display: block;
+}
+
+.btn-cta-fill-accent {
+  background-color: #627B6B;
+  color: #FEFEFE;
+  margin: 0;
+  padding: clamp(0.65rem, 1vw, 0.75rem) clamp(1.25rem, 2vw, 2.5rem);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+.btn-cta-fill-accent:hover, .btn-cta-fill-accent:focus {
+  background-color: #4b5f52;
+}
+
+.btn-cta-fill-white {
+  background-color: #FEFEFE;
+  color: #212121;
+  margin: 0;
+  padding: clamp(0.65rem, 1vw, 0.75rem) clamp(1.25rem, 2vw, 2.5rem);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+.btn-cta-fill-white:hover, .btn-cta-fill-white:focus {
+  background-color: #e5e5e5;
+}
+
+.btn-cta-fill-black {
+  background-color: #212121;
+  color: #FEFEFE;
+  margin: 0;
+  padding: clamp(0.65rem, 1vw, 0.75rem) clamp(1.25rem, 2vw, 2.5rem);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+.btn-cta-fill-black:hover, .btn-cta-fill-black:focus {
+  background-color: #080808;
+}
+
+.btn-icon-accent {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: clamp(0.55rem, 1vw, 0.65rem);
+  background-color: #627B6B;
+  color: #FEFEFE;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+.btn-icon-accent i {
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+}
+.btn-icon-accent:focus, .btn-icon-accent:hover {
+  background-color: #4b5f52;
+}
+
+.btn-icon-white {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: clamp(0.55rem, 1vw, 0.65rem);
+  background-color: #FEFEFE;
+  color: #212121;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+.btn-icon-white i {
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+}
+.btn-icon-white:focus, .btn-icon-white:hover {
+  background-color: #e5e5e5;
+}
+
+.btn-icon-black {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: clamp(0.55rem, 1vw, 0.65rem);
+  background-color: #212121;
+  color: #FEFEFE;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+.btn-icon-black i {
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+}
+.btn-icon-black:focus, .btn-icon-black:hover {
+  background-color: #080808;
+}
+
+.card-white {
+  width: clamp(200px, 20vw, 500px);
+  position: relative;
+  z-index: 10;
+  margin: 0;
+  padding: clamp(0.55rem, 2vw, 1.5rem);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.heading-1 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 5rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.heading-2 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.heading-3 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.font-regular-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.625rem;
+}
+
+.font-regular-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.75rem;
+}
+
+.font-regular-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1rem;
+}
+
+.font-regular-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1.5rem;
+}
+
+.font-regular-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 2rem;
+}
+
+.font-medium-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.625rem;
+}
+
+.font-medium-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.75rem;
+}
+
+.font-medium-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1rem;
+}
+
+.font-medium-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1.5rem;
+}
+
+.font-medium-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 2rem;
+}
+
+.font-semibold-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.625rem;
+}
+
+.font-semibold-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.75rem;
+}
+
+.font-semibold-r, .navbar .col:nth-child(2) a:focus, .navbar .col:nth-child(2) a:hover {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1rem;
+}
+
+.font-semibold-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1.5rem;
+}
+
+.font-semibold-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 2rem;
+}
+
+.font-bold-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.625rem;
+}
+
+.font-bold-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.75rem;
+}
+
+.font-bold-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1rem;
+}
+
+.font-bold-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1.5rem;
+}
+
+.font-bold-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 2rem;
+}
+
+.heading-1 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 5rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.heading-2 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.heading-3 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.font-regular-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.625rem;
+}
+
+.font-regular-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.75rem;
+}
+
+.font-regular-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1rem;
+}
+
+.font-regular-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1.5rem;
+}
+
+.font-regular-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 2rem;
+}
+
+.font-medium-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.625rem;
+}
+
+.font-medium-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.75rem;
+}
+
+.font-medium-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1rem;
+}
+
+.font-medium-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1.5rem;
+}
+
+.font-medium-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 2rem;
+}
+
+.font-semibold-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.625rem;
+}
+
+.font-semibold-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.75rem;
+}
+
+.font-semibold-r, .navbar .col:nth-child(2) a:focus, .navbar .col:nth-child(2) a:hover {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1rem;
+}
+
+.font-semibold-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1.5rem;
+}
+
+.font-semibold-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 2rem;
+}
+
+.font-bold-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.625rem;
+}
+
+.font-bold-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 0.75rem;
+}
+
+.font-bold-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1rem;
+}
+
+.font-bold-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 1.5rem;
+}
+
+.font-bold-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #212121;
+  font-size: 2rem;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  padding: 0;
+  border-bottom: 1px solid #D9D9D9;
+}
+.navbar .col {
+  padding: 0;
+  height: 60%;
+}
+.navbar .col:nth-child(1) img {
+  object-fit: contain;
+  height: 100%;
+}
+.navbar .col:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .col:nth-child(2) .list-items {
+  padding-top: 0.25rem;
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .col:nth-child(2) a {
+  transition: font-weight 0.1s;
+}
+.navbar .col:nth-child(2) a:focus {
+  padding: 0 1px;
+  border-bottom: 1px solid #212121;
+}
+.navbar .col:nth-child(3) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.nav-dropdown .col {
+  height: 100%;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #D9D9D9;
+}
+.nav-dropdown .col .wrapper {
+  width: fit-content;
+}
+.nav-dropdown .col .wrapper a {
+  color: #888888;
+  transition: color 0.1s;
+}
+.nav-dropdown .col .wrapper a:hover {
+  color: #212121;
 }

@@ -1,0 +1,84 @@
+@import '_colors.scss';
+@import '_typography.scss';
+@import '_typography.scss';
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 8vh;
+    padding: 0;
+    border-bottom: 1px solid $primary-gray;
+
+    .col {
+        padding: 0;
+        height: 60%;
+    }
+
+    .col:nth-child(1) {
+
+        img {
+            object-fit: contain;
+            height: 100%;
+        }
+    }
+
+    .col:nth-child(2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .list-items {
+            padding-top: 0.25rem;
+            width: 20%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        a {
+            transition: font-weight 0.1s;
+
+            &:hover {
+                @extend .font-semibold-r;
+            }
+
+            &:focus {
+                @extend .font-semibold-r;
+                padding: 0 1px;
+                border-bottom: 1px solid $primary-black;
+            }
+        }
+    }
+
+    .col:nth-child(3) {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5rem;
+    }
+}
+
+.nav-dropdown {
+    .col {
+        height: 100%;
+        padding: 1.5rem 0;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid $primary-gray;
+
+        .wrapper {
+            width: fit-content;
+
+            a {
+                color: $secondary-font-color;
+                transition: color 0.1s;
+
+
+                &:hover {
+                    color: $primary-font-color;
+                }
+            }
+        }
+    }
+}

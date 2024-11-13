@@ -4,6 +4,9 @@
 html {
     font-size: clamp(10px, 2vw, 16px);
 }
+body {
+    background-color: $primary-white;
+}
 
 *,
 *::before,
@@ -11,7 +14,6 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color:$primary-white;
     font-family: $noto-sans-font;
 }
 
@@ -24,6 +26,7 @@ ol {
 
 a {
     text-decoration: none;
+    color: $primary-font-color;
 }
 
 img {

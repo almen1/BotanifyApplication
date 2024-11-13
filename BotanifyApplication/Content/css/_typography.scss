@@ -1,7 +1,6 @@
 @import '_colors.scss';
 @import '_fonts.scss';
 
-//H1
 .heading-1 {
     font-family: $kaisei-decol-font;
     font-weight: 700;
@@ -10,7 +9,6 @@
     letter-spacing: normal;
 }
 
-//H2
 .heading-2 {
     font-family: $kaisei-decol-font;
     font-weight: 700;
@@ -19,7 +17,6 @@
     letter-spacing: normal;
 }
 
-//H3
 .heading-3 {
     font-family: $kaisei-decol-font;
     font-weight: 700;
@@ -48,7 +45,8 @@ $font-weights: (
         .font-#{$weight}-#{$size} {
             font-family: $noto-sans-font;
             font-weight: $weight-value;
-            letter-spacing: normal;
+            letter-spacing: 0;
+            color: $primary-font-color;
             font-size: $size-value;
         }
     }
