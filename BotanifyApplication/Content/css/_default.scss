@@ -1,0 +1,31 @@
+@import '_colors.scss';
+@import '_fonts.scss';
+
+html {
+    font-size: clamp(10px, 2vw, 16px);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color:$primary-white;
+    font-family: $noto-sans-font;
+}
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+}

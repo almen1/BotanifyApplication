@@ -1,0 +1,231 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Onest:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
+html {
+  font-size: clamp(10px, 2vw, 16px);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #FEFEFE;
+  font-family: "Noto Sans", sans-serif;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+.heading-1 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 5rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.heading-2 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.heading-3 {
+  font-family: "Kaisei Decol", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #212121;
+  letter-spacing: normal;
+}
+
+.font-regular-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
+  font-size: 0.625rem;
+}
+
+.font-regular-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
+  font-size: 0.75rem;
+}
+
+.font-regular-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
+  font-size: 1rem;
+}
+
+.font-regular-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
+  font-size: 1.5rem;
+}
+
+.font-regular-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
+  font-size: 2rem;
+}
+
+.font-medium-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+  font-size: 0.625rem;
+}
+
+.font-medium-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+  font-size: 0.75rem;
+}
+
+.font-medium-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+  font-size: 1rem;
+}
+
+.font-medium-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+  font-size: 1.5rem;
+}
+
+.font-medium-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+  font-size: 2rem;
+}
+
+.font-semibold-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: normal;
+  font-size: 0.625rem;
+}
+
+.font-semibold-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: normal;
+  font-size: 0.75rem;
+}
+
+.font-semibold-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: normal;
+  font-size: 1rem;
+}
+
+.font-semibold-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: normal;
+  font-size: 1.5rem;
+}
+
+.font-semibold-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: normal;
+  font-size: 2rem;
+}
+
+.font-bold-xs {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: normal;
+  font-size: 0.625rem;
+}
+
+.font-bold-s {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: normal;
+  font-size: 0.75rem;
+}
+
+.font-bold-r {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: normal;
+  font-size: 1rem;
+}
+
+.font-bold-m {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: normal;
+  font-size: 1.5rem;
+}
+
+.font-bold-l {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: normal;
+  font-size: 2rem;
+}
+
+html {
+  font-size: clamp(10px, 2vw, 16px);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #FEFEFE;
+  font-family: "Noto Sans", sans-serif;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
