@@ -4,86 +4,19 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css">
-    <link rel="stylesheet" href="~/Content/css/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="~/Scripts/materialize.min.js"></script>
 </head>
 
-<body ng-app="BotanifyApplication" ng-controller="BotanifyApplicationController">
+<body>
+<div>
+    @RenderBody()
+</div>
 
-    <div class="row">
-        <div class="col s1 m1 l1"></div>
-        <div class="col s10 m10 l10">
-
-            <div class="navbar">
-                <div class="col s4 m4 l4">
-                    <img src="~/Content/assets/botanify_logo.svg" alt="Alternate Text" />
-                </div>
-                <div class="col s4 m4 l4">
-                    <div class="list-items">
-                        <a href="#" class="font-regular-r">Home</a>
-                    </div>
-                    <div class="list-items">
-                        <a href="#" class="font-regular-r" ng-click="toggleDropdown()">Shop</a>
-                        <i class="material-icons">{{ dropdownVisible ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</i>
-                    </div>
-                    <div class="list-items">
-                        <a href="#" class="font-regular-r">Contact Us</a>
-                    </div>
-                </div>
-                <div class="col s4 m4 l4">
-                    <button class="btn-icon-white ">
-                        <i class="material-icons">shopping_cart_checkout</i>
-                    </button>
-                    <button class="btn-icon-white">
-                        <i class="material-icons">account_circle</i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="nav-dropdown" ng-show="dropdownVisible" ng-cloak>
-
-                @*test lang di pa final*@
-                <div class="col s3 m3 l3" ng-repeat="category in shopCategories">
-                    <div class="wrapper">
-                        <p class="font-medium-r">{{ category.title }}</p>
-                        <ul>
-                            <li ng-repeat="link in category.links">
-                                <a href="#" class="font-regular-s">{{ link }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                @RenderBody()
-            </div>
-            
-            <div class="footer">
-                <div class="col s3 m3 l3">
-                    column test
-                </div>
-                <div class="col s3 m3 l3">
-                    column test
-                </div>
-                <div class="col s3 m3 l3">
-                    column test
-                </div>
-                <div class="col s3 m3 l3">
-                    column test
-                </div>
-            </div>
-        </div>
-        <div class="col s1 m1 l1"></div>
-    </div>
-
-    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
-    <script src="~/Scripts/angular.js"></script>
-    <script src="~/Scripts/AngularScripts/Module.js"></script>
-    <script src="~/Scripts/AngularScripts/Service.js"></script>
-    <script src="~/Scripts/AngularScripts/Controller.js"></script>
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/AngularScripts/Module.js"></script>
+<script src="~/Scripts/AngularScripts/Service.js"></script>
+<script src="~/Scripts/AngularScripts/Controller.js"></script>
 
 </body>
 </html>
