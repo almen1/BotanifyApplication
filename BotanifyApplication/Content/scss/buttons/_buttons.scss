@@ -1,0 +1,106 @@
+﻿@import '../colors/_colors.scss';
+
+
+
+@mixin btn-base {
+    width:fit-content;
+    padding: 0.60rem 4rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+
+    &:active {
+        transform: scale(1);
+    }
+}
+
+.btn-black {
+    @include btn-base;
+    background-color: $black;
+    color: $white;
+
+    &:hover {
+        background-color: darken($black, 5%);
+    }
+}
+
+.btn-white {
+    @include btn-base;
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+        background-color: darken($white, 5%);
+    }
+}
+
+.btn-gray {
+    @include btn-base;
+    background-color: $gray;
+    color: $black;
+
+    &:hover {
+        background-color: darken($gray, 5%);
+    }
+}
+
+.btn-primary {
+    @include btn-base;
+    background-color: $primary;
+    color: $white;
+
+    &:hover {
+        background-color: darken($primary, 5%);
+    }
+}
+
+.btn-accent {
+    @include btn-base;
+    background-color: $accent;
+    color: $white;
+
+    &:hover {
+        background-color: darken($accent, 5%);
+    }
+}
+
+.btn-rounded {
+    border-radius:100px;
+}
+
+.btn-block {
+    display:block;
+    width:100%;
+}
+
+.btn-outline {
+    background-color:transparent !important;
+    border: solid 2px;
+}
+
+.btn-icon {
+    aspect-ratio:1/1;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    i {
+        font-size:1.5rem;
+    }
+
+    &:hover {
+        background-color: darken($white, 5%);
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+}

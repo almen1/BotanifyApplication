@@ -1,0 +1,47 @@
+﻿// Color Variables
+$black: #212121;
+$white: #fefefe;
+$gray: #f7f7f3;
+$primary: #3e5d50;
+$accent: #dba372;
+
+.bg-black {
+    background-color: $black !important;
+}
+
+.bg-white {
+    background-color: $white !important;
+}
+
+.bg-gray {
+    background-color: $gray !important;
+}
+
+.bg-primary {
+    background-color: $primary !important;
+}
+
+.bg-accent {
+    background-color: $accent !important;
+}
+
+// Text Color Classes
+.text-black {
+    color: $black !important;
+}
+
+.text-white {
+    color: $white !important;
+}
+
+.text-gray {
+    color: $gray !important;
+}
+
+.text-primary {
+    color: $primary !important;
+}
+
+.text-accent {
+    color: $accent !important;
+}

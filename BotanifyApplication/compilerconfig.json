@@ -1,20 +1,20 @@
-[
+﻿[
   {
     "outputFile": "Content/css/style.css",
     "inputFile": "Content/css/style.scss",
     "minify": {
       "enabled": false
-    },
-    "sourceMap": false,
-    "useNodeSass": false
+    }
   },
   {
     "outputFile": "Content/css/main.css",
     "inputFile": "Content/css/main.scss",
     "minify": {
       "enabled": false
-    },
-    "sourceMap": false,
-    "useNodeSass": false
+    }
+  },
+  {
+    "outputFile": "Content/scss/main.css",
+    "inputFile": "Content/scss/main.scss"
   }
 ]
