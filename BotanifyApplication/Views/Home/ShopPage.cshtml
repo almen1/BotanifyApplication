@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_BotanifyLayout.cshtml";
+}
+
+<div class="row text-black">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 section-shop">
+        <div class="header">
+            <h2>Shop All Plants</h2>
+            <select>
+                <option value="0">Sort By:</option>
+                <option value="1">Name: A-Z</option>
+                <option value="2">Name: Z-A</option>
+                <option value="3">Price: High-Low</option>
+                <option value="4">Price: Low-High</option>
+            </select>
+        </div>
+
+        <div class="row shop-main">
+            <div class="col-xs-2 shop-filter">
+                <div ng-repeat="filter in filters" class="filter-by text-sm">
+                    <h6 class="text-lg font-medium">Filter by {{ filter.title }}</h6>
+                    <ul>
+                        <li ng-repeat="option in filter.options">
+                            <div class="form-checkbox">
+                                <input class="checkbox"
+                                       type="checkbox"
+                                       id="{{ filter.name + $index }}"
+                                       ng-model="option.selected" />
+                                <label for="{{ filter.name + $index }}" tabindex="1">{{ option.label }}</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-10 shop-products text-black">
+                <div class="card-container">
+                    <div class="card-product" ng-repeat="product in products">
+                        <div class="product-img">
+                            <img ng-src="{{product.imageUrl}}" alt="{{product.name}}" />
+                        </div>
+                        <div class="product-details">
+                            <div class="product-name font-medium">{{product.name}}</div>
+                            <div class="product-btn">
+                                <h3>{{product.price | currency : '₱'}}</h3>
+                                <button class="btn-icon bg-primary text-white" ng-click="addToCart(product)">
+                                    <i class='bx bx-basket'></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+

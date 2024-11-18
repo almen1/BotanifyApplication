@@ -1,0 +1,41 @@
+﻿.section-shop {
+    min-height: 90vh;
+    padding-top: 10rem;
+
+    .shop-main {
+
+        .shop-filter {
+
+            .filter-by {
+                padding: 1rem 0;
+                border-bottom: solid 1px #d9d9d9;
+
+                ul {
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        padding: 0.25rem 0;
+
+                        .checkbox-container {
+                            display:flex;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        .shop-products {
+            min-height: 200vh;
+            padding: 0 1rem;
+        }
+
+
+
+    }
+}

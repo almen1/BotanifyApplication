@@ -1,0 +1,23 @@
+﻿.header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: solid 1px #d9d9d9;
+
+    a {
+        place-self: center end;
+        text-decoration: underline;
+
+        &:hover {
+            font-weight: 500;
+        }
+    }
+
+    select {
+        place-self: center end;
+        display: inline;
+        width: fit-content;
+        cursor: pointer;
+    }
+}

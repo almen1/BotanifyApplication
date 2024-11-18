@@ -20,35 +20,37 @@
 }
 
 .section-popular {
-    height:50vh;
+    height: 50vh;
+    padding: 5rem 0;
 }
 
-.section-collection {
+.section-newest {
     height: 50vh;
 }
 
 .section-promotion {
     height: fit-content;
+
     .promotion-main {
         padding: 2rem 0;
-        height:100%;
-        width:100%;
-        display:grid;
+        height: 100%;
+        width: 100%;
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 6rem;
+
         .promo {
-            display:grid;
-            justify-content:center;
-            place-items:center;
-            text-align:center;
+            display: grid;
+            justify-content: center;
+            place-items: center;
+            text-align: center;
             grid-template-rows: repeat(2, 1fr);
+
             .promo-text {
-                place-self:start;
+                place-self: start;
                 word-wrap: break-word;
             }
         }
-
-
     }
 }
 
@@ -76,5 +78,23 @@
 }
 
 .section-testimonials {
-    height: 50vh;
+    min-height: 70vh;
+    padding: 5rem 0;
+
+    .testimonials-main {
+        display: flex;
+        flex-direction: column;
+
+        .card-container {
+        align-content: unset;
+
+            .header {
+                grid-template-columns: 1fr !important;
+
+                h2 {
+                    text-align: center;
+                }
+            }
+        }
+    }
 }
