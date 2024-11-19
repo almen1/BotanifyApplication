@@ -1,5 +1,29 @@
 ﻿app.controller("BotanifyApplicationController", function ($scope, BotanifyApplicationService) {
 
+    //show nav dropdown
+    $scope.isDropdownVisible = false;
+    $scope.showDropdown = function () {
+        $scope.isDropdownVisible = !$scope.isDropdownVisible;
+    };
+
+
+    //if user is not logged in take to login but if user is logged in take to account page
+    $scope.showShop = function () {
+        window.location.href = "/Home/ShopPage";
+    }
+
+    $scope.showProduct = function () {
+        window.location.href = "/Home/ProductPage";
+    }
+
+    $scope.loginBtn = function () {
+        window.location.href = "/Home/LoginPage";
+    }
+    $scope.showCart = function () {
+        window.location.href = "/Home/CartPage";
+    }
+
+
     //maybe final
     $scope.filters = [
         {
@@ -33,11 +57,12 @@
             ]
         }
     ];
+
     //not final for testing only
     $scope.products = [
-        { name: "Test Plant 1", price: 500, imageUrl: "path_to_image1.jpg" },
-        { name: "Test Plant 2", price: 750, imageUrl: "path_to_image2.jpg" },
-        { name: "Test Plant 3", price: 1200, imageUrl: "path_to_image3.jpg" },
+        { name: "Austral Gem Fern", price: 500, imageUrl: "/Content/assets/plants/australfern_800x.png" },
+        { name: "Sansevieria Snake, Dwarf", price: 750, imageUrl: "path_to_image2.jpg" },
+        { name: "Aglaonema White Variegata", price: 1200, imageUrl: "path_to_image3.jpg" },
         { name: "Test Plant 4", price: 1200, imageUrl: "path_to_image3.jpg" },
         { name: "Test Plant 5", price: 1200, imageUrl: "path_to_image3.jpg" },
         { name: "Test Plant 6", price: 1200, imageUrl: "path_to_image3.jpg" },

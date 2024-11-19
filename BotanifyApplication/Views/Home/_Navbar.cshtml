@@ -12,14 +12,25 @@
             <a href="@Url.Action("LandingPage", "Home")">Contact Us</a>
         </div>
         <div class="section-btns text-black">
-            <button class="btn-icon">
+            <button class="btn-icon" ng-click="showCart()">
                 <i class='bx bx-basket'></i>
             </button>
-            <button class="btn-icon">
+            <button class="btn-icon" ng-click="loginBtn()">
                 <i class='bx bx-user'></i>
+            </button>
+            <button class="btn-icon nav-burger" ng-click="showDropdown()">
+                <i class='bx bx-menu'></i>
             </button>
         </div>
     </div>
     <div class="col-xs-1">
+    </div>
+</div>
+
+<div class="dropdown bg-white" ng-class="{'active': isDropdownVisible}">
+    <div class="dropdown-links text-xl font-medium">
+        <a href="@Url.Action("LandingPage", "Home")">Home</a>
+        <a href="@Url.Action("ShopPage", "Home")">Shop</a>
+        <a href="@Url.Action("LandingPage", "Home")">Contact Us</a>
     </div>
 </div>

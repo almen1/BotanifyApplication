@@ -1,11 +1,11 @@
 ﻿.navbar {
+    width:100%;
     position: fixed;
     z-index: 99999;
     padding: 1rem 0;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 
     .nav-items {
-        border-radius: 100px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         padding: 0;
@@ -59,6 +59,42 @@
             align-self: center;
             display: inline-flex;
             gap: 1rem;
+
+            .nav-burger {
+                display:none;
+            }
+
+        }
+    }
+}
+
+
+.dropdown {
+    display: none;
+    height: fit-content;
+    width: 100vw;
+    padding: 5rem 2rem 2rem 2rem;
+    overflow-y: hidden;
+    position: fixed;
+    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    &.active {
+        display: block;
+        transform: translateX(0);
+    }
+
+    .dropdown-links {
+        display: flex;
+        flex-direction: column;
+        
+
+        a {
+            text-align:center;
+            padding:1rem 0;
+            border-bottom: solid #d9d9d9 1px;
         }
     }
 }

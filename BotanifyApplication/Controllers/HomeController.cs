@@ -14,12 +14,10 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
-
         public ActionResult LoginPage()
         {
             return View();
         }
-
 
         public ActionResult RegisterPage()
         {
@@ -30,6 +28,10 @@ namespace BotanifyApplication.Controllers
             return View();
         }
         public ActionResult ProductPage()
+        {
+            return View();
+        }
+        public ActionResult CartPage()
         {
             return View();
         }

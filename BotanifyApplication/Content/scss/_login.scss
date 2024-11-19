@@ -1,0 +1,27 @@
+﻿.section-login {
+    height: 90vh;
+    padding: 5rem 0;
+
+    .login-main {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        
+        .section-form {
+            width:30%;
+            padding:2rem;
+            display:flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            border: solid #d9d9d9 1px;
+
+            .form-text {
+                display:flex;
+                flex-direction:column;
+                gap:0.5rem;
+                text-align:center;
+            }
+        }
+
+    }
+}
