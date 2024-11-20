@@ -18,6 +18,9 @@
         }
     }
 
+    .section-popular,.section-newest {
+        height: 40vh !important;
+    }
 
     .dropdown {
         display: block;
@@ -71,10 +74,28 @@
         .care-main {
             display: flex !important;
             text-align: center !important;
+
+            .care-items {
+                width:100% !important;
+            }
         }
     }
 
-    
+    .product-main {
+        grid-template-rows: auto 1fr !important;
+        grid-template-columns: 1fr !important;
+        grid-gap: 0 !important;
+
+        .product-img {
+            grid-row-start: 1 !important;
+            height: fit-content !important;
+
+        }
+
+        .product-info {
+            grid-row-start: 2 !important;
+        }
+    }
 
 
 }

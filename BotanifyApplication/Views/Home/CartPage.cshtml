@@ -18,7 +18,11 @@
                     <p class="font-semibold">Austral Gem Fern</p>
                 </div>
                 <div class="item-buttons">
-                    <button class="btn btn-rounded btn-outline">+___1___-</button>
+                    <div class="quantity">
+                        <button class="minus" ng-click="decreaseQuantity()" aria-label="Decrease">&minus;</button>
+                        <input type="number" class="input-box" ng-model="quantity" min="1" max="10" />
+                        <button class="plus" ng-click="increaseQuantity()" aria-label="Increase">&plus;</button>
+                    </div>
                         <button class="btn-icon">
                             <i class='bx bx-trash'></i>
                         </button>

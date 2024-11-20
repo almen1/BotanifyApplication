@@ -27,23 +27,56 @@
 <div class="row section-popular text-black">
     <div class="col-xs-1"></div>
 
-    <div class="col-xs-10">
+    <div class="col-xs-10 popular-main">
         <div class="header">
             <h2>Top Plant Picks</h2>
             <a href="@Url.Action("ShopPage", "Home")">View All Plants</a>
+        </div>
+        <div class="slider-container">
+            <div class="card-product" ng-repeat="product in products">
+                <div class="product-img" ng-click="showProduct()">
+                    <img ng-src="{{product.imageUrl}}" alt="{{product.name}}" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">{{product.name}}</div>
+                    <div class="product-btn">
+                        <h3>{{product.price | currency : '₱'}}</h3>
+                        <button class="btn-icon bg-primary text-white" ng-click="addToCart(product)">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="col-xs-1"></div>
 </div>
 
-@*FEATURED COLLECTIONS*@
+@*NEWEST ITEMS*@
 <div class="row section-newest text-black">
     <div class="col-xs-1"></div>
 
-    <div class="col-xs-10">
+    <div class="col-xs-10 newest-main">
         <div class="header">
             <h2>Recently Bloomed</h2>
             <a href="@Url.Action("ShopPage", "Home")">View All Plants</a>
+        </div>
+        <div class="slider-container">
+            <div class="card-product" ng-repeat="product in products">
+                <div class="product-img" ng-click="showProduct()">
+                    <img ng-src="{{product.imageUrl}}" alt="{{product.name}}" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">{{product.name}}</div>
+                    <div class="product-btn">
+                        <h3>{{product.price | currency : '₱'}}</h3>
+                        <button class="btn-icon bg-primary text-white" ng-click="addToCart(product)">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-xs-1"></div>

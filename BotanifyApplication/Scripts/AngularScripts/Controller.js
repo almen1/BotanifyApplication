@@ -23,6 +23,23 @@
         window.location.href = "/Home/CartPage";
     }
 
+    //qty button
+    $scope.quantity = 1;
+
+    $scope.decreaseQuantity = function () {
+        if ($scope.quantity > 1) {
+            $scope.quantity--;
+        }
+    };
+    $scope.increaseQuantity = function () {
+        if ($scope.quantity < 10) {
+            $scope.quantity++;
+        }
+    };
+    $scope.$watch('quantity', function (newValue) {
+        console.log("Quantity changed:", newValue);
+    });
+
 
     //maybe final
     $scope.filters = [

@@ -49,9 +49,47 @@
                     min-width: fit-content;
                     gap: 1rem;
 
-                    button {
-                        max-height: 2.5rem;
+                    .quantity {
+                        display: flex;
+                        border: solid #212121 2px;
+                        border-radius: 2rem;
+                        overflow: hidden;
+
+                        button {
+                            color: #212121;
+                            border: none;
+                            cursor: pointer;
+                            font-size: 20px;
+                            width: 30px;
+                            height: auto;
+                            text-align: center;
+                            transition: background-color 0.2s;
+
+                            &:hover {
+                                background-color: #d9d9d9;
+                            }
+                        }
+
+                        .input-box {
+                            width: 40px;
+                            text-align: center;
+                            border: none;
+                            padding: 8px 10px;
+                            font-size: 16px;
+                            outline: none;
+
+                            &::-webkit-inner-spin-button,
+                            &::-webkit-outer-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+
+                            &[type="number"] {
+                                -moz-appearance: textfield;
+                            }
+                        }
                     }
+
                 }
 
                 .item-price {
