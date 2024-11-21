@@ -36,5 +36,15 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
+        public ActionResult AccountPage()
+        {
+            return View();
+        }
+        public ActionResult AddressPage()
+        {
+            return View();
+        }
+
+
     }
 }

@@ -16,10 +16,13 @@
 @import '_header.scss';
 
 //Pages
-@import '_landing.scss';
-@import'_shop.scss';
-@import '_login.scss';
-@import '_cart.scss';
-@import '_products.scss';
+@import 'pages/_landing.scss';
+@import'pages/_shop.scss';
+@import 'pages/_login.scss';
+@import 'pages/_cart.scss';
+@import 'pages/_products.scss';
+@import 'pages/_account.scss';
+@import 'pages/_address.scss';
 
+//Media query
 @import'_mediaquery.scss';

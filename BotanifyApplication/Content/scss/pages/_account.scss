@@ -1,0 +1,45 @@
+﻿.section-account {
+    height: 90vh;
+    padding: 10rem 0;
+
+    .account-main {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        height: 100%;
+
+        .account-details {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            border-bottom: solid #d9d9d9 1px;
+            gap: 1rem;
+            padding-bottom: 1rem;
+
+            p {
+                color: #a3a3a3 !important;
+            }
+
+            button {
+                margin-left: auto;
+            }
+        }
+
+        .account-address {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            border-bottom: solid #d9d9d9 1px;
+            gap: 1rem;
+            padding-bottom: 1rem;
+
+            p {
+                color: #a3a3a3 !important;
+            }
+
+            button {
+                margin-left: auto;
+            }
+        }
+    }
+}
