@@ -12,10 +12,10 @@
             <a href="@Url.Action("LandingPage", "Home")">Contact Us</a>
         </div>
         <div class="section-btns text-black">
-            <button class="btn-icon" ng-click="showCart()">
+            <button class="btn-icon" ng-click="navigateTo('/Home/CartPage')">
                 <i class='bx bx-basket'></i>
             </button>
-            <button class="btn-icon" ng-click="loginBtn()">
+            <button class="btn-icon" ng-click="navigateTo('/Home/LoginPage')">
                 <i class='bx bx-user'></i>
             </button>
             <button class="btn-icon nav-burger" ng-click="showDropdown()">

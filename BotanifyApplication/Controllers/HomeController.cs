@@ -40,10 +40,6 @@ namespace BotanifyApplication.Controllers
         {
             return View();
         }
-        public ActionResult AddressPage()
-        {
-            return View();
-        }
 
 
     }

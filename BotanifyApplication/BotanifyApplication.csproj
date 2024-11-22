@@ -222,6 +222,7 @@
     <Content Include="Content\scss\pages\_cart.scss" />
     <Content Include="Content\scss\pages\_account.scss" />
     <Content Include="Content\scss\pages\_address.scss" />
+    <Content Include="Content\scss\_modal.scss" />
     <None Include="Content\scss\_normalize.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -1060,7 +1061,6 @@
     <Content Include="Views\Home\ProductPage.cshtml" />
     <Content Include="Views\Home\CartPage.cshtml" />
     <Content Include="Views\Home\AccountPage.cshtml" />
-    <Content Include="Views\Home\AddressPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,29 +1,37 @@
 ﻿app.controller("BotanifyApplicationController", function ($scope, BotanifyApplicationService) {
 
-    //show nav dropdown
+    //SHOW DROPDOWN FOR MOBILE
     $scope.isDropdownVisible = false;
     $scope.showDropdown = function () {
         $scope.isDropdownVisible = !$scope.isDropdownVisible;
     };
 
+    //SHOW MODAL
+    $scope.isModalVisible = false;
+
+    $scope.showModal = function () {
+        $scope.isModalVisible = !$scope.isModalVisible;
+    };
+
+
+
+
+
+
 
     //if user is not logged in take to login but if user is logged in take to account page
-    $scope.showShop = function () {
-        window.location.href = "/Home/ShopPage";
-    }
+    //code here
 
-    $scope.showProduct = function () {
-        window.location.href = "/Home/ProductPage";
-    }
 
-    $scope.loginBtn = function () {
-        window.location.href = "/Home/LoginPage";
-    }
-    $scope.showCart = function () {
-        window.location.href = "/Home/CartPage";
-    }
 
-    //qty button
+
+    //GENERAL NAVIGATION
+    $scope.navigateTo = function (path) {
+        window.location.href = path;
+    };
+
+
+    //QUANTITY BUTTON
     $scope.quantity = 1;
 
     $scope.decreaseQuantity = function () {
@@ -41,7 +49,8 @@
     });
 
 
-    //maybe final
+
+    //FILTER CATEGORIES
     $scope.filters = [
         {
             title: 'Price',
@@ -75,19 +84,7 @@
         }
     ];
 
-    //not final for testing only
-    $scope.products = [
-        { name: "Austral Gem Fern", price: 500, imageUrl: "/Content/assets/plants/australfern_800x.png" },
-        { name: "Sansevieria Snake, Dwarf", price: 750, imageUrl: "path_to_image2.jpg" },
-        { name: "Aglaonema White Variegata", price: 1200, imageUrl: "path_to_image3.jpg" },
-        { name: "Test Plant 4", price: 1200, imageUrl: "path_to_image3.jpg" },
-        { name: "Test Plant 5", price: 1200, imageUrl: "path_to_image3.jpg" },
-        { name: "Test Plant 6", price: 1200, imageUrl: "path_to_image3.jpg" },
-    ];
 
-    //for testing lang hehe
-    $scope.addToCart = function (product) {
-        console.log(product.name + "test");
-    };
+
 
 });

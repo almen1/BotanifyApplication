@@ -17,7 +17,7 @@
                 effortlessly combining style and natural vibrance.
             </p>
         </div>
-        <button class="btn btn-rounded btn-accent text-lg" ng-click="showShop()">View Shop</button>
+        <button class="btn btn-rounded btn-accent text-lg" ng-click="navigateTo('/Home/ShopPage')">View Shop</button>
     </div>
 
     <div class="col-xs-1"></div>
@@ -33,15 +33,86 @@
             <a href="@Url.Action("ShopPage", "Home")">View All Plants</a>
         </div>
         <div class="slider-container">
-            <div class="card-product" ng-repeat="product in products">
-                <div class="product-img" ng-click="showProduct()">
-                    <img ng-src="{{product.imageUrl}}" alt="{{product.name}}" />
+            @*<div class="card-product" ng-repeat="product in products">
+            <div class="product-img" ng-click="showProduct()">
+                <img ng-src="{{product.imageUrl}}" alt="{{product.name}}" />
+            </div>
+            <div class="product-details">
+                <div class="product-name font-medium">{{product.name}}</div>
+                <div class="product-btn">
+                    <h3>{{product.price | currency : '₱'}}</h3>
+                    <button class="btn-icon bg-primary text-white" ng-click="addToCart(product)">
+                        <i class='bx bx-basket'></i>
+                    </button>
+                </div>
+            </div>
+        </div>*@
+
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" ng-click="navigateTo('/Home/ProductPage')"/>
                 </div>
                 <div class="product-details">
-                    <div class="product-name font-medium">{{product.name}}</div>
+                    <div class="product-name font-medium">Austral Gem Fern</div>
                     <div class="product-btn">
-                        <h3>{{product.price | currency : '₱'}}</h3>
-                        <button class="btn-icon bg-primary text-white" ng-click="addToCart(product)">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">Austral Gem Fern</div>
+                    <div class="product-btn">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">Austral Gem Fern</div>
+                    <div class="product-btn">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">Austral Gem Fern</div>
+                    <div class="product-btn">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">Austral Gem Fern</div>
+                    <div class="product-btn">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
                             <i class='bx bx-basket'></i>
                         </button>
                     </div>
@@ -63,15 +134,86 @@
             <a href="@Url.Action("ShopPage", "Home")">View All Plants</a>
         </div>
         <div class="slider-container">
-            <div class="card-product" ng-repeat="product in products">
-                <div class="product-img" ng-click="showProduct()">
-                    <img ng-src="{{product.imageUrl}}" alt="{{product.name}}" />
+            @*<div class="card-product" ng-repeat="product in products">
+            <div class="product-img" ng-click="showProduct()">
+                <img ng-src="{{product.imageUrl}}" alt="{{product.name}}" />
+            </div>
+            <div class="product-details">
+                <div class="product-name font-medium">{{product.name}}</div>
+                <div class="product-btn">
+                    <h3>{{product.price | currency : '₱'}}</h3>
+                    <button class="btn-icon bg-primary text-white" ng-click="addToCart(product)">
+                        <i class='bx bx-basket'></i>
+                    </button>
+                </div>
+            </div>
+        </div>*@
+
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
                 </div>
                 <div class="product-details">
-                    <div class="product-name font-medium">{{product.name}}</div>
+                    <div class="product-name font-medium">Austral Gem Fern</div>
                     <div class="product-btn">
-                        <h3>{{product.price | currency : '₱'}}</h3>
-                        <button class="btn-icon bg-primary text-white" ng-click="addToCart(product)">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">Austral Gem Fern</div>
+                    <div class="product-btn">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">Austral Gem Fern</div>
+                    <div class="product-btn">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">Austral Gem Fern</div>
+                    <div class="product-btn">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
+                            <i class='bx bx-basket'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="product-img">
+                    <img src="~/Content/assets/plants/australfern_800x.png" alt="Product Name" />
+                </div>
+                <div class="product-details">
+                    <div class="product-name font-medium">Austral Gem Fern</div>
+                    <div class="product-btn">
+                        <h3>₱999.00</h3>
+                        <button class="btn-icon bg-primary text-white">
                             <i class='bx bx-basket'></i>
                         </button>
                     </div>

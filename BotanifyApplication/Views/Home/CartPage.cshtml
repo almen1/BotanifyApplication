@@ -23,9 +23,9 @@
                         <input type="number" class="input-box" ng-model="quantity" min="1" max="10" />
                         <button class="plus" ng-click="increaseQuantity()" aria-label="Increase">&plus;</button>
                     </div>
-                        <button class="btn-icon">
-                            <i class='bx bx-trash'></i>
-                        </button>
+                    <button class="btn-icon">
+                        <i class='bx bx-trash'></i>
+                    </button>
                 </div>
                 <div class="item-price">
                     <p class="text-xl font-medium">₱500</p>
@@ -39,10 +39,56 @@
                         <p>test</p>
                     </div>
                     <button class="btn btn-accent btn-rounded btn-block">Checkout</button>
+                    <div class="account-address">
+                        <h3 class="text-xl">Shipping Information</h3>
+                        <p>Address line here</p>
+                        <p>City here</p>
+                        <p>province here</p>
+                        <p>country here</p>
+                        <p>postal code here</p>
+
+                        <button class="btn btn-white btn-outline btn-rounded text-black" ng-click="showModal()">
+                            <span>
+                                <i class='bx bx-edit-alt'></i>
+                            </span>
+                            Edit
+                        </button>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
     <div class="col-xs-1"></div>
+    <div class="modal-overlay" ng-class="{'active': isModalVisible}">
+        <div class="modal-wrapper">
+            <div class="modal text-black bg-white">
+                <div class="btn-row">
+                    <button class="btn-icon" ng-click="showModal()">
+                        <i class='bx bx-x-circle'></i>
+                    </button>
+                </div>
+                <h3 class="text-xl">Shipping Information</h3>
+
+                <form action="/" method="post" class="form-address">
+                    <div class="field-row-full">
+                        <input type="text" name="address" placeholder="Home Address" class="field-block" />
+                    </div>
+                    <div class="field-row-half">
+                        <input type="text" name="city" placeholder="City" />
+                        <input type="text" name="province" placeholder="Province" />
+                    </div>
+                    <div class="field-row-half">
+                        <input type="text" name="country" placeholder="Country" />
+                        <input type="text" name="postal" placeholder="Postal Code" />
+                    </div>
+                    <button type="submit" class="btn btn-accent btn-rounded">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class=""></div>
+
 </div>
 
