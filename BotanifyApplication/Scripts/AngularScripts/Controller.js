@@ -14,6 +14,16 @@
     };
 
 
+    $scope.isSuccessVisible = false;
+
+
+    //temp code, when checkout clear cart go to landing and show success
+    $scope.showSuccess = function () {
+        $scope.isSuccessVisible = !$scope.isSuccessVisible;
+
+    };
+
+
 
 
 

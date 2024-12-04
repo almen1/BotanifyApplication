@@ -223,6 +223,7 @@
     <Content Include="Content\scss\pages\_account.scss" />
     <Content Include="Content\scss\pages\_address.scss" />
     <Content Include="Content\scss\_modal.scss" />
+    <Content Include="Content\scss\_animations.scss" />
     <None Include="Content\scss\_normalize.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
