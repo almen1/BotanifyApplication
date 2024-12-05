@@ -165,6 +165,32 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\address_tblMap.cs" />
+    <Compile Include="Models\address_tblModel.cs" />
+    <Compile Include="Models\admins_tblMap.cs" />
+    <Compile Include="Models\admins_tblModel.cs" />
+    <Compile Include="Models\BotanifyContext.cs" />
+    <Compile Include="Models\BotanifyModel.cs" />
+    <Compile Include="Models\cartitems_tblMap.cs" />
+    <Compile Include="Models\cartitems_tblModel.cs" />
+    <Compile Include="Models\cartstatus_tblMap.cs" />
+    <Compile Include="Models\cartstatus_tblModel.cs" />
+    <Compile Include="Models\carts_tblMap.cs" />
+    <Compile Include="Models\carts_tblModel.cs" />
+    <Compile Include="Models\categories_tblMap.cs" />
+    <Compile Include="Models\categories_tblModel.cs" />
+    <Compile Include="Models\categorygroups_tblMap.cs" />
+    <Compile Include="Models\categorygroups_tblModel.cs" />
+    <Compile Include="Models\orderstatus_tblMap.cs" />
+    <Compile Include="Models\orderstatus_tblModel.cs" />
+    <Compile Include="Models\orders_tblMap.cs" />
+    <Compile Include="Models\orders_tblModel.cs" />
+    <Compile Include="Models\products_tblMap.cs" />
+    <Compile Include="Models\products_tblModel.cs" />
+    <Compile Include="Models\sizes_tblMap.cs" />
+    <Compile Include="Models\sizes_tblModel.cs" />
+    <Compile Include="Models\users_tblMap.cs" />
+    <Compile Include="Models\users_tblModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1066,7 +1092,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\collections\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
