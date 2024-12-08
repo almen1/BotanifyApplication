@@ -2846,3 +2846,33 @@ form a {
     width: 90vw !important;
   }
 }
+.body-dash {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex !important;
+}
+
+.sidebar {
+  width: 12vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 0.5fr 2fr 0.5fr;
+}
+.sidebar .sidebar-logo {
+  padding: 2rem;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+}
+.sidebar .sidebar-signout {
+  align-self: end;
+}
+.sidebar button {
+  display: flex !important;
+  justify-content: flex-start !important;
+  padding-left: 2rem;
+}
+.sidebar button:hover {
+  transform: scale(1) !important;
+}
