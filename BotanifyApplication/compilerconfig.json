@@ -16,5 +16,9 @@
   {
     "outputFile": "Content/scss/main.css",
     "inputFile": "Content/scss/main.scss"
+  },
+  {
+    "outputFile": "Content/scss/dashboard/dashboardmain.css",
+    "inputFile": "Content/scss/dashboard/dashboardmain.scss"
   }
 ]

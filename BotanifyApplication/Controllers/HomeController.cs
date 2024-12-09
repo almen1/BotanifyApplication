@@ -41,6 +41,11 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
 
     }
 }

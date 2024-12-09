@@ -1,0 +1,28 @@
+﻿.sidebar {
+    width: 15vw;
+    height: 100vh;
+
+    .sidebar-logo {
+        padding: 3rem;
+
+        img {
+            
+        }
+    }
+
+    .sidebar-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        button {
+            display: flex !important;
+            justify-content: flex-start !important;
+            padding: 1rem 2rem !important;
+
+            &:hover {
+                transform: scale(1) !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+﻿body {
+  display: flex;
+}
+
+.sidebar {
+  width: 15vw;
+  height: 100vh;
+}
+.sidebar .sidebar-logo {
+  padding: 3rem;
+}
+.sidebar .sidebar-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.sidebar .sidebar-links button {
+  display: flex !important;
+  justify-content: flex-start !important;
+  padding: 1rem 2rem !important;
+}
+.sidebar .sidebar-links button:hover {
+  transform: scale(1) !important;
+}
+
+.dash-products {
+  padding: 4rem 0rem;
+}
