@@ -99,6 +99,18 @@
     ];
 
 
+    //TEST LANG
+    $scope.submitFunc = function () {
+        var empData = {
+            fName: $scope.firstName,
+            lName: $scope.lastName,
+            uEmail: $scope.userEmail,
+            uPassword: $scope.userPassword,
+        }
+        var getData = BotanifyApplicationService.submitFunc(empData);
+        getData.then(function (ReturnedData) {
 
+        });
+    };
 
 });

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Botanify.Models;
+using BotanifyApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -37,11 +39,6 @@ namespace BotanifyApplication.Controllers
         }
 
         public ActionResult AccountPage()
-        {
-            return View();
-        }
-
-        public ActionResult DashProducts()
         {
             return View();
         }
