@@ -6,19 +6,14 @@
         $scope.isDropdownVisible = !$scope.isDropdownVisible;
     };
 
-    //SHOW MODAL
-    $scope.isModalVisible = false;
-
-    $scope.showModal = function () {
-        $scope.isModalVisible = !$scope.isModalVisible;
-    };
-
     //ADD PRODUCT
     $scope.isAddVisible = false;
-
     $scope.addProduct = function () {
         $scope.isAddVisible = !$scope.isAddVisible;
     };
+
+    //EDIT PRODUCT
+
 
     //SUCCESS
     $scope.isSuccessVisible = false;

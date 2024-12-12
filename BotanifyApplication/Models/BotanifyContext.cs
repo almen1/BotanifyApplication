@@ -36,18 +36,18 @@ namespace BotanifyApplication.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Configurations.Add(new address_tblMap());
-            //modelBuilder.Configurations.Add(new admins_tblMap());
-            //modelBuilder.Configurations.Add(new cartitems_tblMap());
-            //modelBuilder.Configurations.Add(new carts_tblMap());
-            //modelBuilder.Configurations.Add(new cartstatus_tblMap());
-            //modelBuilder.Configurations.Add(new categories_tblMap());
-            //modelBuilder.Configurations.Add(new categorygroups_tblMap());
-            //modelBuilder.Configurations.Add(new orders_tblMap());
-            //modelBuilder.Configurations.Add(new orderstatus_tblMap());
-            //modelBuilder.Configurations.Add(new products_tblMap());
-            //modelBuilder.Configurations.Add(new sizes_tblMap());
-            //modelBuilder.Configurations.Add(new users_tblMap());
+            modelBuilder.Configurations.Add(new address_tblMap());
+            modelBuilder.Configurations.Add(new admins_tblMap());
+            modelBuilder.Configurations.Add(new cartitems_tblMap());
+            modelBuilder.Configurations.Add(new carts_tblMap());
+            modelBuilder.Configurations.Add(new cartstatus_tblMap());
+            modelBuilder.Configurations.Add(new categories_tblMap());
+            modelBuilder.Configurations.Add(new categorygroups_tblMap());
+            modelBuilder.Configurations.Add(new orders_tblMap());
+            modelBuilder.Configurations.Add(new orderstatus_tblMap());
+            modelBuilder.Configurations.Add(new products_tblMap());
+            modelBuilder.Configurations.Add(new sizes_tblMap());
+            modelBuilder.Configurations.Add(new users_tblMap());
         }
     }
 }

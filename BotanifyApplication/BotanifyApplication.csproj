@@ -255,6 +255,7 @@
     <Content Include="Content\scss\dashboard\_sidebar.scss" />
     <Content Include="Content\scss\dashboard\dashmain.scss" />
     <Content Include="Content\scss\dashboard\dashproducts.scss" />
+    <Content Include="Content\scss\forms\_dropdown.scss" />
     <None Include="Content\scss\_normalize.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -1097,6 +1098,7 @@
     <Content Include="Views\Shared\_BotanifyDashboard.cshtml" />
     <Content Include="Views\Home\_Sidebar.cshtml" />
     <Content Include="Views\Home\DashProducts.cshtml" />
+    <Content Include="Views\Home\_AddProdModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -43,6 +43,11 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
+        public ActionResult DashProducts()
+        {
+            return View();
+        }
+
         public void AddUser(BotanyModel registrationData)
         {
             using (var db = new BotanifyContext())

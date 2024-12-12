@@ -1,0 +1,99 @@
+﻿
+<div class="modal-overlay" ng-class="{'active': isAddVisible}">
+    <div class="modal text-black bg-white">
+        <div class="header-row">
+            <h3>Add Product</h3>
+            <button class="btn-icon" ng-click="addProduct()">
+                <i class='bx bx-x-circle'></i>
+            </button>
+        </div>
+
+        <form action="@Url.Action("DashProducts", "Home")" method="post" class="form-address text-sm">
+            <div class="field-row-half">
+                <div class="field-input">
+                    <label>Select Cateogries</label>
+                    <div class="checkbox-input">
+                        <div class="checkbox-col">
+                            <div class="form-checkbox">
+                                <input type="checkbox" />
+                                <label>Pet-Friendly</label>
+                            </div>
+                            <div class="form-checkbox">
+                                <input type="checkbox" />
+                                <label>Air Purifiers</label>
+                            </div>
+                        </div>
+                        <div class="checkbox-col">
+                            <div class="form-checkbox">
+                                <input type="checkbox" />
+                                <label>For Beginners</label>
+                            </div>
+                            <div class="form-checkbox">
+                                <input type="checkbox" />
+                                <label>Low Light</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+            <div class="field-row-half">
+                <div class="field-input">
+                    <label>Product Name</label>
+                    <select>
+                        <option value="0">Select Size</option>
+                        <option value="1">Small</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Large</option>
+                        <option value="4">Hanging</option>
+                    </select>
+
+                </div>
+                <div class="field-input">
+                    <label>SKU</label>
+                    <input type="text" />
+                </div>
+            </div>
+            <div class="field-row-half">
+                <div class="field-input">
+                    <label>Product Name</label>
+                    <input type="text" />
+
+                </div>
+                <div class="field-input">
+                    <label>Scientific Name</label>
+                    <input type="text" />
+                </div>
+            </div>
+            <div class="field-row-half">
+                <div class="field-input">
+                    <label>Product Description</label>
+                    <textarea></textarea>
+
+                </div>
+                <div class="field-input">
+                    <label>Product Tips</label>
+                    <textarea></textarea>
+                </div>
+            </div>
+            <div class="field-row-full">
+                <div class="field-input">
+                    <label>Image Path</label>
+                    <input type="text" class="field-block" />
+                </div>
+            </div>
+            <div class="field-row-half">
+                <div class="field-input">
+                    <label>Product Price</label>
+                    <input type="text" />
+
+                </div>
+                <div class="field-input">
+                    <label>Product Stock</label>
+                    <input type="text" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary text-sm">Add Product</button>
+        </form>
+    </div>
+</div>
