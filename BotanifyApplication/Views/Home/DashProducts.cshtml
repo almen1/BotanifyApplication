@@ -9,8 +9,11 @@
     <div class="dash-prod-header">
         <div class="filter-wrapper">
             <input type="search" name="name" value="" class="text-sm" placeholder="Search" />
-            <button class="btn btn-white btn-outline text-sm">Sort By</button>
-            <button class="btn btn-white btn-outline text-sm">Filter By</button>
+            <select>
+                <option value="0">Sort By:</option>
+                <option value="1">Name: A-Z</option>
+                <option value="2">Name: Z-A</option>
+            </select>
         </div>
         <button class="btn btn-primary text-sm" ng-click="addProduct()"><i class='bx bx-plus'></i>Add Product</button>
     </div>
