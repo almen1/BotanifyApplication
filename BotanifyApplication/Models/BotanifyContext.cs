@@ -1,4 +1,5 @@
-﻿using MySql.Data.EntityFramework;
+﻿using Botanify.Models;
+using MySql.Data.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -29,6 +30,7 @@ namespace BotanifyApplication.Models
         public virtual DbSet<products_tblModel> products_tbl { get; set; }
         public virtual DbSet<sizes_tblModel> sizes_tbl { get; set; }
         public virtual DbSet<users_tblModel> users_tbl { get; set; }
+        public virtual DbSet<BotanifyModel> botanify { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
