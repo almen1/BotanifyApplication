@@ -1,0 +1,9 @@
+﻿.body-dash {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex !important;
+}
+
+@import '_sidebar.scss';
+@import 'dashproducts.scss';

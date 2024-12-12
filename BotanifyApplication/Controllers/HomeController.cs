@@ -43,26 +43,5 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
-        //TEST LANG
-        public void AddUser(BotanyModel registrationData)
-        {
-            using (var db = new BotanifyContext())
-            {
-                var empData = new users_tblModel()
-                {
-                    userId = 1,
-                    firstName = registrationData.fName.ToString(),
-                    lastName = registrationData.lName.ToString(),
-                    userEmail = registrationData.uEmail.ToString(),
-                    userPassword = registrationData.uPassword.ToString(),
-                    createAt = DateTime.Now,
-                    updateAt = DateTime.Now
-                };
-
-                db.users_tbl.Add(empData);
-                db.SaveChanges();
-            }
-        }
-
     }
 }
