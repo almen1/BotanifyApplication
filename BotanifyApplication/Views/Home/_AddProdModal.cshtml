@@ -11,34 +11,6 @@
         <form action="@Url.Action("DashProducts", "Home")" method="post" class="form-address text-sm">
             <div class="field-row-half">
                 <div class="field-input">
-                    <label>Select Cateogries</label>
-                    <div class="checkbox-input">
-                        <div class="checkbox-col">
-                            <div class="form-checkbox">
-                                <input type="checkbox" />
-                                <label>Pet-Friendly</label>
-                            </div>
-                            <div class="form-checkbox">
-                                <input type="checkbox" />
-                                <label>Air Purifiers</label>
-                            </div>
-                        </div>
-                        <div class="checkbox-col">
-                            <div class="form-checkbox">
-                                <input type="checkbox" />
-                                <label>For Beginners</label>
-                            </div>
-                            <div class="form-checkbox">
-                                <input type="checkbox" />
-                                <label>Low Light</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    
-            </div>
-            <div class="field-row-half">
-                <div class="field-input">
                     <label>Product Name</label>
                     <select>
                         <option value="0">Select Size</option>
@@ -76,10 +48,21 @@
                     <textarea></textarea>
                 </div>
             </div>
-            <div class="field-row-full">
+            <div class="field-row-half">
                 <div class="field-input">
                     <label>Image Path</label>
                     <input type="text" class="field-block" />
+                </div>
+                <div class="field-input">
+                    <label>Product Category</label>
+                    <select>
+                        <option value="0">Select Size</option>
+                        <option value="1">Pet-Friendly</option>
+                        <option value="2">Air Purifiers</option>
+                        <option value="3">For Beginners</option>
+                        <option value="4">Low Light</option>
+                    </select>
+
                 </div>
             </div>
             <div class="field-row-half">

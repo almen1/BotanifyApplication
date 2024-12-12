@@ -2313,21 +2313,6 @@ select {
   flex-direction: column;
   gap: 0.5rem;
 }
-.modal-overlay .modal .form-address .field-input .checkbox-input {
-  display: flex;
-  gap: 2rem;
-}
-.modal-overlay .modal .form-address .field-input .checkbox-col {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.modal-overlay .modal .form-address .field-input .form-checkbox {
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 .modal-overlay.active {
   visibility: visible;
 }
