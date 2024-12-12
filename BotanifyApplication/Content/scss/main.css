@@ -1965,6 +1965,7 @@ form a {
 .card-container .card-review {
   height: 100%;
   border: solid #d9d9d9 1px;
+  border-radius: 1rem;
   padding: 1.5rem;
   gap: 1rem;
   display: grid;
@@ -1978,6 +1979,7 @@ form a {
 .card-container .card-product {
   height: 24rem;
   border: solid #d9d9d9 1px;
+  border-radius: 1rem;
   padding: 1rem;
   gap: 1rem;
   display: grid;
@@ -2037,6 +2039,7 @@ form a {
   height: 100%;
   width: 112rem;
   border: solid #d9d9d9 1px;
+  border-radius: 1rem;
   padding: 1rem;
   gap: 1rem;
   display: grid;
@@ -2252,11 +2255,11 @@ form a {
 
 .modal-overlay {
   display: none;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  position: absolute;
-  top: 0;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
   z-index: 9999999;
 }
 .modal-overlay .modal-wrapper {
@@ -2333,6 +2336,39 @@ form a {
 .no-scroll {
   overflow-y: hidden !important;
   height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+table thead tr {
+  border-bottom: solid 1px #d9d9d9;
+}
+table thead tr th {
+  font-size: 0.8rem;
+  color: #a3a3a3;
+  font-weight: 400;
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+table tbody tr {
+  border: solid 1px #d9d9d9;
+}
+table tbody tr td {
+  font-size: 0.8rem;
+  color: #212121;
+  font-weight: 400;
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+table tbody tr td button {
+  height: 2rem;
+  width: 2rem;
+  font-size: 0.8rem;
+}
+table tbody tr td button:hover {
+  background-color: #f1f1f1 !important;
+}
+table tbody tr td:nth-child(7) {
+  width: 3rem;
 }
 
 .section-hero {
@@ -2481,6 +2517,7 @@ form a {
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  border-radius: 1rem;
   gap: 1.5rem;
   border: solid #d9d9d9 1px;
 }
@@ -2723,7 +2760,7 @@ form a {
 }
 
 .section-account {
-  height: 90vh;
+  min-height: 90vh;
   padding: 10rem 0;
   display: relative;
 }
@@ -2731,7 +2768,7 @@ form a {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  height: 100%;
+  min-height: 100%;
 }
 .section-account .account-main .account-details {
   width: 30%;
@@ -2854,7 +2891,7 @@ form a {
 }
 
 .sidebar {
-  width: 12vw;
+  width: 16vw;
   height: 100vh;
   display: grid;
   grid-template-rows: 0.5fr 2fr 0.5fr;
@@ -2865,14 +2902,49 @@ form a {
   justify-self: center;
   width: 100%;
 }
+.sidebar .sidebar-links {
+  width: 100%;
+}
 .sidebar .sidebar-signout {
   align-self: end;
 }
 .sidebar button {
+  width: 100%;
   display: flex !important;
   justify-content: flex-start !important;
   padding-left: 2rem;
+  padding-right: 0;
 }
 .sidebar button:hover {
   transform: scale(1) !important;
+}
+
+.dash-products {
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.dash-products .dash-prod-header {
+  display: flex;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border: solid 1px #d9d9d9;
+  justify-content: space-between;
+}
+.dash-products .dash-prod-header .filter-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+.dash-products button {
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center !important;
+  gap: 0.5rem;
+  border-color: #d9d9d9;
+  color: #a3a3a3;
+}
+.dash-products .btn-primary {
+  color: #fefefe;
 }

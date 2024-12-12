@@ -1,5 +1,5 @@
 ﻿.sidebar {
-    width: 12vw;
+    width: 16vw;
     height: 100vh;
     display: grid;
     grid-template-rows: 0.5fr 2fr 0.5fr;
@@ -12,6 +12,7 @@
     }
 
     .sidebar-links {
+        width: 100%;
     }
 
     .sidebar-signout {
@@ -19,9 +20,11 @@
     }
 
     button {
+        width: 100%;
         display: flex !important;
         justify-content: flex-start !important;
         padding-left: 2rem;
+        padding-right: 0;
 
         &:hover {
             transform: scale(1) !important;

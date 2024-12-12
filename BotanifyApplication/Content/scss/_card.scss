@@ -11,6 +11,7 @@
     .card-review {
         height: 100%;
         border: solid #d9d9d9 1px;
+        border-radius: 1rem;
         padding: 1.5rem;
         gap: 1rem;
         display: grid;
@@ -29,6 +30,7 @@
     .card-product {
         height: 24rem;
         border: solid #d9d9d9 1px;
+        border-radius: 1rem;
         padding: 1rem;
         gap: 1rem;
         display: grid;
@@ -100,6 +102,7 @@
         height: 100%;
         width: 112rem;
         border: solid #d9d9d9 1px;
+        border-radius: 1rem;
         padding: 1rem;
         gap: 1rem;
         display: grid;

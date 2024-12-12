@@ -2,8 +2,58 @@
     Layout = "~/Views/Shared/_BotanifyDashboard.cshtml";
 }
 
-<div class="row">
-    <div>
-        test test test
+<div class="col-xs-1">
+</div>
+<div class="col-xs-10 dash-products">
+    <h2 class="text-black">Manage Products</h2>
+    <div class="dash-prod-header">
+        <div class="filter-wrapper">
+            <input type="search" name="name" value="" class="text-sm" placeholder="Search"/>
+            <button class="btn btn-white btn-outline text-sm">Sort By</button>
+            <button class="btn btn-white btn-outline text-sm">Filter By</button>
+        </div>
+        <button class="btn btn-primary text-sm" ng-click="addProduct()"><i class='bx bx-plus'></i>Add Product</button>
     </div>
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>ProductID</th>
+                <th>Product Name</th>
+                <th>SKU</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2024172</td>
+                <td>Austral Gem Fern</td>
+                <td>AUSGRSM-1</td>
+                <td>Small</td>
+                <td>999</td>
+                <td>10</td>
+                <td>
+                    <button class="btn-icon bg-white text-black">
+                        <i class='bx bx-dots-vertical-rounded'></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>2024172</td>
+                <td>Austral Gem Fern</td>
+                <td>AUSGRSM-1</td>
+                <td>Small</td>
+                <td>999</td>
+                <td>10</td>
+                <td>
+                    <button class="btn-icon bg-white text-black">
+                        <i class='bx bx-dots-vertical-rounded'></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-xs-1">
 </div>
