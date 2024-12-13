@@ -17,8 +17,8 @@
                 <input type="email" name="name" value="" class="field-block" ng-model="userEmail" required placeholder="Email Address" />
                 <input type="text" name="name" value="" class="field-block" ng-model="firstName" required placeholder="First Name" />
                 <input type="text" name="name" value="" class="field-block" ng-model="lastName" required placeholder="Last Name" />
-                <input type="password" name="name" value="" class="field-block" required placeholder="Password" />
-                <button class="btn btn-accent btn-block btn-rounded " ng-click="submitFunc()">Sign Up</button>
+                <input type="password" name="name" value="" class="field-block" ng-model="userPassword" required placeholder="Password" />
+                <button class="btn btn-accent btn-block btn-rounded " ng-click="registerSubmitFunc()">Sign Up</button>
                 <p>Already have an account? <span><a href="@Url.Action("LoginPage", "Home")">Login Now</a></span> </p>
             </form>
         </div>

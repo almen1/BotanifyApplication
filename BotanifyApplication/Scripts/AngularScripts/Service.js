@@ -1,11 +1,19 @@
 ﻿app.service("BotanifyApplicationService", function ($http) {
 
-    //TEST LANG NG ADD
-    this.submitFunc = function (registrationData) {
+    this.registerSubmitFunc = function (registrationData) {
         var response = $http({
             method: "post",
-            url: "/Home/AddUser",
+            url: "/Home/RegisterUser",
             data: registrationData
+        })
+        return response;
+    }
+
+    this.addProductFunc = function (productData) {
+        var response = $http({
+            method: "post",
+            url: "/Home/AddProduct",
+            data: productData
         })
         return response;
     }

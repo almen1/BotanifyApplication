@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BotanifyApplication.Controllers
 {
-    public class BotanyModel
+    public class RegistrationDTO
     {
-        public int testId { get; set; }
         public string fName { get; set; } = string.Empty;
         public string lName { get; set; } = string.Empty;
         public string uEmail { get; set; } = string.Empty;

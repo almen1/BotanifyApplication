@@ -94,18 +94,37 @@
     ];
 
 
-    //TEST LANG
-    $scope.submitFunc = function () {
-        var empData = {
+    //REGISTRATION SUBMIT FUNCTION
+    $scope.registerSubmitFunc = function () {
+        var regData = {
             fName: $scope.firstName,
             lName: $scope.lastName,
             uEmail: $scope.userEmail,
             uPassword: $scope.userPassword,
         }
-        var getData = BotanifyApplicationService.submitFunc(empData);
+        var getData = BotanifyApplicationService.registerSubmitFunc(regData);
         getData.then(function (ReturnedData) {
 
         });
     };
 
+    //ADDING PRODUCT FUNCTION
+    $scope.addProductFunc = function () {
+        var prodData = {
+            skuLocal: $scope.sku,
+            categoryIdLocal: $scope.categoryId,
+            sizeIdLocal: $scope.sizeId,
+            prodName: $scope.productName,
+            prodDescription: $scope.productDescription,
+            prodSciName: $scope.productSciName,
+            prodImage: $scope.productImage,
+            prodPrice: $scope.productPrice,
+            prodStock: $scope.productStock,
+            prodTips: $scope.productTips,
+        }
+        var getData = BotanifyApplicationService.addProductFunc(prodData);
+        getData.then(function (ReturnedData) {
+
+        });
+    }
 });
