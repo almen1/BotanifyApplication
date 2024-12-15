@@ -201,7 +201,10 @@
     <Content Include="Content\assets\landing\quote.svg" />
     <Content Include="Content\assets\logo-white.svg" />
     <Content Include="Content\assets\plants\australfern_800x.png" />
-    <Content Include="Content\assets\plants\austral_fern.jpg" />
+    <Content Include="Content\assets\plants\fatsia_800x.png" />
+    <Content Include="Content\assets\plants\hearthoya_800x.png" />
+    <Content Include="Content\assets\plants\snake-bird_800x.png" />
+    <Content Include="Content\assets\plants\whitedalmationaglaonema_800x.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />

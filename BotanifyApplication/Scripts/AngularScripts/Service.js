@@ -17,4 +17,17 @@
         })
         return response;
     }
+
+    this.loadProductFunc = function () {
+        return $http.get("/Home/LoadProduct");
+    }
+
+    this.loadFilterFunc = function () {
+        return $http.get("/Home/LoadFilter");
+    }
+
+    this.loadItemFunc = function (productId) {
+        return $http.get("/Home/LoadItem/" + productId);
+    };
+
 });

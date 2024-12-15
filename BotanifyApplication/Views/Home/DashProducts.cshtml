@@ -15,40 +15,32 @@
                 <option value="2">Name: Z-A</option>
             </select>
         </div>
-        <button class="btn btn-primary text-sm" ng-click="addProduct()"><i class='bx bx-plus'></i>Add Product</button>
+        <button class="btn btn-primary text-sm" ng-click="addProduct()" ><i class='bx bx-plus'></i>Add Product</button>
     </div>
-    <table id="myTable" class="display">
+    <table id="myTable" class="display" ng-init="loadProductFunc()">
         <thead>
             <tr>
+                <th>Product Image</th>
                 <th>ProductID</th>
                 <th>Product Name</th>
                 <th>SKU</th>
                 <th>Size</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Stock</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>2024172</td>
-                <td>Austral Gem Fern</td>
-                <td>AUSGRSM-1</td>
-                <td>Small</td>
-                <td>999</td>
-                <td>10</td>
-                <td>
-                    <button class="btn-icon bg-white text-black">
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>2024172</td>
-                <td>Austral Gem Fern</td>
-                <td>AUSGRSM-1</td>
-                <td>Small</td>
-                <td>999</td>
-                <td>10</td>
+            <tr ng-repeat="product in productsData">
+                <td><img ng-src="{{product.productImage}}" alt="{{product.productName}}" /></td>  
+                <td>{{product.productId}}</td>
+                <td>{{product.productName}}</td>
+                <td>{{product.sku}}</td>
+                <td>{{product.sizeName}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.productPrice}}</td>
+                <td>{{product.productStock}}</td>
                 <td>
                     <button class="btn-icon bg-white text-black">
                         <i class='bx bx-dots-vertical-rounded'></i>

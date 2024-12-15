@@ -6,12 +6,6 @@
         $scope.isDropdownVisible = !$scope.isDropdownVisible;
     };
 
-    //ADD PRODUCT
-    $scope.isAddVisible = false;
-    $scope.addProduct = function () {
-        $scope.isAddVisible = !$scope.isAddVisible;
-    };
-
     //EDIT PRODUCT
 
 
@@ -21,7 +15,6 @@
         $scope.isSuccessVisible = !$scope.isSuccessVisible;
 
     };
-
 
 
 
@@ -58,41 +51,15 @@
     });
 
 
-
     //FILTER CATEGORIES
-    $scope.filters = [
-        {
-            title: 'Price',
-            name: 'price',
-            options: [
-                { label: 'Under ₱2000', selected: false },
-                { label: 'Under ₱1500', selected: false },
-                { label: 'Under ₱1000', selected: false },
-                { label: 'Under ₱500', selected: false }
-            ]
-        },
-        {
-            title: 'Size',
-            name: 'size',
-            options: [
-                { label: 'Small', selected: false },
-                { label: 'Medium', selected: false },
-                { label: 'Large', selected: false },
-                { label: 'Hanging', selected: false }
-            ]
-        },
-        {
-            title: 'Category',
-            name: 'category',
-            options: [
-                { label: 'Air Purifiers', selected: false },
-                { label: 'Pet-Friendly', selected: false },
-                { label: 'Low Light', selected: false },
-                { label: 'For Beginners', selected: false }
-            ]
-        }
-    ];
+    $scope.loadFilterFunc = function () {
+        var getData = BotanifyApplicationService.loadFilterFunc();
 
+        getData.then(function (ReturnedData) {
+            $scope.sizes = ReturnedData.data.sizes;
+            $scope.categories = ReturnedData.data.categories;
+        });
+    }
 
     //REGISTRATION SUBMIT FUNCTION
     $scope.registerSubmitFunc = function () {
@@ -108,8 +75,107 @@
         });
     };
 
-    //ADDING PRODUCT FUNCTION
-    $scope.addProductFunc = function () {
+    //GET INDIV ITEM BASED ON PRODUCT ID NOT WORKING YET
+    $scope.loadItemFunc = function (productId) {
+        var getData = BotanifyApplicationService.loadItemFunc(productId);
+        getData.then(function (ReturnedData) {
+            $scope.itemData = ReturnedData.data;
+
+            alert(JSON.stringify($scope.itemData));
+
+            if ($scope.itemData) {
+                window.location.href = "/Home/ProductPage/" + productId;
+            }
+        });
+        alert("this is the prodId" + productId);
+    };
+
+
+    
+
+
+    //GET ALL PRODUCTS
+    $scope.loadProductFunc = function () {
+        var getData = BotanifyApplicationService.loadProductFunc();
+        getData.then(function (ReturnedData) {
+            $scope.productsData = ReturnedData.data;
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+        });
+    }
+
+    //ADD PRODUCT BUTTON
+    $scope.isAddVisible = false;
+    $scope.addProduct = function () {
+        $scope.isAddVisible = !$scope.isAddVisible;
+        $scope.showForm = true;
+    };
+
+
+    // ADD PRODUCT
+    $scope.addProductFunc = function ($event) {
+        $event.preventDefault();
+
+        $scope.skuError = false;
+        $scope.productNameError = false;
+        $scope.productDescriptionError = false;
+        $scope.productTipsError = false;
+        $scope.productSciNameError = false;
+        $scope.productImageError = false;
+        $scope.productPriceError = false;
+        $scope.productStockError = false;
+        $scope.productTipsError = false;
+        $scope.categoryIdError = false;
+        $scope.sizeIdError = false;
+
+        var regexSku = /^.{1,50}$/;
+        var regexProdName = /^.{1,50}$/;
+        var regexProdSciName = /^.{1,50}$/;
+        var regexProdDescription = /^.{1,1000}$/;
+        var regexProdTips = /^.{1,1000}$/;
+        var regexProdImage = /^.+$/;
+        var regexProdPrice = /^[0-9]+$/;
+        var regexProdStock = /^[0-9]+$/;
+
+        var validOptions = ["1", "2", "3", "4"];
+
+        $scope.categoryIdError = validOptions.indexOf($scope.categoryId) === -1;
+        $scope.sizeIdError = validOptions.indexOf($scope.sizeId) === -1;
+
+        if ($scope.sku.trim() === "" || !regexSku.test($scope.sku)) {
+            $scope.skuError = true;
+        }
+        if ($scope.productName.trim() === "" || !regexProdName.test($scope.productName)) {
+            $scope.productNameError = true;
+        }
+        if ($scope.productDescription.trim() === "" || !regexProdDescription.test($scope.productDescription)) {
+            $scope.productDescriptionError = true;
+        }
+        if ($scope.productSciName.trim() === "" || !regexProdSciName.test($scope.productSciName)) {
+            $scope.productSciNameError = true;
+        }
+        if ($scope.productImage.trim() === "" || !regexProdImage.test($scope.productImage)) {
+            $scope.productImageError = true;
+        }
+        if ($scope.productPrice.trim() === "" || !regexProdPrice.test($scope.productPrice)) {
+            $scope.productPriceError = true;
+        }
+        if ($scope.productStock.trim() === "" || !regexProdStock.test($scope.productStock)) {
+            $scope.productStockError = true;
+        }
+        if ($scope.productTips.trim() === "" || !regexProdDescription.test($scope.productTips)) {
+            $scope.productTipsError = true;
+        }
+
+        if (
+            $scope.skuError || $scope.productNameError || $scope.productDescriptionError ||
+            $scope.productSciNameError || $scope.productImageError || $scope.productPriceError ||
+            $scope.productStockError || $scope.productTipsError || $scope.sizeIdError || $scope.categoryIdError
+        ) {
+            return;
+        }
+
         var prodData = {
             skuLocal: $scope.sku,
             categoryIdLocal: $scope.categoryId,
@@ -121,10 +187,25 @@
             prodPrice: $scope.productPrice,
             prodStock: $scope.productStock,
             prodTips: $scope.productTips,
-        }
+        };
+
         var getData = BotanifyApplicationService.addProductFunc(prodData);
         getData.then(function (ReturnedData) {
-
+            alert("Product added successfully!");
+            $scope.showForm = false;
+            $scope.productName = '';
+            $scope.sku = '';
+            $scope.productSciName = '';
+            $scope.productDescription = '';
+            $scope.productTips = '';
+            $scope.sizeId = 0;
+            $scope.categoryId = 0;
+            $scope.productImage = '';
+            $scope.productPrice = '';
+            $scope.productStock = '';
+        }, function (error) {
+            alert("Error adding product: " + error.message);
         });
-    }
+    };
+
 });

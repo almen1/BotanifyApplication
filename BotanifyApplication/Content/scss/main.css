@@ -2313,6 +2313,12 @@ select {
   flex-direction: column;
   gap: 0.5rem;
 }
+.modal-overlay .modal .form-address .field-input .error-message {
+  color: #ff2c2c !important;
+  font-size: 0.875rem;
+  margin-top: 0.25em;
+  display: block;
+}
 .modal-overlay.active {
   visibility: visible;
 }
@@ -2920,6 +2926,9 @@ table tbody tr td:nth-child(7) {
 .dash-products .dash-prod-header .filter-wrapper {
   display: flex;
   gap: 1rem;
+}
+.dash-products table tr img {
+  height: 5rem;
 }
 .dash-products button {
   padding: 0.5rem 1.25rem !important;

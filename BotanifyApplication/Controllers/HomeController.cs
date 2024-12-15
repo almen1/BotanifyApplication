@@ -3,6 +3,7 @@ using BotanifyApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 
@@ -96,6 +97,89 @@ namespace BotanifyApplication.Controllers
             }
         }
 
+        public JsonResult LoadProduct()
+        {
+            using (var db = new BotanifyContext())
+            {
+                var prodData = (from pData in db.products_tbl
+                                join sData in db.sizes_tbl on pData.sizeId equals sData.sizeId
+                                join cData in db.categories_tbl on pData.categoryId equals cData.categoryId
+                                select new
+                                {
+                                    pData.productId,
+                                    pData.categoryId,
+                                    pData.sizeId,
+                                    sizeName = sData.size,
+                                    category = cData.categoryName,
+                                    pData.sku,
+                                    pData.productName,
+                                    pData.productDescription,
+                                    pData.productSciName,
+                                    pData.productImage,
+                                    pData.productPrice,
+                                    pData.productStock,
+                                    pData.productTips,
+                                    pData.createAt,
+                                    pData.updateAt
+                                }).ToList();
+
+                return Json(prodData, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult LoadItem(int productId)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var itemData = (from pData in db.products_tbl
+                                join sData in db.sizes_tbl on pData.sizeId equals sData.sizeId
+                                join cData in db.categories_tbl on pData.categoryId equals cData.categoryId
+                                where pData.productId == productId
+                                select new
+                                {
+                                    pData.productId,
+                                    sizeName = sData.size,
+                                    category = cData.categoryName,
+                                    pData.productName,
+                                    pData.productSciName,
+                                    pData.productImage,
+                                    pData.productPrice,
+                                    pData.productDescription,
+                                    pData.productTips
+                                }).FirstOrDefault();
+
+                return Json(itemData, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult LoadFilter()
+        {
+            using (var db = new BotanifyContext())
+            {
+                var sizesData = (from sData in db.sizes_tbl
+                                 select new
+                                 {
+                                     sData.size
+                                 }).ToList();
+
+                var categoriesData = (from cData in db.categories_tbl
+                                      select new
+                                      {
+                                          cData.categoryName
+                                      }).ToList();
+
+                var result = new
+                {
+                    sizes = sizesData,
+                    categories = categoriesData
+                };
+
+                return Json(result, JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
+        
 
 
     }
