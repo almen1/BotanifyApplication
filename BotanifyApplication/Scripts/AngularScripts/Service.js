@@ -26,8 +26,4 @@
         return $http.get("/Home/LoadFilter");
     }
 
-    this.loadItemFunc = function (productId) {
-        return $http.get("/Home/LoadItem/" + productId);
-    };
-
 });

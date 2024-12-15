@@ -127,31 +127,6 @@ namespace BotanifyApplication.Controllers
             }
         }
 
-        public JsonResult LoadItem(int productId)
-        {
-            using (var db = new BotanifyContext())
-            {
-                var itemData = (from pData in db.products_tbl
-                                join sData in db.sizes_tbl on pData.sizeId equals sData.sizeId
-                                join cData in db.categories_tbl on pData.categoryId equals cData.categoryId
-                                where pData.productId == productId
-                                select new
-                                {
-                                    pData.productId,
-                                    sizeName = sData.size,
-                                    category = cData.categoryName,
-                                    pData.productName,
-                                    pData.productSciName,
-                                    pData.productImage,
-                                    pData.productPrice,
-                                    pData.productDescription,
-                                    pData.productTips
-                                }).FirstOrDefault();
-
-                return Json(itemData, JsonRequestBehavior.AllowGet);
-            }
-        }
-
         public JsonResult LoadFilter()
         {
             using (var db = new BotanifyContext())

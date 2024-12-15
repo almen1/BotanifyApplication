@@ -2,51 +2,29 @@
     Layout = "~/Views/Shared/_BotanifyLayout.cshtml";
 }
 
-
-<div class="row section-product text-black">
+<div class="row section-product text-black" ng-init="loadItemFunc({{productId}})">
     <div class="col-xs-1"></div>
     <div class="col-xs-10 product-main">
         <div class="product-img">
             <div class="img-container">
-                <img src="~/Content/assets/plants/australfern_800x.png" alt="Alternate Text" />
+                <img ng-src="{{itemData.productImage}}" alt="{{itemData.productName}}" />
             </div>
         </div>
         <div class="product-info">
             <div class="info-section info-name">
                 <h3 class="text-primary">{{itemData.productName}}</h3>
-                <p class="text-black text-sm">scientific name here</p>
-                <h3 class="font-semibold">₱1,234.00</h3>
+                <p class="text-black text-sm">{{itemData.productSciName}}</p>
+                <h3 class="font-semibold">₱{{itemData.productPrice}}</h3>
             </div>
             <div class="info-section info-desc">
-                <p>
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod sapien non magna tempor, eu hendrerit arcu facilisis. Donec porttitor nulla nec mi volutpat, ut dapibus tortor venenatis. Sed tristique nisl eget leo facilisis vulputate. Proin vehicula auctor sapien.
-                </p>
+                <p>{{itemData.productDescription}}</p>
             </div>
             <div class="info-section info-category">
                 <div class="category text-black">
                     <div class="category-icon">
-                    <i class='bx bx-wind'></i>
+                        <i class='bx bx-wind'></i>
                     </div>
-                    <p class="text-sm">Air Purifiers</p>
-                </div>
-                <div class="category">
-                    <div class="category-icon">
-                        <i class='bx bxs-dog'></i>
-                    </div>
-                    <p class="text-sm">Pet-Friendly</p>
-                </div>
-                <div class="category">
-                    <div class="category-icon">
-                        <i class='bx bxs-low-vision'></i>
-                    </div>
-                    <p class="text-sm">Low Light</p>
-                </div>
-                <div class="category text-black">
-                    <div class="category-icon">
-                        <i class='bx bx-question-mark'></i>
-                    </div>
-                    <p class="text-sm">For Beginners</p>
+                    <p class="text-sm">{{itemData.category}}</p>
                 </div>
             </div>
             <div class="info-section info-button">
@@ -58,16 +36,11 @@
                 </div>
             </div>
             <div class="info-section info-care">
-                <h3 class="text-xl">
-                    Care and Maintenance
-                </h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod sapien non magna tempor, eu hendrerit arcu facilisis. Donec porttitor nulla nec mi volutpat, ut dapibus tortor venenatis. Sed tristique nisl eget leo facilisis vulputate. Proin vehicula auctor sapien.
-                </p>
+                <h3 class="text-xl">Care and Maintenance</h3>
+                <p>{{itemData.productCare}}</p>
             </div>
         </div>
-
     </div>
     <div class="col-xs-1"></div>
-
 </div>
+

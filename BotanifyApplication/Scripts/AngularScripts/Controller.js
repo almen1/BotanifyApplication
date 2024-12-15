@@ -75,23 +75,29 @@
         });
     };
 
-    //GET INDIV ITEM BASED ON PRODUCT ID NOT WORKING YET
+    // GET INDIVIDUAL ITEM BASED ON PRODUCT ID
     $scope.loadItemFunc = function (productId) {
-        var getData = BotanifyApplicationService.loadItemFunc(productId);
+        alert("Product ID: " + productId);
+
+        var getData = BotanifyApplicationService.loadProductFunc();
         getData.then(function (ReturnedData) {
-            $scope.itemData = ReturnedData.data;
+            $scope.productsData = ReturnedData.data;
 
-            alert(JSON.stringify($scope.itemData));
+            var selectedItem = $scope.productsData.find(function (product) {
+                return product.productId === parseInt(productId);
+            });
 
-            if ($scope.itemData) {
+            if (selectedItem) {
+                $scope.itemData = selectedItem;
+                alert("Product found: " + JSON.stringify($scope.itemData));
                 window.location.href = "/Home/ProductPage/" + productId;
+            } else {
+                alert("Product not found!");
             }
         });
-        alert("this is the prodId" + productId);
     };
 
 
-    
 
 
     //GET ALL PRODUCTS
