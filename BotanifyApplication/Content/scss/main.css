@@ -2959,15 +2959,31 @@ table tbody tr td:nth-child(7) {
 .dash-products table tr img {
   height: 5rem;
 }
-.dash-products table tr .btn-edit {
+.dash-products table tr .btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.dash-products table tr .btn-group .btn-edit {
   border-radius: 0.8rem !important;
+  padding: 1rem 1rem !important;
   display: flex;
   align-items: center !important;
-  gap: 0.5rem;
+  background-color: #d9d9d9 !important;
+}
+.dash-products table tr .btn-group .btn-edit:hover {
+  background-color: #c4c4c4 !important;
+}
+.dash-products table tr .btn-group .btn-delete {
+  border-radius: 0.8rem !important;
+  padding: 1rem 1rem !important;
+  display: flex;
+  align-items: center !important;
   background-color: #ffb09c !important;
   color: #ee2400 !important;
 }
-.dash-products table tr .btn-edit:hover {
+.dash-products table tr .btn-group .btn-delete:hover {
   background-color: #F2A794 !important;
 }
 .dash-products button {

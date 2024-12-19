@@ -1,5 +1,7 @@
 ﻿app.controller("BotanifyApplicationController", function ($scope, BotanifyApplicationService) {
 
+
+
     //SHOW DROPDOWN FOR MOBILE
     $scope.isDropdownVisible = false;
     $scope.showDropdown = function () {
@@ -150,12 +152,10 @@
     }
 
 
-    //VIEW PRODUCT BUTTON ADMIN
+    //CLOSE MODAL BUTTON ADMIN
     $scope.isViewVisible = false;
-    $scope.modalData = {};
     $scope.closeModal = function () {
-        $scope.isViewVisible = false;
-        $scope.modalData = {};
+        $scope.isViewVisible = !$scope.isViewVisible;
     };
 
 
@@ -165,12 +165,11 @@
         getData.then(function (ReturnedData) {
             if (ReturnedData.data.success) {
                 $scope.modalData = ReturnedData.data;
-                
-                alert("Product found: " + JSON.stringify($scope.modalData));
-
                 $scope.isViewVisible = true;
-                $scope.apply();
 
+                if (!$scope.$$phase) {
+                    $scope.$apply();
+                }
             } else {
                 alert("Product not found: " + ReturnedData.data.message);
             }
@@ -182,7 +181,6 @@
     $scope.isAddVisible = false;
     $scope.addProduct = function () {
         $scope.isAddVisible = !$scope.isAddVisible;
-        $scope.showForm = true;
     };
 
     // ADD PRODUCT

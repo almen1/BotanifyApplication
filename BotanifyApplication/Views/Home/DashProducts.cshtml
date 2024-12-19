@@ -34,9 +34,11 @@
                 <td>{{product.category}}</td>
                 <td>{{product.productPrice | currency : '₱'}}</td>
                 <td>{{product.productStock}}</td>
-                <td class="btnCol">
-   
-                    <button class="btn btn-black btn-edit text-sm" ng-click="viewItemFunc(product.productId)"><i class='bx bx-edit'></i>Edit</button>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-black btn-edit text-black text-sm" ng-click="viewItemFunc(product.productId)"><i class='bx bx-edit'></i></button>
+                        <button class="btn btn-black btn-delete text-sm" ng-click=""><i class='bx bx-trash'></i></button>
+                    </div>
                 </td>
             </tr>
         </tbody>
