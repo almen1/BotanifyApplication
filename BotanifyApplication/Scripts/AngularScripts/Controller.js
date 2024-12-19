@@ -278,4 +278,17 @@
         });
     };
 
+    $scope.deleteItemFunc = function (productId) {
+        var getData = BotanifyApplicationService.deleteItemFunc(productId);
+        getData.then(function (ReturnedData) {
+            if (ReturnedData.data.success) {
+                alert("Product deleted successfully.");
+                // Optionally, refresh the list of products or update the view
+            } else {
+                alert("Error: " + ReturnedData.data.message);
+            }
+        });
+    };
+
+
 });
