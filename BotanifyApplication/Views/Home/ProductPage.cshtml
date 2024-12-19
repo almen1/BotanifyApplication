@@ -20,11 +20,33 @@
                 <p>{{itemData.productDescription}}</p>
             </div>
             <div class="info-section info-category">
-                <div class="category text-black">
+                <div class="category text-dgray"
+                     ng-class="{'text-black': itemData.categoryId == '1'}">
+                    <div class="category-icon">
+                        <i class='bx bxs-dog'></i>
+                    </div>
+                    <p class="text-sm">Pet-Friendly</p>
+                </div>
+                <div class="category text-dgray"
+                     ng-class="{'text-black': itemData.categoryId == '2'}">
                     <div class="category-icon">
                         <i class='bx bx-wind'></i>
                     </div>
-                    <p class="text-sm">{{itemData.category}}</p>
+                    <p class="text-sm">Air Purifiers</p>
+                </div>
+                <div class="category text-dgray"
+                     ng-class="{'text-black': itemData.categoryId == '3'}">
+                    <div class="category-icon">
+                        <i class='bx bx-question-mark'></i>
+                    </div>
+                    <p class="text-sm">For Beginners</p>
+                </div>
+                <div class="category text-dgray"
+                     ng-class="{'text-black': itemData.categoryId == '4'}">
+                    <div class="category-icon">
+                        <i class='bx bx-low-vision'></i>
+                    </div>
+                    <p class="text-sm">Low Light</p>
                 </div>
             </div>
             <div class="info-section info-button">
@@ -37,7 +59,7 @@
             </div>
             <div class="info-section info-care">
                 <h3 class="text-xl">Care and Maintenance</h3>
-                <p>{{itemData.productCare}}</p>
+                <p>{{itemData.productTips}}</p>
             </div>
         </div>
     </div>

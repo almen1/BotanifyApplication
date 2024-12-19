@@ -75,10 +75,8 @@
         });
     };
 
-    // GET INDIVIDUAL ITEM BASED ON PRODUCT ID
+    // GET INDIVIDUAL ITEM BASED ON PRODUCT ID (FOR USERS SHOP PAGE -> PRODUCT PAGE)
     $scope.loadItemFunc = function (productId) {
-        alert("Product ID: " + productId);
-
         var getData = BotanifyApplicationService.loadProductFunc();
         getData.then(function (ReturnedData) {
             $scope.productsData = ReturnedData.data;
@@ -89,8 +87,22 @@
 
             if (selectedItem) {
                 $scope.itemData = selectedItem;
-                alert("Product found: " + JSON.stringify($scope.itemData));
-                window.location.href = "/Home/ProductPage/" + productId;
+
+                var productQuery =
+                    "?id=" + encodeURIComponent($scope.itemData.productId) +
+                    "&cateid=" + encodeURIComponent($scope.itemData.categoryId) +
+                    "&sci=" + encodeURIComponent($scope.itemData.productSciName) +
+                    "&name=" + encodeURIComponent($scope.itemData.productName) +
+                    "&category=" + encodeURIComponent($scope.itemData.category) +
+                    "&price=" + encodeURIComponent($scope.itemData.productPrice) +
+                    "&image=" + encodeURIComponent($scope.itemData.productImage) +
+                    "&description=" + encodeURIComponent($scope.itemData.productDescription) +
+                    "&tips=" + encodeURIComponent($scope.itemData.productTips);
+
+      
+
+                    window.location.href = "/Home/ProductPage" + productQuery;
+
             } else {
                 alert("Product not found!");
             }
@@ -98,6 +110,19 @@
     };
 
 
+    //STORE DATA FOR PRODUCT PAGE (USERS)
+    $scope.itemData = {};
+    var params = new URLSearchParams(window.location.search);
+
+    $scope.itemData.productId = params.get('id');
+    $scope.itemData.categoryId = params.get('cateid');
+    $scope.itemData.productSciName = params.get('sci');
+    $scope.itemData.productName = params.get('name');
+    $scope.itemData.category = params.get('category');
+    $scope.itemData.productPrice = params.get('price');
+    $scope.itemData.productImage = params.get('image');
+    $scope.itemData.productDescription = params.get('description');
+    $scope.itemData.productTips = params.get('tips');
 
 
     //GET ALL PRODUCTS
@@ -106,10 +131,52 @@
         getData.then(function (ReturnedData) {
             $scope.productsData = ReturnedData.data;
             $(document).ready(function () {
-                $('#myTable').DataTable();
+                $('#myTable').DataTable({
+                    layout: {
+                        topStart: {
+                            pageLength: {
+                                menu: [5, 10, 15]
+                            }
+                        },
+                        bottomEnd: {
+                            paging: {
+                                buttons: 3
+                            }
+                        }
+                    }
+                });
             });
         });
     }
+
+
+    //VIEW PRODUCT BUTTON ADMIN
+    $scope.isViewVisible = false;
+    $scope.modalData = {};
+    $scope.closeModal = function () {
+        $scope.isViewVisible = false;
+        $scope.modalData = {};
+    };
+
+
+    //VIEW INDIV ITEM IN ADMIN
+    $scope.viewItemFunc = function (productId) {
+        var getData = BotanifyApplicationService.viewItemFunc(productId);
+        getData.then(function (ReturnedData) {
+            if (ReturnedData.data.success) {
+                $scope.modalData = ReturnedData.data;
+                
+                alert("Product found: " + JSON.stringify($scope.modalData));
+
+                $scope.isViewVisible = true;
+                $scope.apply();
+
+            } else {
+                alert("Product not found: " + ReturnedData.data.message);
+            }
+        });
+    };
+
 
     //ADD PRODUCT BUTTON
     $scope.isAddVisible = false;
@@ -117,7 +184,6 @@
         $scope.isAddVisible = !$scope.isAddVisible;
         $scope.showForm = true;
     };
-
 
     // ADD PRODUCT
     $scope.addProductFunc = function ($event) {

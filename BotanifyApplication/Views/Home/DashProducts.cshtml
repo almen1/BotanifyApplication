@@ -5,19 +5,12 @@
 <div class="col-xs-1">
 </div>
 <div class="col-xs-10 dash-products">
-    <h2 class="text-black">Manage Products</h2>
     <div class="dash-prod-header">
-        <div class="filter-wrapper">
-            <input type="search" name="name" value="" class="text-sm" placeholder="Search" />
-            <select>
-                <option value="0">Sort By:</option>
-                <option value="1">Name: A-Z</option>
-                <option value="2">Name: Z-A</option>
-            </select>
-        </div>
-        <button class="btn btn-primary text-sm" ng-click="addProduct()" ><i class='bx bx-plus'></i>Add Product</button>
+        <h2 class="text-black">Manage Products</h2>
+        <button class="btn btn-primary text-sm" ng-click="addProduct()"><i class='bx bx-plus'></i>Add Product</button>
     </div>
-    <table id="myTable" class="display" ng-init="loadProductFunc()">
+
+    <table id="myTable" class="display">
         <thead>
             <tr>
                 <th>Product Image</th>
@@ -33,18 +26,17 @@
         </thead>
         <tbody>
             <tr ng-repeat="product in productsData">
-                <td><img ng-src="{{product.productImage}}" alt="{{product.productName}}" /></td>  
+                <td><img ng-src="{{product.productImage}}" alt="{{product.productName}}" /></td>
                 <td>{{product.productId}}</td>
                 <td>{{product.productName}}</td>
                 <td>{{product.sku}}</td>
                 <td>{{product.sizeName}}</td>
                 <td>{{product.category}}</td>
-                <td>{{product.productPrice}}</td>
+                <td>{{product.productPrice | currency : '₱'}}</td>
                 <td>{{product.productStock}}</td>
-                <td>
-                    <button class="btn-icon bg-white text-black">
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </button>
+                <td class="btnCol">
+   
+                    <button class="btn btn-black btn-edit text-sm" ng-click="viewItemFunc(product.productId)"><i class='bx bx-edit'></i>Edit</button>
                 </td>
             </tr>
         </tbody>
@@ -52,3 +44,4 @@
 </div>
 <div class="col-xs-1">
 </div>
+

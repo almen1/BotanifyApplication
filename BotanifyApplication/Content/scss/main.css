@@ -1871,6 +1871,32 @@ form a {
   font-weight: 500;
 }
 
+input[type=email][disabled],
+input[type=number][disabled],
+input[type=search][disabled],
+input[type=text][disabled],
+input[type=tel][disabled],
+input[type=url][disabled],
+input[type=password][disabled],
+input[type=button][disabled],
+input[type=submit][disabled],
+textarea[disabled] {
+  background-color: #EFEFEF;
+  color: #616161;
+}
+input[type=email][disabled]:active,
+input[type=number][disabled]:active,
+input[type=search][disabled]:active,
+input[type=text][disabled]:active,
+input[type=tel][disabled]:active,
+input[type=url][disabled]:active,
+input[type=password][disabled]:active,
+input[type=button][disabled]:active,
+input[type=submit][disabled]:active,
+textarea[disabled]:active {
+  border-color: #d9d9d9;
+}
+
 .bg-black {
   background-color: #212121 !important;
 }
@@ -2750,6 +2776,10 @@ table tbody tr td:nth-child(7) {
   gap: 0.65rem;
 }
 
+.text-dgray {
+  color: #cfcfcf;
+}
+
 .section-account {
   min-height: 90vh;
   padding: 10rem 0;
@@ -2876,12 +2906,16 @@ table tbody tr td:nth-child(7) {
 }
 .body-dash {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  display: flex !important;
+  min-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.body-dash .dash {
+  padding-left: 16vw;
 }
 
 .sidebar {
+  position: fixed;
   width: 16vw;
   height: 100vh;
   display: grid;
@@ -2914,21 +2948,27 @@ table tbody tr td:nth-child(7) {
   padding: 4rem 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .dash-products .dash-prod-header {
   display: flex;
-  width: 100%;
-  padding: 0.75rem 1.25rem;
-  border: solid 1px #d9d9d9;
   justify-content: space-between;
-}
-.dash-products .dash-prod-header .filter-wrapper {
-  display: flex;
-  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: solid 1px #d9d9d9;
 }
 .dash-products table tr img {
   height: 5rem;
+}
+.dash-products table tr .btn-edit {
+  border-radius: 0.8rem !important;
+  display: flex;
+  align-items: center !important;
+  gap: 0.5rem;
+  background-color: #ffb09c !important;
+  color: #ee2400 !important;
+}
+.dash-products table tr .btn-edit:hover {
+  background-color: #F2A794 !important;
 }
 .dash-products button {
   padding: 0.5rem 1.25rem !important;
@@ -2936,9 +2976,4 @@ table tbody tr td:nth-child(7) {
   display: flex;
   align-items: center !important;
   gap: 0.5rem;
-  border-color: #d9d9d9;
-  color: #a3a3a3;
-}
-.dash-products .btn-primary {
-  color: #fefefe;
 }

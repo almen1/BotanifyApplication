@@ -1,8 +1,12 @@
 ﻿.body-dash {
     width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    display: flex !important;
+    min-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .dash {
+        padding-left: 16vw;
+    }
 }
 
 @import '_sidebar.scss';

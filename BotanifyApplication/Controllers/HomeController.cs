@@ -69,7 +69,7 @@ namespace BotanifyApplication.Controllers
                 db.SaveChanges();
             }
 
-            }
+        }
 
         public void AddProduct(ProductDTO productData)
         {
@@ -126,6 +126,45 @@ namespace BotanifyApplication.Controllers
                 return Json(prodData, JsonRequestBehavior.AllowGet);
             }
         }
+
+        public JsonResult LoadItem(int productId)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var itemData = (from pData in db.products_tbl
+                                join sData in db.sizes_tbl on pData.sizeId equals sData.sizeId
+                                join cData in db.categories_tbl on pData.categoryId equals cData.categoryId
+                                where pData.productId == productId
+                                select new
+                                {
+                                    pData.productId,
+                                    pData.categoryId,
+                                    pData.sizeId,
+                                    sizeName = sData.size,
+                                    category = cData.categoryName,
+                                    pData.sku,
+                                    pData.productName,
+                                    pData.productDescription,
+                                    pData.productSciName,
+                                    pData.productImage,
+                                    pData.productPrice,
+                                    pData.productStock,
+                                    pData.productTips,
+                                    pData.createAt,
+                                    pData.updateAt
+                                }).FirstOrDefault();
+
+                if (itemData != null)
+                {
+                    return Json(new { success = true, data = itemData }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Product not found." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
 
         public JsonResult LoadFilter()
         {

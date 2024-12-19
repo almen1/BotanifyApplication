@@ -28,6 +28,8 @@ textarea {
 
     &::placeholder {
     }
+
+
 }
 
 .field-block {
@@ -49,5 +51,25 @@ form {
     a {
         text-decoration: underline;
         font-weight:500;
+    }
+}
+
+
+input[type="email"][disabled],
+input[type="number"][disabled],
+input[type="search"][disabled],
+input[type="text"][disabled],
+input[type="tel"][disabled],
+input[type="url"][disabled],
+input[type="password"][disabled],
+input[type="button"][disabled],
+input[type="submit"][disabled],
+textarea[disabled] {
+    background-color: #EFEFEF;
+    color: #616161;
+
+
+    &:active {
+        border-color: #d9d9d9;
     }
 }

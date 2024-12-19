@@ -2,40 +2,44 @@
     padding: 4rem 0;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
+
     .dash-prod-header {
         display: flex;
-        width: 100%;
-        padding: 0.75rem 1.25rem;
-        border: solid 1px #d9d9d9;
         justify-content: space-between;
-        .filter-wrapper {
-            display: flex;
-            gap: 1rem;
-        }
+        padding: 1.5rem 0;
+        border-bottom: solid 1px #d9d9d9;
     }
 
     table {
         tr {
+
             img {
                 height: 5rem;
-            }   
-        }
+            }
 
+                .btn-edit {
+                    border-radius: 0.8rem !important;
+                    display: flex;
+                    align-items: center !important;
+                    gap: 0.5rem;
+                    background-color: #ffb09c !important;
+                    color: #ee2400 !important;
+
+                    &:hover {
+                        background-color: #F2A794 !important;
+                    }
+                }
+            
+        }
     }
 
 
     button {
         padding: 0.5rem 1.25rem !important;
         border-radius: 1rem;
-        display:flex;
+        display: flex;
         align-items: center !important;
         gap: 0.5rem;
-        border-color: #d9d9d9;
-        color: #a3a3a3;
-    }
-
-    .btn-primary {
-        color:#fefefe;
     }
 }

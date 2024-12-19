@@ -26,4 +26,7 @@
         return $http.get("/Home/LoadFilter");
     }
 
+    this.viewItemFunc = function (productId) {
+        return $http.get('/Home/LoadItem', { params: { productId: productId } });
+    };
 });
