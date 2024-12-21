@@ -1,7 +1,9 @@
 ﻿using Botanify.Models;
 using BotanifyApplication.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
@@ -193,7 +195,34 @@ namespace BotanifyApplication.Controllers
             }
         }
 
-        
+        public JsonResult DeleteProduct(int productId)
+        {
+            using (var db = new BotanifyContext())
+            {
+                // Check if the product exists first
+                var itemData = (from pData in db.products_tbl
+                                where pData.productId == productId
+                                select pData).FirstOrDefault();
+
+                if (itemData != null)
+                {
+                    // Now delete the product from the products_tbl using raw SQL
+                    var sql = "DELETE FROM products_tbl WHERE productId = @productId";
+
+                    // Using MySqlParameter for MySQL database
+                    db.Database.ExecuteSqlCommand(sql, new MySqlParameter("@productId", productId));
+
+                    // Optionally, save changes if necessary (though ExecuteSqlRaw does it for us)
+                    db.SaveChanges();
+
+                    return Json(new { success = true, message = "Product deleted successfully." }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Product not found." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
 
 
     }

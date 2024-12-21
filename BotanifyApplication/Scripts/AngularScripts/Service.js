@@ -29,4 +29,11 @@
     this.viewItemFunc = function (productId) {
         return $http.get('/Home/LoadItem', { params: { productId: productId } });
     };
+
+    this.deleteItemFunc = function (productId) {
+        // Ensure the POST request URL matches the route in the controller
+        return $http.post('/Home/DeleteProduct', { productId: productId });
+    };
+
+
 });
