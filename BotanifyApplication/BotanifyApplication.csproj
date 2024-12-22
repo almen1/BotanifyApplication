@@ -1111,6 +1111,7 @@
     <Content Include="Views\Home\_AddProdModal.cshtml" />
     <Content Include="Views\Home\_ViewProdModal.cshtml" />
     <Content Include="Views\Home\DashUsers.cshtml" />
+    <Content Include="Views\Home\_EditPersonalModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

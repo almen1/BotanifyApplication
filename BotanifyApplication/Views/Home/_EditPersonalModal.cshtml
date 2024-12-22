@@ -1,0 +1,35 @@
+﻿<div class="modal-overlay" ng-class="{'active': isPersonalVisible}">
+    <div class="modal text-black bg-white">
+        <div class="header-row">
+            @*<h3>{{modalData.data.productName}}</h3>*@
+            <button class="btn-icon" ng-click="closeModal()">
+                <i class='bx bx-x-circle'></i>
+            </button>
+        </div>
+
+        <form action="@Url.Action("AccountPage", "Home")" method="post" class="form-address text-sm" field>
+            <div class="field-row-half">
+
+                <div class="field-input">
+
+                    <label>Name</label>
+                        <input type="text" ng-model="" />
+                        <small class="error-message" ng-show="">Invalid SKU.</small>
+                    <small class="error-message" ng-show="">Please select a valid size.</small>
+                </div>
+
+                <div class="field-input">
+                    <label>Email</label>
+                    <input type="text" ng-model="" ng-disabled="" />
+                    <small class="error-message" ng-show="">Invalid SKU.</small>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary text-sm" ng-click="closeModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary text-sm" ng-click="()">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

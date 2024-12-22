@@ -499,5 +499,10 @@
         });
     };
 
+    $scope.editPersonalFunc = function () {
+        alert("Editing Personal Info")
+        $scope.isPersonalVisible = true;
+    }
+
 
 });
