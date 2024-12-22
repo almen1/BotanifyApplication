@@ -8,7 +8,7 @@
     <link href="~/Content/scss/main.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body ng-app="BotanifyApplication" ng-controller="BotanifyApplicationController" class="font-euclid bg-white body-dash" ng-class="{'no-scroll' : isAddVisible}" ng-init="loadProductFunc()">
+<body ng-app="BotanifyApplication" ng-controller="BotanifyApplicationController" class="font-euclid bg-white body-dash" ng-class="{'no-scroll' : isAddVisible}" ng-init="loadProductFunc() ; loadUserFunc()">
 
     @Html.Partial("_Sidebar")
 

@@ -1,10 +1,10 @@
 ﻿app.service("BotanifyApplicationService", function ($http) {
 
-    this.registerSubmitFunc = function (registrationData) {
+    this.registerSubmitFunc = function (regData) {
         var response = $http({
             method: "post",
             url: "/Home/RegisterUser",
-            data: registrationData
+            data: regData
         })
         return response;
     }
@@ -16,6 +16,18 @@
             data: productData
         })
         return response;
+    }
+    this.updateProductFunc = function (productData) {
+        var response = $http({
+            method: "post",
+            url: "/Home/UpdateProduct",
+            data: productData
+        });
+        return response;
+    };
+
+    this.loadUserFunc = function () {
+        return $http.get("/Home/LoadUser");
     }
 
     this.loadProductFunc = function () {

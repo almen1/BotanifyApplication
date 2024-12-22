@@ -1,7 +1,8 @@
-﻿<div class="modal-overlay" ng-class="{'active': isViewVisible}">
+﻿<div class="modal-overlay" ng-class="{'active': isViewVisible}" ng-init="loadFilterFunc()">
     <div class="modal text-black bg-white">
         <div class="header-row">
             <h3>{{modalData.data.productName}}</h3>
+            <button class="btn btn-primary" ng-click="editProductFunc()">Edit</button>
             <button class="btn-icon" ng-click="closeModal()">
                 <i class='bx bx-x-circle'></i>
             </button>
@@ -11,67 +12,82 @@
             <div class="field-row-half">
                 <div class="field-input">
                     <label>Product Size</label>
-                    <select disabled>
-                        <option value="1">Small</option>
-                        <option value="2">Medium</option>
-                        <option value="3">Large</option>
-                        <option value="4">Hanging</option>
+                    <select ng-model="modalData.data.sizeId" ng-disabled="disableField">
+                        <option ng-repeat="size in sizes"
+                                ng-value="size.sizeId"
+                                ng-selected="size.sizeId === modalData.data.sizeId">
+                            {{ size.size }}
+                        </option>
                     </select>
+                    <small class="error-message" ng-show="sizeIdError">Please select a valid size.</small>
                 </div>
                 <div class="field-input">
                     <label>SKU</label>
-                    <input type="text" ng-model="modalData.data.sku" disabled />
+                    <input type="text" ng-model="modalData.data.sku" ng-disabled="disableField" />
+                    <small class="error-message" ng-show="skuError">Invalid SKU.</small>
                 </div>
             </div>
 
             <div class="field-row-half">
                 <div class="field-input">
                     <label>Product Name</label>
-                    <input type="text" ng-model="modalData.data.productName" disabled/>
+                    <input type="text" ng-model="modalData.data.productName" ng-disabled="disableField" />
+                    <small class="error-message" ng-show="productNameError">Invalid Product Name.</small>
                 </div>
                 <div class="field-input">
                     <label>Scientific Name</label>
-                    <input type="text" ng-model="modalData.data.productSciName" disabled/>
+                    <input type="text" ng-model="modalData.data.productSciName" ng-disabled="disableField" />
+                    <small class="error-message" ng-show="productSciNameError">Invalid Scientific Name.</small>
                 </div>
             </div>
             <div class="field-row-half">
                 <div class="field-input">
                     <label>Product Description</label>
-                    <textarea ng-model="modalData.data.productDescription" disabled></textarea>
+                    <textarea ng-model="modalData.data.productDescription" ng-disabled="disableField"></textarea>
+                    <small class="error-message" ng-show="productDescriptionError">Invalid Description.</small>
                 </div>
                 <div class="field-input">
                     <label>Product Tips</label>
-                    <textarea ng-model="modalData.data.productTips" disabled></textarea>
+                    <textarea ng-model="modalData.data.productTips" ng-disabled="disableField"></textarea>
+                    <small class="error-message" ng-show="productTipsError">Invalid Tips.</small>
                 </div>
             </div>
 
             <div class="field-row-half">
                 <div class="field-input">
                     <label>Image Path</label>
-                    <input type="text" ng-model="modalData.data.productImage" disabled/>
+                    <input type="text" ng-model="modalData.data.productImage" ng-disabled="disableField" />
+                    <small class="error-message" ng-show="productImageError">Invalid Path.</small>
                 </div>
                 <div class="field-input">
                     <label>Product Category</label>
-                    <select ng-model="modalData.data.categoryId" disabled>
-                        <option value="1">Pet-Friendly</option>
-                        <option value="2">Air Purifiers</option>
-                        <option value="3">For Beginners</option>
-                        <option value="4">Low Light</option>
+                    <select ng-model="modalData.data.categoryId" ng-disabled="disableField">
+                        <option ng-repeat="category in categories"
+                                ng-value="category.categoryId"
+                                ng-selected="category.categoryId === modalData.data.categoryId">
+                            {{ category.categoryName }}
+                        </option>
                     </select>
+                    <small class="error-message" ng-show="categoryIdError">Please select a valid category.</small>
                 </div>
             </div>
 
             <div class="field-row-half">
                 <div class="field-input">
                     <label>Product Price</label>
-                    <input type="text" ng-model="modalData.data.productPrice" disabled/>
+                    <input type="text" ng-model="modalData.data.productPrice" ng-disabled="disableField" />
+                    <small class="error-message" ng-show="productPriceError">Invalid Product Price.</small>
                 </div>
                 <div class="field-input">
                     <label>Product Stock</label>
-                    <input type="text" ng-model="modalData.data.productStock" disabled/>
+                    <input type="text" ng-model="modalData.data.productStock" ng-disabled="disableField" />
+                    <small class="error-message" ng-show="productStockError">Invalid Stock.</small>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary text-sm">Save Changes</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary text-sm" ng-click="closeModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary text-sm" ng-click="saveEditProductFunc($event)">Save Changes</button>
+            </div>
         </form>
     </div>
 </div>

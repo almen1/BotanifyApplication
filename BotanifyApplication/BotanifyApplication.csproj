@@ -167,8 +167,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\address_tblMap.cs" />
-    <Compile Include="Models\address_tblModel.cs" />
     <Compile Include="Models\admins_tblMap.cs" />
     <Compile Include="Models\admins_tblModel.cs" />
     <Compile Include="Models\BotanifyContext.cs" />
@@ -202,8 +200,15 @@
     <Content Include="Content\assets\logo-white.svg" />
     <Content Include="Content\assets\plants\australfern_800x.png" />
     <Content Include="Content\assets\plants\fatsia_800x.png" />
+    <Content Include="Content\assets\plants\Gasteria2_800x.png" />
     <Content Include="Content\assets\plants\hearthoya_800x.png" />
+    <Content Include="Content\assets\plants\PhiloBrandi_800x.png" />
+    <Content Include="Content\assets\plants\ropehoya_800x.png" />
+    <Content Include="Content\assets\plants\schefflera_800x.png" />
+    <Content Include="Content\assets\plants\Silverpothos_800x.png" />
     <Content Include="Content\assets\plants\snake-bird_800x.png" />
+    <Content Include="Content\assets\plants\starfishsnake_800x.png" />
+    <Content Include="Content\assets\plants\WhiteBird_800x.png" />
     <Content Include="Content\assets\plants\whitedalmationaglaonema_800x.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -258,6 +263,8 @@
     <Content Include="Content\scss\dashboard\dashmain.scss" />
     <Content Include="Content\scss\dashboard\dashproducts.scss" />
     <Content Include="Content\scss\forms\_dropdown.scss" />
+    <Content Include="Content\scss\dashboard\dashusers.scss" />
+    <Content Include="Content\scss\pages\_register.scss" />
     <None Include="Content\scss\_normalize.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -1103,6 +1110,7 @@
     <Content Include="Views\Home\DashProducts.cshtml" />
     <Content Include="Views\Home\_AddProdModal.cshtml" />
     <Content Include="Views\Home\_ViewProdModal.cshtml" />
+    <Content Include="Views\Home\DashUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

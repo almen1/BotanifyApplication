@@ -35,6 +35,14 @@
         }
     }
 
+    .register-main {
+        width: 100% !important;
+
+        .section-form {
+            width: 100% !important;
+        }
+    }
+
     .cart-item {
         display:grid !important;
         grid-template-columns: 2fr 1fr;

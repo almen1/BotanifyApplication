@@ -70,6 +70,18 @@
                     display: block;
                 }
             }
+
+            .btn-group {
+                padding: 1.5rem 0 0 0;
+                width: 100%;
+                display: flex;
+                gap: 1rem;
+
+                button:nth-child(1) {
+                    background-color: #d9d9d9 !important;
+                    color: #212121;
+                }
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-﻿app.controller("BotanifyApplicationController", function ($scope, BotanifyApplicationService) {
+﻿app.controller("BotanifyApplicationController", function ($scope, $window, BotanifyApplicationService) {
 
 
 
@@ -8,32 +8,45 @@
         $scope.isDropdownVisible = !$scope.isDropdownVisible;
     };
 
-    //EDIT PRODUCT
-
-
-    //SUCCESS
-    $scope.isSuccessVisible = false;
-    $scope.showSuccess = function () {
-        $scope.isSuccessVisible = !$scope.isSuccessVisible;
-
+    //SORT PRODUCTS
+    $scope.sortOption = '0';
+    $scope.sortProducts = function () {
+        switch ($scope.sortOption) {
+            case '0':
+                $scope.productsData.sort(function (a, b) {
+                    return a.productId - b.productId;
+                });
+                break;
+            case '1':
+                $scope.productsData.sort(function (a, b) {
+                    return a.productName.localeCompare(b.productName);
+                });
+                break;
+            case '2':
+                $scope.productsData.sort(function (a, b) {
+                    return b.productName.localeCompare(a.productName);
+                });
+                break;
+            case '3':
+                $scope.productsData.sort(function (a, b) {
+                    return b.productPrice - a.productPrice;
+                });
+                break;
+            case '4':
+                $scope.productsData.sort(function (a, b) {
+                    return a.productPrice - b.productPrice;
+                });
+                break;
+            default:
+                break;
+        }
     };
-
-
-
-
-
-
-    //if user is not logged in take to login but if user is logged in take to account page
-    //code here
-
-
 
 
     //GENERAL NAVIGATION
     $scope.navigateTo = function (path) {
         window.location.href = path;
     };
-
 
     //QUANTITY BUTTON
     $scope.quantity = 1;
@@ -64,18 +77,92 @@
     }
 
     //REGISTRATION SUBMIT FUNCTION
-    $scope.registerSubmitFunc = function () {
+    $scope.registerSubmitFunc = function ($event) {
+        $event.preventDefault();
+
+        $scope.fnameError = false;
+        $scope.lnameError = false;
+        $scope.emailError = false;
+        $scope.passwordError = false;
+        $scope.addressError = false;
+        $scope.cityError = false;
+        $scope.regionError = false;
+        $scope.postalError = false;
+        $scope.phoneError = false;
+
+        var regexPatterns = {
+            firstName: /^.{1,50}$/,
+            lastName: /^.{1,50}$/,
+            userEmail: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            userPassword: /^.{6,50}$/,
+            userAddress: /^.{1,100}$/,
+            userCity: /^.{1,50}$/,
+            userRegion: /^.{1,50}$/,
+            userPostal: /^\d{4,10}$/,
+            userPhone: /^\d{10,15}$/
+        };
+
+        var formData = {
+            firstName: $scope.firstName,
+            lastName: $scope.lastName,
+            userEmail: $scope.userEmail,
+            userPassword: $scope.userPassword,
+            userAddress: $scope.userAddress,
+            userCity: $scope.userCity,
+            userRegion: $scope.userRegion,
+            userPostal: $scope.userPostal,
+            userPhone: $scope.userPhone
+        };
+
+        angular.forEach(formData, function (value, key) {
+            var regex = regexPatterns[key];
+            if (!value.trim() || !regex.test(value)) {
+                $scope[key + "Error"] = true;
+            }
+        });
+
+        if (
+            $scope.fnameError || $scope.lnameError || $scope.emailError ||
+            $scope.passwordError || $scope.addressError || $scope.cityError ||
+            $scope.regionError || $scope.postalError || $scope.phoneError
+        ) {
+            return;
+        }
+
         var regData = {
             fName: $scope.firstName,
             lName: $scope.lastName,
             uEmail: $scope.userEmail,
             uPassword: $scope.userPassword,
-        }
+            uAddress: $scope.userAddress,
+            uCity: $scope.userCity,
+            uRegion: $scope.userRegion,
+            uPostal: $scope.userPostal,
+            uPhone: $scope.userPhone
+        };
+
         var getData = BotanifyApplicationService.registerSubmitFunc(regData);
         getData.then(function (ReturnedData) {
-
+            alert("Registration successful!");
+            $scope.resetForm();
+        }, function (error) {
+            alert("Error during registration: " + error.message);
         });
     };
+
+    $scope.resetForm = function () {
+        $scope.firstName = '';
+        $scope.lastName = '';
+        $scope.userEmail = '';
+        $scope.userPassword = '';
+        $scope.userAddress = '';
+        $scope.userCity = '';
+        $scope.userRegion = '';
+        $scope.userPostal = '';
+        $scope.userPhone = '';
+    };
+
+  
 
     // GET INDIVIDUAL ITEM BASED ON PRODUCT ID (FOR USERS SHOP PAGE -> PRODUCT PAGE)
     $scope.loadItemFunc = function (productId) {
@@ -132,8 +219,35 @@
         var getData = BotanifyApplicationService.loadProductFunc();
         getData.then(function (ReturnedData) {
             $scope.productsData = ReturnedData.data;
+            $scope.sortProducts();
             $(document).ready(function () {
                 $('#myTable').DataTable({
+                    layout: {
+                        topStart: {
+                            pageLength: {
+                                menu: [5, 10, 15]
+                            }
+                        },
+                        bottomEnd: {
+                            paging: {
+                                buttons: 3
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    }
+
+    //LOAD ALL USERS
+    $scope.loadUserFunc = function () {
+        var getData = BotanifyApplicationService.loadUserFunc();
+
+        getData.then(function (ReturnedData) {
+            $scope.usersData = ReturnedData.data;
+
+            $(document).ready(function () {
+                $('#userTable').DataTable({
                     layout: {
                         topStart: {
                             pageLength: {
@@ -167,14 +281,18 @@
                 $scope.modalData = ReturnedData.data;
                 $scope.isViewVisible = true;
 
-                if (!$scope.$$phase) {
-                    $scope.$apply();
-                }
+
             } else {
                 alert("Product not found: " + ReturnedData.data.message);
             }
         });
     };
+
+    //EDIT PRODUCT
+    $scope.disableField = true;
+    $scope.editProductFunc = function () {
+        $scope.disableField = !$scope.disableField;
+    }
 
 
     //ADD PRODUCT BUTTON
@@ -195,48 +313,42 @@
         $scope.productImageError = false;
         $scope.productPriceError = false;
         $scope.productStockError = false;
-        $scope.productTipsError = false;
         $scope.categoryIdError = false;
         $scope.sizeIdError = false;
 
-        var regexSku = /^.{1,50}$/;
-        var regexProdName = /^.{1,50}$/;
-        var regexProdSciName = /^.{1,50}$/;
-        var regexProdDescription = /^.{1,1000}$/;
-        var regexProdTips = /^.{1,1000}$/;
-        var regexProdImage = /^.+$/;
-        var regexProdPrice = /^[0-9]+$/;
-        var regexProdStock = /^[0-9]+$/;
+        var regexPatterns = {
+            sku: /^.{1,50}$/,
+            productName: /^.{1,50}$/,
+            productSciName: /^.{1,50}$/,
+            productDescription: /^.{1,1000}$/,
+            productTips: /^.{1,1000}$/,
+            productImage: /^.+$/,
+            productPrice: /^[0-9]+$/,
+            productStock: /^[0-9]+$/
+        };
 
         var validOptions = ["1", "2", "3", "4"];
 
         $scope.categoryIdError = validOptions.indexOf($scope.categoryId) === -1;
         $scope.sizeIdError = validOptions.indexOf($scope.sizeId) === -1;
 
-        if ($scope.sku.trim() === "" || !regexSku.test($scope.sku)) {
-            $scope.skuError = true;
-        }
-        if ($scope.productName.trim() === "" || !regexProdName.test($scope.productName)) {
-            $scope.productNameError = true;
-        }
-        if ($scope.productDescription.trim() === "" || !regexProdDescription.test($scope.productDescription)) {
-            $scope.productDescriptionError = true;
-        }
-        if ($scope.productSciName.trim() === "" || !regexProdSciName.test($scope.productSciName)) {
-            $scope.productSciNameError = true;
-        }
-        if ($scope.productImage.trim() === "" || !regexProdImage.test($scope.productImage)) {
-            $scope.productImageError = true;
-        }
-        if ($scope.productPrice.trim() === "" || !regexProdPrice.test($scope.productPrice)) {
-            $scope.productPriceError = true;
-        }
-        if ($scope.productStock.trim() === "" || !regexProdStock.test($scope.productStock)) {
-            $scope.productStockError = true;
-        }
-        if ($scope.productTips.trim() === "" || !regexProdDescription.test($scope.productTips)) {
-            $scope.productTipsError = true;
-        }
+        var formData = {
+            sku: $scope.sku,
+            productName: $scope.productName,
+            productDescription: $scope.productDescription,
+            productSciName: $scope.productSciName,
+            productImage: $scope.productImage,
+            productPrice: $scope.productPrice,
+            productStock: $scope.productStock,
+            productTips: $scope.productTips
+        };
+
+        angular.forEach(formData, function (value, key) {
+            var regex = regexPatterns[key];
+            if (key !== "categoryId" && key !== "sizeId" && (!value.trim() || !regex.test(value))) {
+                $scope[key + "Error"] = true;
+            }
+        });
 
         if (
             $scope.skuError || $scope.productNameError || $scope.productDescriptionError ||
@@ -273,22 +385,105 @@
             $scope.productImage = '';
             $scope.productPrice = '';
             $scope.productStock = '';
+            $window.location.reload();
         }, function (error) {
             alert("Error adding product: " + error.message);
         });
     };
 
+    //DELETE PRODUCT
     $scope.deleteItemFunc = function (productId) {
         var getData = BotanifyApplicationService.deleteItemFunc(productId);
         getData.then(function (ReturnedData) {
             if (ReturnedData.data.success) {
                 alert("Product deleted successfully.");
-                // Optionally, refresh the list of products or update the view
+                $window.location.reload();
             } else {
                 alert("Error: " + ReturnedData.data.message);
             }
         });
     };
 
+    //EDIT PRODUCT
+    $scope.saveEditProductFunc = function ($event) {
+        $event.preventDefault();
+
+        $scope.skuError = false;
+        $scope.productNameError = false;
+        $scope.productDescriptionError = false;
+        $scope.productTipsError = false;
+        $scope.productSciNameError = false;
+        $scope.productImageError = false;
+        $scope.productPriceError = false;
+        $scope.productStockError = false;
+        $scope.categoryIdError = false;
+        $scope.sizeIdError = false;
+
+        var regexPatterns = {
+            sku: /^.{1,50}$/,
+            productName: /^.{1,50}$/,
+            productSciName: /^.{1,50}$/,
+            productDescription: /^.{1,1000}$/,
+            productTips: /^.{1,1000}$/,
+            productImage: /^.+$/,
+            productPrice: /^\d+(\.\d{1,2})?$/,
+            productStock: /^\d+$/
+        };
+
+        var validOptions = ["1", "2", "3", "4"];
+
+        //$scope.categoryIdError = validOptions.indexOf($scope.categoryId) === -1;
+        //$scope.sizeIdError = validOptions.indexOf($scope.sizeId) === -1;
+
+        var formData = {
+            sku: String($scope.modalData.data.sku || ''),
+            productName: String($scope.modalData.data.productName || ''),
+            productDescription: String($scope.modalData.data.productDescription || ''),
+            productSciName: String($scope.modalData.data.productSciName || ''),
+            productImage: String($scope.modalData.data.productImage || ''),
+            productPrice: String($scope.modalData.data.productPrice || ''),
+            productStock: String($scope.modalData.data.productStock || ''),
+            productTips: String($scope.modalData.data.productTips || '')
+        };
+
+        angular.forEach(formData, function (value, key) {
+            var regex = regexPatterns[key];
+            if (!value || !regex.test(value)) {
+                $scope[key + "Error"] = true;
+            }
+        });
+
+        if (
+            $scope.skuError || $scope.productNameError || $scope.productDescriptionError ||
+            $scope.productSciNameError || $scope.productImageError || $scope.productPriceError ||
+            $scope.productStockError || $scope.productTipsError || $scope.sizeIdError || $scope.categoryIdError
+        ) {
+            return;
+        }
+
+        var prodData = {
+            productId: $scope.modalData.data.productId,
+            skuLocal: $scope.modalData.data.sku,
+            categoryIdLocal: $scope.modalData.data.categoryId,
+            sizeIdLocal: $scope.modalData.data.sizeId,
+            prodName: $scope.modalData.data.productName,
+            prodDescription: $scope.modalData.data.productDescription,
+            prodSciName: $scope.modalData.data.productSciName,
+            prodImage: $scope.modalData.data.productImage,
+            prodPrice: $scope.modalData.data.productPrice,
+            prodStock: $scope.modalData.data.productStock,
+            prodTips: $scope.modalData.data.productTips
+        };
+
+        var getData = BotanifyApplicationService.updateProductFunc(prodData);
+        getData.then(function (ReturnedData) {
+            alert("Product updated successfully!");
+            $scope.disableField = true;
+            $scope.isViewVisible = false;
+            $window.location.reload();
+        }, function (error) {
+            alert("Error updating product: " + error.message);
+        });
+    };
 
 });

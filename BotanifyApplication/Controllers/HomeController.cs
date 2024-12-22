@@ -3,6 +3,9 @@ using BotanifyApplication.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure.MappingViews;
+using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -51,27 +54,35 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
-        public void RegisterUser(RegistrationDTO registrationData)
+        public ActionResult DashUsers()
+        {
+            return View();
+        }
+
+        public void RegisterUser(RegistrationDTO regData)
         {
             using (var db = new BotanifyContext())
             {
-                var regData = new users_tblModel()
+                var userData = new users_tblModel()
                 {
-                    userId = 1,
-                    firstName = registrationData.fName.ToString(),
-                    lastName = registrationData.lName.ToString(),
-                    //addressId = ADD SOON
-                    userEmail = registrationData.uEmail.ToString(),
-                    userPassword = registrationData.uPassword.ToString(),
+                    firstName = regData.fName,
+                    lastName = regData.lName,
+                    address = regData.uAddress,
+                    city = regData.uCity,
+                    region = regData.uRegion,
+                    zipcode = regData.uPostal,
+                    userEmail = regData.uEmail,
+                    userPassword = regData.uPassword,
+                    userPhone = regData.uPhone,
                     createAt = DateTime.Now,
                     updateAt = DateTime.Now
                 };
 
-                db.users_tbl.Add(regData);
+                db.users_tbl.Add(userData);
                 db.SaveChanges();
             }
-
         }
+
 
         public void AddProduct(ProductDTO productData)
         {
@@ -96,6 +107,55 @@ namespace BotanifyApplication.Controllers
 
                 db.products_tbl.Add(prodData);
                 db.SaveChanges();
+            }
+        }
+
+        public void UpdateProduct(ProductDTO productData)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var product = db.products_tbl.FirstOrDefault(x => x.productId == productData.productId);
+
+                if (product == null)
+                {
+                    throw new KeyNotFoundException($"Product with ID {productData.productId} not found");
+                }
+
+                product.sku = productData.skuLocal;
+                product.categoryId = productData.categoryIdLocal;
+                product.sizeId = productData.sizeIdLocal;
+                product.productName = productData.prodName;
+                product.productDescription = productData.prodDescription;
+                product.productSciName = productData.prodSciName;
+                product.productImage = productData.prodImage;
+                product.productPrice = productData.prodPrice;
+                product.productStock = productData.prodStock;
+                product.productTips = productData.prodTips;
+                product.updateAt = DateTime.Now;
+
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public JsonResult LoadUser()
+        {
+            using (var db = new BotanifyContext())
+            {
+                var userData = (from uData in db.users_tbl
+                                select new
+                                {
+                                    uData.userId,
+                                    uData.firstName,
+                                    uData.lastName,
+                                    uData.userEmail,
+                                    uData.userPhone,
+                                    uData.address, 
+                                    uData.city,      
+                                    uData.region,   
+                                    uData.zipcode  
+                                }).ToList(); 
+                return Json(userData, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -128,6 +188,8 @@ namespace BotanifyApplication.Controllers
                 return Json(prodData, JsonRequestBehavior.AllowGet);
             }
         }
+
+
 
         public JsonResult LoadItem(int productId)
         {
@@ -175,13 +237,15 @@ namespace BotanifyApplication.Controllers
                 var sizesData = (from sData in db.sizes_tbl
                                  select new
                                  {
-                                     sData.size
+                                     sData.size,
+                                     sData.sizeId
                                  }).ToList();
 
                 var categoriesData = (from cData in db.categories_tbl
                                       select new
                                       {
-                                          cData.categoryName
+                                          cData.categoryName,
+                                          cData.categoryId
                                       }).ToList();
 
                 var result = new
@@ -199,20 +263,16 @@ namespace BotanifyApplication.Controllers
         {
             using (var db = new BotanifyContext())
             {
-                // Check if the product exists first
                 var itemData = (from pData in db.products_tbl
                                 where pData.productId == productId
                                 select pData).FirstOrDefault();
 
                 if (itemData != null)
                 {
-                    // Now delete the product from the products_tbl using raw SQL
                     var sql = "DELETE FROM products_tbl WHERE productId = @productId";
 
-                    // Using MySqlParameter for MySQL database
                     db.Database.ExecuteSqlCommand(sql, new MySqlParameter("@productId", productId));
 
-                    // Optionally, save changes if necessary (though ExecuteSqlRaw does it for us)
                     db.SaveChanges();
 
                     return Json(new { success = true, message = "Product deleted successfully." }, JsonRequestBehavior.AllowGet);

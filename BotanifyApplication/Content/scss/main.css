@@ -2345,6 +2345,16 @@ select {
   margin-top: 0.25em;
   display: block;
 }
+.modal-overlay .modal .form-address .btn-group {
+  padding: 1.5rem 0 0 0;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.modal-overlay .modal .form-address .btn-group button:nth-child(1) {
+  background-color: #d9d9d9 !important;
+  color: #212121;
+}
 .modal-overlay.active {
   visibility: visible;
 }
@@ -2543,6 +2553,62 @@ table tbody tr td:nth-child(7) {
   flex-direction: column;
   gap: 0.5rem;
   text-align: center;
+}
+
+.section-register {
+  min-height: 90vh;
+  padding: 5rem 0;
+}
+.section-register .register-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
+}
+.section-register .register-main .section-form {
+  width: 40%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  gap: 1.5rem;
+  border: solid #d9d9d9 1px;
+}
+.section-register .register-main .section-form .form-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+.section-register .register-main form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-register .register-main form .field-half {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.section-register .register-main form .field-half input {
+  width: 100%;
+  flex: 110;
+}
+.section-register .register-main form .field-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.section-register .register-main form .field-input .error-message {
+  color: #ff2c2c !important;
+  font-size: 0.875rem;
+  margin-top: 0.25em;
+  display: block;
+}
+.section-register .register-main form button {
+  padding-left: 10rem !important;
+  padding-right: 10rem !important;
 }
 
 .section-cart {
@@ -2848,6 +2914,12 @@ table tbody tr td:nth-child(7) {
   .login-main .section-form {
     width: 100% !important;
   }
+  .register-main {
+    width: 100% !important;
+  }
+  .register-main .section-form {
+    width: 100% !important;
+  }
   .cart-item {
     display: grid !important;
     grid-template-columns: 2fr 1fr;
@@ -2987,6 +3059,56 @@ table tbody tr td:nth-child(7) {
   background-color: #F2A794 !important;
 }
 .dash-products button {
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center !important;
+  gap: 0.5rem;
+}
+
+.dash-users {
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dash-users .dash-user-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  border-bottom: solid 1px #d9d9d9;
+}
+.dash-users table tr img {
+  height: 5rem;
+}
+.dash-users table tr .btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+.dash-users table tr .btn-group .btn-edit {
+  border-radius: 0.8rem !important;
+  padding: 1rem 1rem !important;
+  display: flex;
+  align-items: center !important;
+  background-color: #d9d9d9 !important;
+}
+.dash-users table tr .btn-group .btn-edit:hover {
+  background-color: #c4c4c4 !important;
+}
+.dash-users table tr .btn-group .btn-delete {
+  border-radius: 0.8rem !important;
+  padding: 1rem 1rem !important;
+  display: flex;
+  align-items: center !important;
+  background-color: #ffb09c !important;
+  color: #ee2400 !important;
+}
+.dash-users table tr .btn-group .btn-delete:hover {
+  background-color: #F2A794 !important;
+}
+.dash-users button {
   padding: 0.5rem 1.25rem !important;
   border-radius: 1rem;
   display: flex;

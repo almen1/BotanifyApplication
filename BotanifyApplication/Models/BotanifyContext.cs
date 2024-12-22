@@ -18,7 +18,6 @@ namespace BotanifyApplication.Models
 
         public BotanifyContext() : base("Name=botanify_db") { }
 
-        public virtual DbSet<address_tblModel> address_tbl { get; set; }
         public virtual DbSet<admins_tblModel> admins_tbl { get; set; }
         public virtual DbSet<cartitems_tblModel> cartitems_tbl { get; set; }
         public virtual DbSet<carts_tblModel> carts_tbl { get; set; }
@@ -34,7 +33,6 @@ namespace BotanifyApplication.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.Add(new address_tblMap());
             modelBuilder.Configurations.Add(new admins_tblMap());
             modelBuilder.Configurations.Add(new cartitems_tblMap());
             modelBuilder.Configurations.Add(new carts_tblMap());

@@ -10,11 +10,14 @@ namespace Botanify.Models
         public int userId { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public int addressId { get; set; }
         public string userEmail { get; set; }
         public string userPassword { get; set; }
-        public int userPhone { get; set; }
+        public string userPhone { get; set; }
         public DateTime createAt { get; set; }
         public DateTime updateAt { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string region { get; set; }
+        public string zipcode { get; set; }
     }
 }

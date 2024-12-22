@@ -4,9 +4,9 @@
 
 
 
-<div class="row section-login">
+<div class="row section-register">
     <div class="col-xs-1"></div>
-    <div class="col-xs-10 login-main">
+    <div class="col-xs-10 register-main">
 
         <div class="section-form text-black">
             <div class="form-text">
@@ -14,15 +14,63 @@
                 <p>Step back into your green space. Log in!</p>
             </div>
             <form>
-                <input type="email" name="name" value="" class="field-block" ng-model="userEmail" required placeholder="Email Address" />
-                <input type="text" name="name" value="" class="field-block" ng-model="firstName" required placeholder="First Name" />
-                <input type="text" name="name" value="" class="field-block" ng-model="lastName" required placeholder="Last Name" />
-                <input type="password" name="name" value="" class="field-block" ng-model="userPassword" required placeholder="Password" />
-                <button class="btn btn-accent btn-block btn-rounded " ng-click="registerSubmitFunc()">Sign Up</button>
+                <div class="field-half">
+                    <div class="field-input">
+                        <label>First Name</label>
+                        <input type="text" ng-model="firstName" />
+                        <small class="error-message" ng-show="fnameError">Please select a valid size.</small>
+                    </div>
+                    <div class="field-input">
+                        <label>Last Name</label>
+                        <input type="text" ng-model="lastName" />
+                        <small class="error-message" ng-show="lnameError">Please enter a valid last name.</small>
+                    </div>
+                </div>
+                <div class="field-half">
+                    <div class="field-input">
+                        <label>Email Address</label>
+                        <input type="email" value="" class="field-block" ng-model="userEmail" />
+                        <small class="error-message" ng-show="emailError">Please enter a valid email address.</small>
+                    </div>
+                    <div class="field-input">
+                        <label>Password</label>
+                        <input type="password" value="" class="field-block" ng-model="userPassword" />
+                        <small class="error-message" ng-show="passwordError">Please enter a valid password.</small>
+                    </div>
+                </div>
+                <div class="field-input">
+                    <label>Address Line</label>
+                    <input type="text" ng-model="userAddress" class="field-block" />
+                    <small class="error-message" ng-show="addressError">Please enter a valid address.</small>
+                </div>
+                <div class="field-half">
+                    <div class="field-input">
+                        <label>City</label>
+                        <input type="text" ng-model="userCity" />
+                        <small class="error-message" ng-show="cityError">Please enter a valid city.</small>
+                    </div>
+                    <div class="field-input">
+                        <label>Region</label>
+                        <input type="text" ng-model="userRegion" />
+                        <small class="error-message" ng-show="regionError">Please enter a valid region.</small>
+                    </div>
+                </div>
+                <div class="field-half">
+                    <div class="field-input">
+                        <label>Postal Code</label>
+                        <input type="text" ng-model="userPostal" />
+                        <small class="error-message" ng-show="postalError">Please enter a valid postal code.</small>
+                    </div>
+                    <div class="field-input">
+                        <label>Phone Number</label>
+                        <input type="text" ng-model="userPhone" />
+                        <small class="error-message" ng-show="phoneError">Please enter a valid phone number.</small>
+                    </div>
+                </div>
+                <button class="btn btn-accent btn-rounded" ng-click="registerSubmitFunc($event)">Sign Up</button>
                 <p>Already have an account? <span><a href="@Url.Action("LoginPage", "Home")">Login Now</a></span> </p>
             </form>
         </div>
     </div>
     <div class="col-xs-1"></div>
-
 </div>
