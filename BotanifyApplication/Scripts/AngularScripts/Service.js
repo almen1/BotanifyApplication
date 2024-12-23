@@ -43,8 +43,11 @@
     };
 
     this.deleteItemFunc = function (productId) {
-        // Ensure the POST request URL matches the route in the controller
         return $http.post('/Home/DeleteProduct', { productId: productId });
+    };
+
+    this.deleteUserFunc = function (userId) {
+        return $http.post('/Home/DeleteUser', { userId: userId });
     };
 
 

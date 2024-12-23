@@ -5,6 +5,7 @@ namespace BotanifyApplication.Controllers
 {
     public class RegistrationDTO
     {
+        public int userId { get; set; }
         public string fName { get; set; } = string.Empty;
         public string lName { get; set; } = string.Empty;
         public string uEmail { get; set; } = string.Empty;

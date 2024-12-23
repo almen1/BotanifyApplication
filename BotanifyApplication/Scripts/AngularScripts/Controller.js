@@ -486,4 +486,18 @@
         });
     };
 
+    //DELETE USER
+    $scope.deleteUserFunc = function (userId) {
+        var getData = BotanifyApplicationService.deleteUserFunc(userId);
+        getData.then(function (ReturnedData) {
+            if (ReturnedData.data.success) {
+                alert("User deleted successfully.");
+                $window.location.reload();
+            } else {
+                alert("Error: " + ReturnedData.data.message);
+            }
+        });
+    };
+
+
 });

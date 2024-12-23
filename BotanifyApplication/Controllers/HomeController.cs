@@ -284,6 +284,31 @@ namespace BotanifyApplication.Controllers
             }
         }
 
+        public JsonResult DeleteUser(int userId)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var userData = (from uData in db.users_tbl
+                                where uData.userId == userId
+                                select uData).FirstOrDefault();
+
+                if (userData != null)
+                {
+                    var sql = "DELETE FROM users_tbl WHERE userId = @userId";
+
+                    db.Database.ExecuteSqlCommand(sql, new MySqlParameter("@userId", userId));
+
+                    db.SaveChanges();
+
+                    return Json(new { success = true, message = "User deleted successfully." }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = false, message = "User not found." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
 
     }
 }
