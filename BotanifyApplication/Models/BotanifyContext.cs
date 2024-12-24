@@ -19,9 +19,7 @@ namespace BotanifyApplication.Models
         public BotanifyContext() : base("Name=botanify_db") { }
 
         public virtual DbSet<admins_tblModel> admins_tbl { get; set; }
-        public virtual DbSet<cartitems_tblModel> cartitems_tbl { get; set; }
         public virtual DbSet<carts_tblModel> carts_tbl { get; set; }
-        public virtual DbSet<cartstatus_tblModel> cartstatus_tbl { get; set; }
         public virtual DbSet<categories_tblModel> categories_tbl { get; set; }
         public virtual DbSet<orders_tblModel> orders_tbl { get; set; }
         public virtual DbSet<orderstatus_tblModel> orderstatus_tbl { get; set; }
@@ -34,9 +32,7 @@ namespace BotanifyApplication.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new admins_tblMap());
-            modelBuilder.Configurations.Add(new cartitems_tblMap());
             modelBuilder.Configurations.Add(new carts_tblMap());
-            modelBuilder.Configurations.Add(new cartstatus_tblMap());
             modelBuilder.Configurations.Add(new categories_tblMap());
             modelBuilder.Configurations.Add(new orders_tblMap());
             modelBuilder.Configurations.Add(new orderstatus_tblMap());

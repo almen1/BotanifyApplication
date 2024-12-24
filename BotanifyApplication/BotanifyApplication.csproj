@@ -161,6 +161,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartDTO.cs" />
     <Compile Include="Controllers\ProductDTO.cs" />
     <Compile Include="Controllers\RegistrationDTO.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -170,10 +171,6 @@
     <Compile Include="Models\admins_tblMap.cs" />
     <Compile Include="Models\admins_tblModel.cs" />
     <Compile Include="Models\BotanifyContext.cs" />
-    <Compile Include="Models\cartitems_tblMap.cs" />
-    <Compile Include="Models\cartitems_tblModel.cs" />
-    <Compile Include="Models\cartstatus_tblMap.cs" />
-    <Compile Include="Models\cartstatus_tblModel.cs" />
     <Compile Include="Models\carts_tblMap.cs" />
     <Compile Include="Models\carts_tblModel.cs" />
     <Compile Include="Models\categories_tblMap.cs" />

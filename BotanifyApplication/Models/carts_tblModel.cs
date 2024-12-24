@@ -9,9 +9,9 @@ namespace Botanify.Models
     {
         public int cartId { get; set; }
         public int userId { get; set; }
-        public int cartItemId { get; set; }
-        public int cartStatusId { get; set; }
-        public int cartItemQuantity { get; set; }
+        public int productId { get; set; }
+        public int productQty { get; set; }
+        public int itemPrice { get; set; }
         public DateTime createAt { get; set; }
         public DateTime updateAt { get; set; }
     }

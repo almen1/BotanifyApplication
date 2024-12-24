@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_BotanifyLayout.cshtml";
 }
 
-<div class="row section-product text-black" ng-init="loadItemFunc({{productId}})">
+<div class="row section-product text-black">
     <div class="col-xs-1"></div>
     <div class="col-xs-10 product-main">
         <div class="product-img">
@@ -50,11 +50,11 @@
                 </div>
             </div>
             <div class="info-section info-button">
-                <button class="btn btn-accent btn-rounded cart-btn">Add to cart</button>
+                <button class="btn btn-accent btn-rounded cart-btn" ng-click="addToCart(itemData.productId , userDetails.userId, quantity)">Add to cart</button>
                 <div class="quantity">
-                    <button class="minus" ng-click="decreaseQuantity()" aria-label="Decrease">&minus;</button>
+                    <button class="minus" ng-click="changeQuantity('decrease')" aria-label="Decrease">&minus;</button>
                     <input type="number" class="input-box" ng-model="quantity" min="1" max="10" />
-                    <button class="plus" ng-click="increaseQuantity()" aria-label="Increase">&plus;</button>
+                    <button class="plus" ng-click="changeQuantity('increase')" aria-label="Increase">&plus;</button>
                 </div>
             </div>
             <div class="info-section info-care">

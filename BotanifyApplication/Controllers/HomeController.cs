@@ -92,6 +92,78 @@ namespace BotanifyApplication.Controllers
             }
         }
 
+        public JsonResult AddToCart(CartDTO cartData)
+        {
+            try
+            {
+                using (var db = new BotanifyContext())
+                {
+                    var existingCartItem = db.carts_tbl
+                        .FirstOrDefault(c => c.userId == cartData.userIdLocal
+                                        && c.productId == cartData.productIdLocal);
+
+                    if (existingCartItem != null)
+                    {
+                        existingCartItem.productQty += cartData.prodQtyLocal;
+                        existingCartItem.updateAt = DateTime.Now;
+                    }
+                    else
+                    {
+                        var cartItem = new carts_tblModel()
+                        {
+                            userId = cartData.userIdLocal,
+                            productId = cartData.productIdLocal,
+                            productQty = cartData.prodQtyLocal,
+                            createAt = DateTime.Now,
+                            updateAt = DateTime.Now
+                        };
+                        db.carts_tbl.Add(cartItem);
+                    }
+
+                    db.SaveChanges();
+                    return Json(new { success = true, message = "Product added to cart successfully." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Error adding product to cart: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        //public JsonResult GetCartItems(int userId)
+        //{
+        //    using (var db = new BotanifyContext())
+        //    {
+        //        var cartItems = (from c in db.carts_tbl
+        //                         join p in db.products_tbl on c.productId equals p.productId
+        //                         join s in db.sizes_tbl on p.sizeId equals s.sizeId
+        //                         join cat in db.categories_tbl on p.categoryId equals cat.categoryId
+        //                         where c.userId == userId && c.cartStatusId == 0
+        //                         select new
+        //                         {
+        //                             c.cartId,
+        //                             p.productId,
+        //                             p.productName,
+        //                             p.productDescription,
+        //                             p.productImage,
+        //                             p.productPrice,
+        //                             p.productStock,
+        //                             c.productQty,
+        //                             sizeName = s.size,
+        //                             category = cat.categoryName
+        //                         }).ToList();
+
+        //        if (cartItems.Any())
+        //        {
+        //            return Json(new { success = true, cartItems = cartItems });
+        //        }
+        //        else
+        //        {
+        //            return Json(new { success = false, message = "No items in cart." });
+        //        }
+        //    }
+        //}
 
         public void AddProduct(ProductDTO productData)
         {

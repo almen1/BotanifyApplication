@@ -50,23 +50,6 @@
         window.location.href = path;
     };
 
-    //QUANTITY BUTTON
-    $scope.quantity = 1;
-
-    $scope.decreaseQuantity = function () {
-        if ($scope.quantity > 1) {
-            $scope.quantity--;
-        }
-    };
-    $scope.increaseQuantity = function () {
-        if ($scope.quantity < 10) {
-            $scope.quantity++;
-        }
-    };
-    $scope.$watch('quantity', function (newValue) {
-        console.log("Quantity changed:", newValue);
-    });
-
 
     //FILTER CATEGORIES
     $scope.loadFilterFunc = function () {
@@ -75,8 +58,51 @@
         getData.then(function (ReturnedData) {
             $scope.sizes = ReturnedData.data.sizes;
             $scope.categories = ReturnedData.data.categories;
+
+            $scope.sizes.forEach(function (size) {
+                size.selected = size.selected || false;
+            });
+
+            $scope.categories.forEach(function (category) {
+                category.selected = category.selected || false;
+            });
+
+            $scope.applyFilter();
         });
     }
+    //APPLY FILTER
+    $scope.applyFilter = function () {
+        var filteredProducts = $scope.productsData;
+
+        if ($scope.sizes) {
+            var selectedSizes = $scope.sizes.filter(function (size) {
+                return size.selected;
+            }).map(function (size) {
+                return size.sizeId; 
+            });
+
+            if (selectedSizes.length > 0) {
+                filteredProducts = filteredProducts.filter(function (product) {
+                    return selectedSizes.includes(product.sizeId);
+                });
+            }
+        }
+
+        if ($scope.categories) {
+            var selectedCategories = $scope.categories.filter(function (category) {
+                return category.selected;
+            }).map(function (category) {
+                return category.categoryId;  
+            });
+
+            if (selectedCategories.length > 0) {
+                filteredProducts = filteredProducts.filter(function (product) {
+                    return selectedCategories.includes(product.categoryId);
+                });
+            }
+        }
+        $scope.filteredProducts = filteredProducts;
+    };
 
     //REGISTRATION SUBMIT FUNCTION
     $scope.registerSubmitFunc = function ($event) {
@@ -225,6 +251,8 @@
         getData.then(function (ReturnedData) {
             $scope.productsData = ReturnedData.data;
             $scope.sortProducts();
+            $scope.applyFilter();
+
             $(document).ready(function () {
                 $('#myTable').DataTable({
                     layout: {
@@ -242,7 +270,7 @@
                 });
             });
         });
-    }
+    };
 
     //LOAD ALL USERS
     $scope.loadUserFunc = function () {
@@ -566,5 +594,60 @@
         });
     };
 
+
+    //QUANTITY BUTTON
+    $scope.quantity = 1;
+
+    $scope.changeQuantity = function (direction) {
+        if (direction === 'increase' && $scope.quantity < 10) {
+            $scope.quantity++;
+        } else if (direction === 'decrease' && $scope.quantity > 1) {
+            $scope.quantity--;
+        }
+    };
+
+    $scope.$watch('quantity', function (newValue) {
+        console.log("Quantity changed:", newValue);
+    });
+
+    //ADD TO CART
+    $scope.addToCart = function (productId) {
+        if (!$scope.isLoggedIn) {
+            window.location.href = "/Home/LoginPage";
+            return;
+        }
+
+        var userId = $scope.userDetails.userId;
+        var quantity = $scope.quantity || 1; 
+
+        var cartData = {
+            productIdLocal: productId,
+            userIdLocal: userId,
+            prodQtyLocal: quantity
+        };
+
+        BotanifyApplicationService.addProdToCart(cartData)
+            .then(function (response) {
+                if (response.data.success) {
+                    alert('Product added to cart successfully.');
+                } else {
+                    alert('Error: ' + response.data.message);
+                }
+            })
+    };
+
+    //DISPLAY TO CART PAGE
+    $scope.getCartItems = function (userId) {
+        BotanifyApplicationService.getCartItems(userId)
+            .then(function (response) {
+                if (response.data.success) {
+                    $scope.cartItems = response.data.cartItems;
+                } else {
+                    alert('Error: ' + response.data.message);
+                }
+            });
+    };
+
+    $scope.getCartItems($scope.userId);
 
 });

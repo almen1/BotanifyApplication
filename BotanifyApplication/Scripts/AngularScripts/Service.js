@@ -17,6 +17,24 @@
         return response;
     };
 
+    this.addProdToCart = function (cartData) {
+        var response = $http({
+            method: "post",
+            url: "/Home/AddToCart",
+            data: cartData
+        });
+        return response;
+    };
+
+    this.getCartItems = function (userId) {
+        var response = $http({
+            method: "get",
+            url: "/Home/GetCartItems",
+            params: { userId: userId }
+        });
+        return response;
+    };
+
     this.addProductFunc = function (productData) {
         var response = $http({
             method: "post",

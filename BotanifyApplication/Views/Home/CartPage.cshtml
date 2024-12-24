@@ -3,7 +3,7 @@
 }
 
 
-<div class="row section-cart text-black">
+<div class="row section-cart text-black" ng-init="getCartItems(userId)">
     <div class="col-xs-1"></div>
     <div class="col-xs-10 cart-main">
         <div class="header">
@@ -11,24 +11,23 @@
             <a href="@Url.Action("ShopPage", "Home")">Continue Shopping</a>
         </div>
         <div class="cart-table">
-
-            <div class="cart-item">
+            <div class="cart-item" ng-repeat="item in cartItems">
                 <div class="item-details">
-                    <img src="/Content/assets/plants/australfern_800x.png" alt="Austral Gem Fern">
-                    <p class="font-semibold">Austral Gem Fern</p>
+                    <img ng-src="{{ item.productImage }}" alt="{{ item.productName }}">
+                    <p class="font-semibold">{{ item.productName }}</p>
                 </div>
                 <div class="item-buttons">
                     <div class="quantity">
-                        <button class="minus" ng-click="decreaseQuantity()" aria-label="Decrease">&minus;</button>
-                        <input type="number" class="input-box" ng-model="quantity" min="1" max="10" />
-                        <button class="plus" ng-click="increaseQuantity()" aria-label="Increase">&plus;</button>
+                        <button class="minus" ng-click="decreaseQuantity(item)" aria-label="Decrease">&minus;</button>
+                        <input type="number" class="input-box" ng-model="item.productQty" min="1" max="10" />
+                        <button class="plus" ng-click="increaseQuantity(item)" aria-label="Increase">&plus;</button>
                     </div>
-                    <button class="btn-icon">
+                    <button class="btn-icon" ng-click="removeItem(item)">
                         <i class='bx bx-trash'></i>
                     </button>
                 </div>
                 <div class="item-price">
-                    <p class="text-xl font-medium">₱500</p>
+                    <p class="text-xl font-medium">₱{{ item.productPrice * item.productQty }}</p>
                 </div>
             </div>
 
@@ -36,19 +35,18 @@
                 <div class="checkout-wrapper">
                     <div class="checkout-details text-xl font-semibold">
                         <p>Subtotal</p>
-                        <p>test</p>
+                        <p>{{ calculateSubtotal() }}</p>
                     </div>
-                    <button class="btn btn-accent btn-rounded btn-block"  ng-click="showSuccess()">Checkout</button>
+                    <button class="btn btn-accent btn-rounded btn-block" ng-click="showSuccess()">Checkout</button>
                     <div class="account-address">
                         <h3 class="text-xl">Shipping Information</h3>
                         <p>{{userDetails.address}}</p>
                         <p>{{userDetails.city}}</p>
                         <p>{{userDetails.region}}</p>
-                        <p>{{userDetails.zipcode}}</p>                 
+                        <p>{{userDetails.zipcode}}</p>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="col-xs-1"></div>
