@@ -1,7 +1,7 @@
 ﻿.section-account {
     min-height: 90vh;
     padding: 10rem 0;
-    display:relative;
+    display: relative;
 
     .account-main {
         display: flex;
@@ -34,6 +34,19 @@
             gap: 1rem;
             padding-bottom: 1rem;
 
+            .account-header {
+                display: flex;
+                align-items: center;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    padding: 0.3rem 1.5rem !important;
+                }
+            }
+
             p {
                 color: #a3a3a3 !important;
             }
@@ -41,6 +54,10 @@
             button {
                 margin-left: auto;
             }
+        }
+
+        button {
+            background-color: #ff645c;
         }
     }
 }

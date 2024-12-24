@@ -9,13 +9,13 @@
         <div class="section-links">
             <a href="@Url.Action("LandingPage", "Home")">Home</a>
             <a href="@Url.Action("ShopPage", "Home")">Shop</a>
-            <a href="@Url.Action("LandingPage", "Home")">Contact Us</a>
+            <a href="#Footer">Contact Us</a>
         </div>
         <div class="section-btns text-black">
-            <button class="btn-icon" ng-click="navigateTo('/Home/CartPage')">
+            <button class="btn-icon" ng-click="navigateTo(isLoggedIn ? '/Home/CartPage' : '/Home/LoginPage')">
                 <i class='bx bx-basket'></i>
             </button>
-            <button class="btn-icon" ng-click="navigateTo('/Home/LoginPage')">
+            <button class="btn-icon" ng-click="navigateTo(isLoggedIn ? '/Home/AccountPage' : '/Home/LoginPage')">
                 <i class='bx bx-user'></i>
             </button>
             <button class="btn-icon nav-burger" ng-click="showDropdown()">

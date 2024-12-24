@@ -83,6 +83,15 @@ namespace BotanifyApplication.Controllers
             }
         }
 
+        public JsonResult CheckEmail(string userEmail)
+        {
+            using (var db = new BotanifyContext())
+            {
+                bool emailExists = db.users_tbl.Any(u => u.userEmail == userEmail);
+                return Json(emailExists, JsonRequestBehavior.AllowGet);
+            }
+        }
+
 
         public void AddProduct(ProductDTO productData)
         {
@@ -156,6 +165,88 @@ namespace BotanifyApplication.Controllers
                                     uData.zipcode  
                                 }).ToList(); 
                 return Json(userData, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult LoadUserInfo(int userId)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var uData = (from user in db.users_tbl
+                             where user.userId == userId
+                             select new
+                             {
+                                 user.userId,
+                                 user.firstName,
+                                 user.lastName,
+                                 user.userEmail,
+                                 user.userPhone,
+                                 user.address,
+                                 user.city,
+                                 user.region,
+                                 user.zipcode
+                             }).FirstOrDefault();
+
+                if (uData != null)
+                {
+                    return Json(new { success = true, data = uData }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = false, message = "User not found." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+        public JsonResult LoginUser(string email, string password)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var user = db.users_tbl
+                    .FirstOrDefault(u => u.userEmail == email && u.userPassword == password);
+
+                if (user != null)
+                {
+                    Session["UserId"] = user.userId;
+                    Session["UserEmail"] = user.userEmail;
+                    Session["FirstName"] = user.firstName;
+                    Session["LastName"] = user.lastName;
+
+                    return Json(new
+                    {
+                        success = true,
+                        message = "Login successful",
+                        userId = user.userId
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Invalid email or password" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+        public ActionResult LogoutUser()
+        {
+            Session["UserId"] = null;
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CheckLoginStatus()
+        {
+            if (Session["UserId"] != null)
+            {
+                return Json(new
+                {
+                    loggedIn = true,
+                    userEmail = Session["UserEmail"].ToString(),
+                    firstName = Session["FirstName"].ToString(),
+                    lastName = Session["LastName"].ToString()
+                }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { loggedIn = false }, JsonRequestBehavior.AllowGet);
             }
         }
 

@@ -41,18 +41,10 @@
                     <button class="btn btn-accent btn-rounded btn-block"  ng-click="showSuccess()">Checkout</button>
                     <div class="account-address">
                         <h3 class="text-xl">Shipping Information</h3>
-                        <p>Address line here</p>
-                        <p>City here</p>
-                        <p>province here</p>
-                        <p>country here</p>
-                        <p>postal code here</p>
-
-                        <button class="btn btn-white btn-outline btn-rounded text-black" ng-click="showModal()">
-                            <span>
-                                <i class='bx bx-edit-alt'></i>
-                            </span>
-                            Edit
-                        </button>
+                        <p>{{userDetails.address}}</p>
+                        <p>{{userDetails.city}}</p>
+                        <p>{{userDetails.region}}</p>
+                        <p>{{userDetails.zipcode}}</p>                 
                     </div>
                 </div>
             </div>

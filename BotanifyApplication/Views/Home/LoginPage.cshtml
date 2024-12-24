@@ -13,9 +13,9 @@
                 <p>Step back into your green space. Log in!</p>
             </div>
             <form>
-                <input type="email" name="name" value="" class="field-block" required placeholder="Email Address" />
-                <input type="password" name="name" value="" class="field-block" required placeholder="Password" />
-                <button class="btn btn-accent btn-block btn-rounded">Login</button>
+                <input type="email" name="name" class="field-block" placeholder="Email Address" ng-model="uEmail"/>
+                <input type="password" name="name" class="field-block" placeholder="Password" ng-model="uPass"/>
+                <button class="btn btn-accent btn-block btn-rounded" ng-click="loginFunc()">Login</button>
                 <p>Don't have an account? <span><a href="@Url.Action("RegisterPage", "Home")">Register Now</a></span> </p>
             </form>
         </div>

@@ -2879,11 +2879,25 @@ table tbody tr td:nth-child(7) {
   gap: 1rem;
   padding-bottom: 1rem;
 }
+.section-account .account-main .account-address .account-header {
+  display: flex;
+  align-items: center;
+}
+.section-account .account-main .account-address .account-header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.3rem 1.5rem !important;
+}
 .section-account .account-main .account-address p {
   color: #a3a3a3 !important;
 }
 .section-account .account-main .account-address button {
   margin-left: auto;
+}
+.section-account .account-main button {
+  background-color: #ff645c;
 }
 
 @media (max-width: 576px) {

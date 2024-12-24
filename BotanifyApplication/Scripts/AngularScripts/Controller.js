@@ -43,6 +43,8 @@
     };
 
 
+
+
     //GENERAL NAVIGATION
     $scope.navigateTo = function (path) {
         window.location.href = path;
@@ -89,6 +91,7 @@
         $scope.regionError = false;
         $scope.postalError = false;
         $scope.phoneError = false;
+        $scope.emailExistsError = false;
 
         var regexPatterns = {
             firstName: /^.{1,50}$/,
@@ -129,37 +132,39 @@
             return;
         }
 
-        var regData = {
-            fName: $scope.firstName,
-            lName: $scope.lastName,
-            uEmail: $scope.userEmail,
-            uPassword: $scope.userPassword,
-            uAddress: $scope.userAddress,
-            uCity: $scope.userCity,
-            uRegion: $scope.userRegion,
-            uPostal: $scope.userPostal,
-            uPhone: $scope.userPhone
-        };
+        var lowerFirstName = $scope.firstName.toLowerCase();
+        var lowerLastName = $scope.lastName.toLowerCase();
 
-        var getData = BotanifyApplicationService.registerSubmitFunc(regData);
-        getData.then(function (ReturnedData) {
-            alert("Registration successful!");
-            $scope.resetForm();
-        }, function (error) {
-            alert("Error during registration: " + error.message);
+        // CHECK EMAIL IN DB
+        var checkEmailData = { userEmail: $scope.userEmail };
+        var emailCheck = BotanifyApplicationService.checkEmailFunc(checkEmailData);
+        emailCheck.then(function (emailExists) {
+            if (emailExists.data) {
+                $scope.emailExistsError = true;
+                alert("This email is already registered!");
+            } else {
+                var regData = {
+                    fName: lowerFirstName, 
+                    lName: lowerLastName,
+                    uEmail: $scope.userEmail,
+                    uPassword: $scope.userPassword,
+                    uAddress: $scope.userAddress,
+                    uCity: $scope.userCity,
+                    uRegion: $scope.userRegion,
+                    uPostal: $scope.userPostal,
+                    uPhone: $scope.userPhone
+                };
+
+                var getData = BotanifyApplicationService.registerSubmitFunc(regData);
+                getData.then(function (ReturnedData) {
+                    alert("Registration successful!");
+                    window.location.href = "/Home/LoginPage";
+                    $scope.resetForm();
+                }, function (error) {
+                    alert("Error during registration: " + error.message);
+                });
+            }
         });
-    };
-
-    $scope.resetForm = function () {
-        $scope.firstName = '';
-        $scope.lastName = '';
-        $scope.userEmail = '';
-        $scope.userPassword = '';
-        $scope.userAddress = '';
-        $scope.userCity = '';
-        $scope.userRegion = '';
-        $scope.userPostal = '';
-        $scope.userPhone = '';
     };
 
   
@@ -265,11 +270,73 @@
         });
     }
 
+   
+
+    //CHECK IF LOGGED IN
+    $scope.checkLoginStatus = function () {
+        BotanifyApplicationService.checkLoginStatus().then(function (response) {
+            if (response.data.loggedIn) {
+                $scope.isLoggedIn = true;
+                $scope.userEmail = response.data.userEmail;
+                $scope.firstName = response.data.firstName;
+                $scope.lastName = response.data.lastName;
+            } else {
+                $scope.isLoggedIn = false;
+            }
+        });
+    };
 
     //CLOSE MODAL BUTTON ADMIN
     $scope.isViewVisible = false;
     $scope.closeModal = function () {
         $scope.isViewVisible = !$scope.isViewVisible;
+    };
+
+    // LOGIN
+    $scope.isLoggedIn = false;
+
+    $scope.loginFunc = function () {
+        if (!$scope.uEmail || !$scope.uPass) {
+            return;
+        }
+        BotanifyApplicationService.loginUserFunc($scope.uEmail, $scope.uPass)
+            .then(function (response) {
+                if (response.data.success) {
+                    $scope.isLoggedIn = true;
+                    $scope.uData = response.data;
+                    return BotanifyApplicationService.viewIndivUser($scope.uData.userId);
+                }
+            })
+            .then(function (ReturnedData) {
+                if (ReturnedData.data.success) {
+                    var userDetails = ReturnedData.data.data;
+
+                    if (userDetails.firstName) {
+                        userDetails.firstName = userDetails.firstName.charAt(0).toUpperCase() + userDetails.firstName.slice(1);
+                    }
+                    if (userDetails.lastName) {
+                        userDetails.lastName = userDetails.lastName.charAt(0).toUpperCase() + userDetails.lastName.slice(1);
+                    }
+
+                    sessionStorage.setItem('userDetails', JSON.stringify(userDetails));
+                    window.location.href = '/Home/';
+                } else {
+                    alert("User not found: " + ReturnedData.data.message);
+                }
+            })
+            .catch(function (error) {
+                alert(error.message);
+            });
+    };
+
+    $scope.userDetails = JSON.parse(sessionStorage.getItem('userDetails'));
+
+    //LOGOUT
+    $scope.logoutFunc = function () {
+        BotanifyApplicationService.logoutUserFunc().then(function (response) {
+            sessionStorage.removeItem('userDetails');
+            window.location.href = '/Home';
+        });
     };
 
 
