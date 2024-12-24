@@ -718,15 +718,30 @@
         };
 
         BotanifyApplicationService.createPaymongoCheckout(checkoutData)
-            .then(function (response) {
-                if (response.data.data.attributes.checkout_url) {
-                    window.open(response.data.data.attributes.checkout_url, '_blank');
-                } else {
-                    alert('Error creating checkout');
-                }
+            .then(function (checkoutSessionId) {
+                console.log('Checkout session ID:', checkoutSessionId);
+
+                sessionStorage.setItem('checkoutSessionId', checkoutSessionId);
+
             })
             .catch(function (error) {
-                alert('Error: ' + (error.data?.errors?.[0]?.detail || 'Failed to create checkout'));
+                alert('Error: ' + (error.message || 'Failed to create checkout'));
             });
+    };
+
+    //CHECKOUT STATUS
+    $scope.checkPaymentStatus = function () {
+        const checkoutSessionId = sessionStorage.getItem('checkoutSessionId');
+
+        if (checkoutSessionId) {
+            BotanifyApplicationService.fetchCheckoutSessionDetails(checkoutSessionId)
+                .then(() => {
+                })
+                .catch(function (error) {
+                    alert('Error: ' + (error.message || 'Failed to retrieve checkout session details'));
+                });
+        } else {
+            alert('No checkout session found.');
+        }
     };
 });

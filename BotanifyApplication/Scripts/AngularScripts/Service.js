@@ -138,18 +138,71 @@
                             last_name: checkoutData.customerInfo.lastName,
                             email: checkoutData.customerInfo.email,
                             phone: checkoutData.customerInfo.phone
-                        }
+                        },
+                        success_url: 'https://localhost:44338/Home/SuccessPage',
+                        failure_url: 'https://localhost:44338/Home/CartPage'
                     }
                 }
             })
         };
 
-        return $http({
-            method: 'POST',
-            url: paymongoUrl,
-            headers: options.headers,
-            data: JSON.parse(options.body)
-        });
+        return fetch(paymongoUrl, options)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+
+                if (res.data && res.data.attributes.checkout_url) {
+                    const checkoutUrl = res.data.attributes.checkout_url;
+                    const checkoutSessionId = res.data.id;
+                    window.location.href = checkoutUrl;
+
+                    return checkoutSessionId;
+                } else {
+                    throw new Error('Failed to retrieve checkout session');
+                }
+            })
+            .catch(err => {
+                console.error('Error creating checkout session:', err);
+                throw err;
+            });
+    };
+
+    this.fetchCheckoutSessionDetails = function (checkoutSessionId) {
+        const paymongoUrl = `https://api.paymongo.com/v1/checkout_sessions/${checkoutSessionId}`;
+
+        const options = {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Basic c2tfdGVzdF9CanFqOUFrZW5wdm4xUGRyVDRxemt1R3o='
+            }
+        };
+
+        return fetch(paymongoUrl, options)
+            .then(res => res.json())
+            .then(res => {
+                if (res.data) {
+                    const checkoutSession = res.data;
+                    const sessionId = checkoutSession.id;
+                    const referenceNumber = checkoutSession.attributes.reference_number;
+
+                    const totalAmount = checkoutSession.attributes.payments[0].attributes.amount / 100;
+                    const paymentMethod = checkoutSession.attributes.payments[0].attributes.source.type;
+
+                    const status = checkoutSession.attributes.payments[0].attributes.status;
+                    const orderDate = new Date(checkoutSession.attributes.created_at * 1000).toLocaleString();
+
+                    console.log(sessionId);
+
+                    alert(`Purchase Successful! \nCheckout Session ID: ${sessionId} \nReference Number: ${referenceNumber} \nTotal Amount: PHP ${totalAmount} \nPayment Method: ${paymentMethod} \nOrder Status: ${status} \nOrder Date: ${orderDate}`);
+                } else {
+                    throw new Error('Failed to retrieve checkout session details');
+                }
+            })
+            .catch(err => {
+                console.error('Error retrieving checkout session details:', err);
+                alert('Error: ' + err.message);
+            });
     };
 
 

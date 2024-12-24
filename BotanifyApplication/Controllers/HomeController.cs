@@ -57,6 +57,11 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
+        public ActionResult SuccessPage()
+        {
+            return View();
+        }
+
         public ActionResult DashProducts()
         {
             return View();
