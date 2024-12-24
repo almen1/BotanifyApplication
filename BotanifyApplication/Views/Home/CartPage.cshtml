@@ -3,11 +3,11 @@
 }
 
 
-<div class="row section-cart text-black" ng-init="getCartItems(userId)">
+<div class="row section-cart text-black" ng-init="getCartItems(userDetails.userId)">
     <div class="col-xs-1"></div>
     <div class="col-xs-10 cart-main">
         <div class="header">
-            <h2>Your Cart</h2>
+            <h2>{{userDetails.firstName}}'s Cart</h2>
             <a href="@Url.Action("ShopPage", "Home")">Continue Shopping</a>
         </div>
         <div class="cart-table">
@@ -18,9 +18,9 @@
                 </div>
                 <div class="item-buttons">
                     <div class="quantity">
-                        <button class="minus" ng-click="decreaseQuantity(item)" aria-label="Decrease">&minus;</button>
+                        <button class="minus" ng-click="changeCartQuantity('decrease', item)" aria-label="Decrease">&minus;</button>
                         <input type="number" class="input-box" ng-model="item.productQty" min="1" max="10" />
-                        <button class="plus" ng-click="increaseQuantity(item)" aria-label="Increase">&plus;</button>
+                        <button class="plus" ng-click="changeCartQuantity('increase', item)" aria-label="Increase">&plus;</button>
                     </div>
                     <button class="btn-icon" ng-click="removeItem(item)">
                         <i class='bx bx-trash'></i>
@@ -35,7 +35,7 @@
                 <div class="checkout-wrapper">
                     <div class="checkout-details text-xl font-semibold">
                         <p>Subtotal</p>
-                        <p>{{ calculateSubtotal() }}</p>
+                        <p>{{ calculateSubtotal() | currency:'₱' }}</p>
                     </div>
                     <button class="btn btn-accent btn-rounded btn-block" ng-click="showSuccess()">Checkout</button>
                     <div class="account-address">

@@ -645,9 +645,41 @@
                 } else {
                     alert('Error: ' + response.data.message);
                 }
-            });
+            })
+            
     };
 
-    $scope.getCartItems($scope.userId);
+    //REMOVE FROM CART
+    $scope.removeItem = function (item) {
+        const index = $scope.cartItems.indexOf(item);
+        if (index !== -1) {
+            $scope.cartItems.splice(index, 1);
+        }
+    };
+
+    //CHANGE QUANTITY IN CART
+    $scope.changeCartQuantity = function (direction, item) {
+        if (direction === 'increase' && item.productQty < 10) {
+            item.productQty++;
+        } else if (direction === 'decrease' && item.productQty > 1) {
+            item.productQty--;
+        }
+
+        BotanifyApplicationService.updateCartItemQuantity(item.cartId, item.productQty)
+            .then(function (response) {
+                if (response.data.success) {
+                    console.log('Quantity updated successfully.');
+                }
+            })
+    };
+
+    //CALCULATE SUBTOTAL
+    $scope.calculateSubtotal = function () {
+        var subtotal = 0;
+        angular.forEach($scope.cartItems, function (item) {
+            subtotal += item.productPrice * item.productQty;
+        });
+        return subtotal;
+    };
 
 });

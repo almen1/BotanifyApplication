@@ -131,39 +131,58 @@ namespace BotanifyApplication.Controllers
         }
 
 
-        //public JsonResult GetCartItems(int userId)
-        //{
-        //    using (var db = new BotanifyContext())
-        //    {
-        //        var cartItems = (from c in db.carts_tbl
-        //                         join p in db.products_tbl on c.productId equals p.productId
-        //                         join s in db.sizes_tbl on p.sizeId equals s.sizeId
-        //                         join cat in db.categories_tbl on p.categoryId equals cat.categoryId
-        //                         where c.userId == userId && c.cartStatusId == 0
-        //                         select new
-        //                         {
-        //                             c.cartId,
-        //                             p.productId,
-        //                             p.productName,
-        //                             p.productDescription,
-        //                             p.productImage,
-        //                             p.productPrice,
-        //                             p.productStock,
-        //                             c.productQty,
-        //                             sizeName = s.size,
-        //                             category = cat.categoryName
-        //                         }).ToList();
+        public JsonResult GetCartItems(int userId)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var cartItems = (from c in db.carts_tbl
+                                 join p in db.products_tbl on c.productId equals p.productId
+                                 join s in db.sizes_tbl on p.sizeId equals s.sizeId
+                                 join cat in db.categories_tbl on p.categoryId equals cat.categoryId
+                                 where c.userId == userId
+                                 select new
+                                 {
+                                     c.cartId,
+                                     p.productId,
+                                     p.productName,
+                                     p.productDescription,
+                                     p.productImage,
+                                     p.productPrice,
+                                     p.productStock,
+                                     c.productQty,
+                                     sizeName = s.size,
+                                     category = cat.categoryName
+                                 }).ToList();
 
-        //        if (cartItems.Any())
-        //        {
-        //            return Json(new { success = true, cartItems = cartItems });
-        //        }
-        //        else
-        //        {
-        //            return Json(new { success = false, message = "No items in cart." });
-        //        }
-        //    }
-        //}
+                if (cartItems.Any())
+                {
+                    return Json(new { success = true, cartItems }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = false, message = "No items in cart." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+        public JsonResult UpdateCartItemQuantity(int cartId, int quantity)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var cartItem = db.carts_tbl.FirstOrDefault(c => c.cartId == cartId);
+
+                if (cartItem != null)
+                {
+                    cartItem.productQty = quantity;
+                    db.SaveChanges();
+                    return Json(new { success = true, message = "Quantity updated successfully." });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Cart item not found." });
+                }
+            }
+        }
 
         public void AddProduct(ProductDTO productData)
         {

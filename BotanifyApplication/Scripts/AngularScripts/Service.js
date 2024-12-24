@@ -27,12 +27,7 @@
     };
 
     this.getCartItems = function (userId) {
-        var response = $http({
-            method: "get",
-            url: "/Home/GetCartItems",
-            params: { userId: userId }
-        });
-        return response;
+        return $http.get('/Home/GetCartItems', { params: { userId: userId } });
     };
 
     this.addProductFunc = function (productData) {
@@ -51,6 +46,11 @@
         });
         return response;
     };
+
+    this.updateCartItemQuantity = function (cartId, quantity) {
+        return $http.post('/Home/UpdateCartItemQuantity', { cartId: cartId, quantity: quantity });
+    };
+
     this.loginUserFunc = function (email, password) {
         return $http.post('/Home/LoginUser', { email: email, password: password });
     };
