@@ -25,9 +25,13 @@
         });
         return response;
     };
-
+   
     this.getCartItems = function (userId) {
         return $http.get('/Home/GetCartItems', { params: { userId: userId } });
+    };
+
+    this.removeCartItem = function (cartId) {
+        return $http.post('/Home/DeleteCartItem', { cartId: cartId });
     };
 
     this.addProductFunc = function (productData) {
@@ -89,6 +93,66 @@
     this.deleteUserFunc = function (userId) {
         return $http.post('/Home/DeleteUser', { userId: userId });
     };
+
+    this.createPaymongoCheckout = function (checkoutData) {
+        const paymongoUrl = 'https://api.paymongo.com/v1/checkout_sessions';
+
+        const lineItems = checkoutData.lineItems.map(item => ({
+            currency: 'PHP',
+            amount: item.amount,
+            name: item.name,
+            quantity: item.quantity
+        }));
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic c2tfdGVzdF9CanFqOUFrZW5wdm4xUGRyVDRxemt1R3o='
+            },
+            body: JSON.stringify({
+                data: {
+                    attributes: {
+                        send_email_receipt: true,
+                        show_description: true,
+                        show_line_items: true,
+                        line_items: lineItems,
+                        payment_method_types: ['card', 'gcash'],
+                        reference_number: 'ORDER-' + Date.now(),
+                        description: 'Botanify Order',
+                        billing: {
+                            address: {
+                                line1: checkoutData.billing.address.line1,
+                                city: checkoutData.billing.address.city,
+                                state: checkoutData.billing.address.state,
+                                postal_code: checkoutData.billing.address.postal_code,
+                                country: checkoutData.billing.address.country
+                            },
+                            name: checkoutData.billing.name,
+                            email: checkoutData.billing.email,
+                            phone: checkoutData.billing.phone
+                        },
+                        customer_info: {
+                            first_name: checkoutData.customerInfo.firstName,
+                            last_name: checkoutData.customerInfo.lastName,
+                            email: checkoutData.customerInfo.email,
+                            phone: checkoutData.customerInfo.phone
+                        }
+                    }
+                }
+            })
+        };
+
+        return $http({
+            method: 'POST',
+            url: paymongoUrl,
+            headers: options.headers,
+            data: JSON.parse(options.body)
+        });
+    };
+
+
 
 
 });

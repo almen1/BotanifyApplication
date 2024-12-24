@@ -1,6 +1,7 @@
 ﻿using Botanify.Models;
 using BotanifyApplication.Models;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,9 +9,16 @@ using System.Data.Entity.Infrastructure.MappingViews;
 using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Runtime.Remoting.Messaging;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using Stripe;
+using System.IO;
+
 
 namespace BotanifyApplication.Controllers
 {
@@ -165,6 +173,30 @@ namespace BotanifyApplication.Controllers
             }
         }
 
+        public JsonResult DeleteCartItem(int cartId)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var cartItem = (from c in db.carts_tbl
+                                where c.cartId == cartId
+                                select c).FirstOrDefault();
+
+                if (cartItem != null)
+                {
+                    var sql = "DELETE FROM carts_tbl WHERE cartId = @cartId";
+                    db.Database.ExecuteSqlCommand(sql, new MySqlParameter("@cartId", cartId));
+
+                    db.SaveChanges();
+
+                    return Json(new { success = true, message = "Cart item deleted successfully." }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Cart item not found." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
         public JsonResult UpdateCartItemQuantity(int cartId, int quantity)
         {
             using (var db = new BotanifyContext())
@@ -183,6 +215,8 @@ namespace BotanifyApplication.Controllers
                 }
             }
         }
+
+       
 
         public void AddProduct(ProductDTO productData)
         {
@@ -490,6 +524,8 @@ namespace BotanifyApplication.Controllers
                 }
             }
         }
+
+      
 
 
     }

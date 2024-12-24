@@ -22,7 +22,7 @@
                         <input type="number" class="input-box" ng-model="item.productQty" min="1" max="10" />
                         <button class="plus" ng-click="changeCartQuantity('increase', item)" aria-label="Increase">&plus;</button>
                     </div>
-                    <button class="btn-icon" ng-click="removeItem(item)">
+                    <button class="btn-icon" ng-click="removeItem(item.cartId)">
                         <i class='bx bx-trash'></i>
                     </button>
                 </div>
@@ -37,7 +37,7 @@
                         <p>Subtotal</p>
                         <p>{{ calculateSubtotal() | currency:'₱' }}</p>
                     </div>
-                    <button class="btn btn-accent btn-rounded btn-block" ng-click="showSuccess()">Checkout</button>
+                    <button class="btn btn-accent btn-rounded btn-block" ng-click="createCheckout()">Checkout</button>
                     <div class="account-address">
                         <h3 class="text-xl">Shipping Information</h3>
                         <p>{{userDetails.address}}</p>

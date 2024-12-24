@@ -650,11 +650,15 @@
     };
 
     //REMOVE FROM CART
-    $scope.removeItem = function (item) {
-        const index = $scope.cartItems.indexOf(item);
-        if (index !== -1) {
-            $scope.cartItems.splice(index, 1);
-        }
+    $scope.removeItem = function (cartId) {
+        var getData = BotanifyApplicationService.removeCartItem(cartId);
+        getData.then(function (ReturnedData) {
+            if (ReturnedData.data.success) {
+                $window.location.reload(); 
+            } else {
+                alert("Error: " + ReturnedData.data.message);
+            }
+        });
     };
 
     //CHANGE QUANTITY IN CART
@@ -682,4 +686,47 @@
         return subtotal;
     };
 
+    //CREATE CHECKOUT SESSION
+    $scope.createCheckout = function () {
+        const lineItems = $scope.cartItems.map(item => ({
+            currency: 'PHP',
+            amount: item.productPrice * 100,
+            name: item.productName,
+            quantity: item.productQty
+        }));
+
+        const checkoutData = {
+            lineItems: lineItems,
+            customerInfo: {
+                firstName: $scope.userDetails.firstName,
+                lastName: $scope.userDetails.lastName,
+                email: $scope.userDetails.userEmail,
+                phone: $scope.userDetails.userPhone
+            },
+            billing: {
+                address: {
+                    line1: $scope.userDetails.address,
+                    city: $scope.userDetails.city,
+                    state: $scope.userDetails.region,
+                    postal_code: $scope.userDetails.zipcode,
+                    country: 'PH'
+                },
+                name: $scope.userDetails.firstName + ' ' + $scope.userDetails.lastName,
+                email: $scope.userDetails.userEmail,
+                phone: $scope.userDetails.userPhone
+            }
+        };
+
+        BotanifyApplicationService.createPaymongoCheckout(checkoutData)
+            .then(function (response) {
+                if (response.data.data.attributes.checkout_url) {
+                    window.open(response.data.data.attributes.checkout_url, '_blank');
+                } else {
+                    alert('Error creating checkout');
+                }
+            })
+            .catch(function (error) {
+                alert('Error: ' + (error.data?.errors?.[0]?.detail || 'Failed to create checkout'));
+            });
+    };
 });
