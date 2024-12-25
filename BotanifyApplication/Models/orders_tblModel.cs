@@ -8,6 +8,7 @@ namespace Botanify.Models
     public class orders_tblModel
     {
         public int orderId { get; set; }
+        public int userId { get; set; }
         public string checkoutSessionId { get; set; }
         public string referenceNumber { get; set; }
         public decimal totalAmount { get; set; }

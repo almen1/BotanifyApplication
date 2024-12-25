@@ -737,7 +737,8 @@
             return;
         }
 
-        BotanifyApplicationService.fetchCheckoutSessionDetails(checkoutSessionId)
+        
+        BotanifyApplicationService.fetchCheckoutSessionDetails(checkoutSessionId, $scope.userDetails.userId)
             .then(() => {
                 $scope.deleteCart($scope.userDetails.userId);
             })

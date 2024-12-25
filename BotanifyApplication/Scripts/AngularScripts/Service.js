@@ -167,7 +167,7 @@
             });
     };
 
-    this.fetchCheckoutSessionDetails = function (checkoutSessionId) {
+    this.fetchCheckoutSessionDetails = function (checkoutSessionId , userId) {
         const paymongoUrl = `https://api.paymongo.com/v1/checkout_sessions/${checkoutSessionId}`;
 
         const options = {
@@ -185,23 +185,29 @@
                     const checkoutSession = res.data;
                     const sessionId = checkoutSession.id;
                     const referenceNumber = checkoutSession.attributes.reference_number;
-
                     const totalAmount = checkoutSession.attributes.payments[0].attributes.amount / 100;
                     const paymentMethod = checkoutSession.attributes.payments[0].attributes.source.type;
-
                     const status = checkoutSession.attributes.payments[0].attributes.status;
                     const orderDate = new Date(checkoutSession.attributes.created_at * 1000).toLocaleString();
 
-                    console.log(sessionId);
+                    const orderData = {
+                        CheckoutSessionId: sessionId,
+                        ReferenceNumber: referenceNumber,
+                        TotalAmount: totalAmount,
+                        PaymentMethod: paymentMethod,
+                        OrderStatus: status,
+                        OrderDate: orderDate,
+                        UserId: userId
+                    };
 
-                    alert(`Purchase Successful! \nCheckout Session ID: ${sessionId} \nReference Number: ${referenceNumber} \nTotal Amount: PHP ${totalAmount} \nPayment Method: ${paymentMethod} \nOrder Status: ${status} \nOrder Date: ${orderDate}`);
+                    return $http.post('/Home/SaveOrder', orderData);
                 } else {
                     throw new Error('Failed to retrieve checkout session details');
                 }
             })
             .catch(err => {
                 console.error('Error retrieving checkout session details:', err);
-                alert('Error: ' + err.message);
+                throw err;
             });
     };
 

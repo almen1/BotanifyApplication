@@ -552,7 +552,47 @@ namespace BotanifyApplication.Controllers
             }
         }
 
-      
+
+
+        public JsonResult SaveOrder(OrderDTO orderData)
+        {
+            if (orderData == null)
+            {
+                return Json(new { success = false, message = "Invalid order data." });
+            }
+
+            using (var db = new BotanifyContext())
+            {
+                try
+                {
+                    var order = new orders_tblModel()
+                    {
+                        checkoutSessionId = orderData.CheckoutSessionId,
+                        referenceNumber = orderData.ReferenceNumber,
+                        totalAmount = orderData.TotalAmount,
+                        paymentMethod = orderData.PaymentMethod,
+                        orderStatus = orderData.OrderStatus,
+                        orderDate = orderData.OrderDate,
+                        userId = orderData.UserId,
+                        createAt = DateTime.Now,
+                        updateAt = DateTime.Now
+                    };
+
+                    db.orders_tbl.Add(order);
+                    db.SaveChanges();
+
+                    return Json(new { success = true, message = "Order saved successfully." });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = "Error saving order: " + ex.Message });
+                }
+            }
+        }
+
+
+
+
 
 
     }
