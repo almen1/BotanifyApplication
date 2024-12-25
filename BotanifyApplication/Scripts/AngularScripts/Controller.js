@@ -657,6 +657,7 @@
             .then(function (response) {
                 if (response.data.success) {
                     $scope.cartItems = response.data.cartItems;
+                    sessionStorage.setItem('cartItems', JSON.stringify($scope.cartItems));
                 } else {
                     console.log('Error: ' + response.data.message);
                 }
@@ -754,10 +755,6 @@
 
         BotanifyApplicationService.fetchCheckoutSessionDetails(checkoutSessionId, $scope.userDetails.userId)
             .then(function () {
-                console.log($scope.cartItems);
-                return $scope.adjustStock($scope.cartItems);
-            })
-            .then(function () {
                 return $scope.deleteCart($scope.userDetails.userId);
             })
             .catch(function (error) {
@@ -782,26 +779,66 @@
         });
     };
 
-    //ADJUST STOCK
-    $scope.adjustStock = function (cartItems) {
-        if (!cartItems || cartItems.length === 0) {
+    // ADJUST STOCK
+    $scope.adjustStock = function () {
+        var storedCartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+
+        if (!storedCartItems || storedCartItems.length === 0) {
             console.error('No items in the cart to adjust stock for.');
             return;
         }
 
-        console.log('Adjusting stock for items: ', cartItems);
+        console.log('Adjusting stock for items: ', storedCartItems);
 
-        return Promise.all(cartItems.map(item =>
+        return Promise.all(storedCartItems.map(item =>
             BotanifyApplicationService.updateProductStock(item.productId, item.productQty)
-                .then(response => {
+                .then(function (response) {
                     if (response.data.success) {
                         console.log(`Stock updated successfully for product ID: ${item.productId}`);
                     } else {
                         console.log(`Error updating stock for product ID: ${item.productId} - ${response.data.message}`);
                     }
                 })
-                .catch(error => console.error(`Error updating stock for product ID: ${item.productId}`, error))
-        ));
+                .catch(function (error) {
+                    console.error(`Error updating stock for product ID: ${item.productId}`, error);
+                })
+        ))
+            .then(function () {
+                console.log('All stock updates have been processed.');
+            })
+            .catch(function (error) {
+                console.error('Error adjusting stock for one or more products:', error);
+            });
+    };
+
+    $scope.adjustPurchased = function () {
+        var storedCartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+
+        if (!storedCartItems || storedCartItems.length === 0) {
+            console.error('No items in the cart to adjust purchased quantity for.');
+            return;
+        }
+
+        // Iterate through the cart items and update the numberPurchased for each
+        return Promise.all(storedCartItems.map(item =>
+            BotanifyApplicationService.updateNumberPurchased(item.productId, item.productQty)
+                .then(function (response) {
+                    if (response.data.success) {
+                        console.log(`Number purchased updated successfully for product ID: ${item.productId}`);
+                    } else {
+                        console.log(`Error updating number purchased for product ID: ${item.productId} - ${response.data.message}`);
+                    }
+                })
+                .catch(function (error) {
+                    console.error(`Error updating number purchased for product ID: ${item.productId}`, error);
+                })
+        ))
+            .then(function () {
+                console.log('All number purchased updates have been processed.');
+            })
+            .catch(function (error) {
+                console.error('Error adjusting number purchased for one or more products:', error);
+            });
     };
 
 });

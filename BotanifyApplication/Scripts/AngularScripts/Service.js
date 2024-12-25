@@ -219,6 +219,10 @@
         return $http.post('/Home/UpdateStock', { productId: productId, quantityToAdjust: quantityToAdjust });
     };
 
+    this.updateNumberPurchased = function (productId, quantityPurchased) {
+        return $http.post('/Home/UpdateNumberPurchased', { productId: productId, quantityPurchased: quantityPurchased });
+    };
+
     this.loadOrderFunc = function () {
         return $http.get("/Home/LoadOrder");
     }

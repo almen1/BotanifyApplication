@@ -648,6 +648,31 @@ namespace BotanifyApplication.Controllers
             }
         }
 
+        public JsonResult UpdateNumberPurchased(int productId, int quantityPurchased)
+        {
+            if (productId <= 0 || quantityPurchased <= 0)
+            {
+                return Json(new { success = false, message = "Invalid product ID or quantity." });
+            }
+
+            using (var db = new BotanifyContext())
+            {
+                var product = db.products_tbl.FirstOrDefault(p => p.productId == productId);
+
+                if (product != null)
+                {
+                    product.numberPurchased += quantityPurchased;
+                    db.SaveChanges();
+
+                    return Json(new { success = true, message = "Number of items purchased updated successfully." });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Product not found." });
+                }
+            }
+        }
+
 
     }
 }

@@ -17,6 +17,7 @@ namespace Botanify.Models
         public string productImage { get; set; }
         public decimal productPrice { get; set; }
         public string productTips { get; set; }
+        public int numberPurchased { get; set; }
         public int productStock { get; set; }
         public DateTime createAt { get; set; }
         public DateTime updateAt { get; set; }
