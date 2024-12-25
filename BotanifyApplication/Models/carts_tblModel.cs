@@ -11,7 +11,6 @@ namespace Botanify.Models
         public int userId { get; set; }
         public int productId { get; set; }
         public int productQty { get; set; }
-        public int itemPrice { get; set; }
         public DateTime createAt { get; set; }
         public DateTime updateAt { get; set; }
     }

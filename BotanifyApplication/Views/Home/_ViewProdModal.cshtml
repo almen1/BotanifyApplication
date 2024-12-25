@@ -1,8 +1,10 @@
 ﻿<div class="modal-overlay" ng-class="{'active': isViewVisible}" ng-init="loadFilterFunc()">
     <div class="modal text-black bg-white">
         <div class="header-row">
-            <h3>{{modalData.data.productName}}</h3>
-            <button class="btn btn-primary" ng-click="editProductFunc()">Edit</button>
+            <div class="header-wrapper">
+                <h3>{{modalData.data.productName}}</h3>
+                <button class="btn btn-primary edit-btn" ng-click="editProductFunc()">Edit</button>
+            </div>
             <button class="btn-icon" ng-click="closeModal()">
                 <i class='bx bx-x-circle'></i>
             </button>

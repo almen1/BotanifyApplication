@@ -162,6 +162,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartDTO.cs" />
+    <Compile Include="Controllers\OrderDTO.cs" />
     <Compile Include="Controllers\ProductDTO.cs" />
     <Compile Include="Controllers\RegistrationDTO.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -175,8 +176,6 @@
     <Compile Include="Models\carts_tblModel.cs" />
     <Compile Include="Models\categories_tblMap.cs" />
     <Compile Include="Models\categories_tblModel.cs" />
-    <Compile Include="Models\orderstatus_tblMap.cs" />
-    <Compile Include="Models\orderstatus_tblModel.cs" />
     <Compile Include="Models\orders_tblMap.cs" />
     <Compile Include="Models\orders_tblModel.cs" />
     <Compile Include="Models\products_tblMap.cs" />

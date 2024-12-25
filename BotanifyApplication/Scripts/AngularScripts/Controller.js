@@ -643,7 +643,7 @@
                 if (response.data.success) {
                     $scope.cartItems = response.data.cartItems;
                 } else {
-                    alert('Error: ' + response.data.message);
+                    console.log('Error: ' + response.data.message);
                 }
             })
             
@@ -732,16 +732,35 @@
     //CHECKOUT STATUS
     $scope.checkPaymentStatus = function () {
         const checkoutSessionId = sessionStorage.getItem('checkoutSessionId');
-
-        if (checkoutSessionId) {
-            BotanifyApplicationService.fetchCheckoutSessionDetails(checkoutSessionId)
-                .then(() => {
-                })
-                .catch(function (error) {
-                    alert('Error: ' + (error.message || 'Failed to retrieve checkout session details'));
-                });
-        } else {
+        if (!checkoutSessionId) {
             alert('No checkout session found.');
+            return;
         }
+
+        BotanifyApplicationService.fetchCheckoutSessionDetails(checkoutSessionId)
+            .then(() => {
+                $scope.deleteCart($scope.userDetails.userId);
+            })
+            .catch(error => {
+                alert('Error: ' + (error.message || 'Failed to process payment'));
+            });
     };
+
+    //CLEAR CART AFTER SUCCESS CHECKOUT
+    $scope.deleteCart = function (userId) {
+        var getData = BotanifyApplicationService.deleteCartItems(userId);
+        getData.then(function (ReturnedData) {
+            if (ReturnedData.data.success) {
+                sessionStorage.removeItem('checkoutSessionId');
+                $scope.cartItems = [];
+                alert('Payment successful! Cart has been cleared.');
+            } else {
+                alert("Error: " + ReturnedData.data.message);
+            }
+        }).catch(function (error) {
+            alert('Error: ' + (error.message || 'Failed to clear cart.'));
+        });
+    };
+
+
 });

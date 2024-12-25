@@ -27,6 +27,22 @@
             justify-content: space-between;
             border-bottom: 1px solid #d9d9d9;
             padding: 0.5rem 0;
+
+
+
+
+            .header-wrapper {
+                display:flex;
+                flex-direction: row;
+                gap:1rem;
+
+                .edit-btn {
+                    border-radius: 0.8rem !important;
+                    padding: 0.25rem 1.25rem;
+                    background-color: #d9d9d9;
+                    color: #212121;
+                }
+            }
         }
 
 

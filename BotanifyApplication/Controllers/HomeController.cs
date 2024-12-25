@@ -202,6 +202,28 @@ namespace BotanifyApplication.Controllers
             }
         }
 
+        public JsonResult DeleteCartItems(int userId)
+        {
+            using (var db = new BotanifyContext())
+            {
+                var cartExists = db.carts_tbl.Any(c => c.userId == userId);
+
+                if (!cartExists)
+                {
+                    return Json(new { success = false, message = $"No items found for userId {userId}." });
+                }
+
+                var sql = "DELETE FROM carts_tbl WHERE userId = @userId";
+                db.Database.ExecuteSqlCommand(sql, new MySqlParameter("@userId", userId));
+
+                db.SaveChanges();
+
+                return Json(new { success = true, message = "Cart items deleted successfully." });
+            }
+        }
+
+
+
         public JsonResult UpdateCartItemQuantity(int cartId, int quantity)
         {
             using (var db = new BotanifyContext())

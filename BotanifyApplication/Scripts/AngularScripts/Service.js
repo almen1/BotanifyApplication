@@ -205,6 +205,9 @@
             });
     };
 
+    this.deleteCartItems = function (userId) {
+        return $http.post('/Home/DeleteCartItems', { userId: userId });
+    };
 
 
 

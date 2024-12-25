@@ -8,11 +8,12 @@ namespace Botanify.Models
     public class orders_tblModel
     {
         public int orderId { get; set; }
-        public int cartId { get; set; }
+        public string checkoutSessionId { get; set; }
+        public string referenceNumber { get; set; }
         public decimal totalAmount { get; set; }
+        public string paymentMethod { get; set; }
+        public string orderStatus { get; set; }
         public DateTime orderDate { get; set; }
-        public int paymentId { get; set; }
-        public int orderStatusId { get; set; }
         public DateTime createAt { get; set; }
         public DateTime updateAt { get; set; }
     }
