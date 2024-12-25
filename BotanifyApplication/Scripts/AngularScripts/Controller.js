@@ -298,6 +298,21 @@
         });
     }
 
+    //LOAD ALL ORDERS
+    $scope.loadOrdersFunc = function () {
+        var getData = BotanifyApplicationService.loadOrderFunc();
+
+        getData.then(function (ReturnedData) {
+            $scope.ordersData = ReturnedData.data;
+
+            // DataTable Initialization
+            $(document).ready(function () {
+                $('#orderTable').DataTable({
+
+                });
+            });
+        });
+    }
    
 
     //CHECK IF LOGGED IN
@@ -737,12 +752,14 @@
             return;
         }
 
-        
         BotanifyApplicationService.fetchCheckoutSessionDetails(checkoutSessionId, $scope.userDetails.userId)
-            .then(() => {
-                $scope.deleteCart($scope.userDetails.userId);
+            .then(function () {
+                return $scope.adjustStock($scope.cartItems);
             })
-            .catch(error => {
+            .then(function () {
+                return $scope.deleteCart($scope.userDetails.userId);
+            })
+            .catch(function (error) {
                 alert('Error: ' + (error.message || 'Failed to process payment'));
             });
     };
@@ -753,7 +770,8 @@
         getData.then(function (ReturnedData) {
             if (ReturnedData.data.success) {
                 sessionStorage.removeItem('checkoutSessionId');
-                $scope.cartItems = [];
+                $scope.cartItems = [];    
+
                 alert('Payment successful! Cart has been cleared.');
             } else {
                 alert("Error: " + ReturnedData.data.message);
@@ -761,6 +779,33 @@
         }).catch(function (error) {
             alert('Error: ' + (error.message || 'Failed to clear cart.'));
         });
+    };
+
+    //ADJUST STOCK
+    $scope.adjustStock = function (cartItems) {
+        if (!cartItems || cartItems.length === 0) {
+            console.error('No items in the cart to adjust stock for.');
+            return;
+        }
+
+        var promises = cartItems.map(function (item) {
+            var productId = item.productId;
+            var quantityToAdjust = item.productQty;
+
+            return BotanifyApplicationService.updateProductStock(productId, quantityToAdjust)
+                .then(function (response) {
+                    if (response.data.success) {
+                        console.log('Stock updated successfully for product ID: ' + productId);
+                    } else {
+                        console.log('Error updating stock for product ID: ' + productId + ' - ' + response.data.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Error updating stock for product ID: ' + productId, error);
+                });
+        });
+
+        return Promise.all(promises);
     };
 
 

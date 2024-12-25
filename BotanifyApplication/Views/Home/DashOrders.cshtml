@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_BotanifyDashboard.cshtml";
+}
+
+<div class="col-xs-1">
+</div>
+<div class="col-xs-10 dash-orders" ng-init="loadOrdersFunc()">
+    <div class="dash-user-header">
+        <h2 class="text-black">View Orders</h2>
+    </div>
+
+    <table id="orderTable" class="display">
+        <thead>
+            <tr>
+                <th>OrderID</th>
+                <th>UserID</th>
+                <th>Checkout Session ID</th>
+                <th>Reference Number</th>
+                <th>Total Amount</th>
+                <th>Payment Method</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in ordersData">
+                <td>{{order.orderId}}</td>
+                <td>{{order.userId}}</td>
+                <td>{{order.checkoutSessionId}}</td>
+                <td>{{order.referenceNumber}}</td>
+                <td>{{order.totalAmount}}</td>
+                <td>{{order.paymentMethod}}</td>
+                <td>{{order.orderStatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-xs-1">
+</div>

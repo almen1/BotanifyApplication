@@ -261,6 +261,7 @@
     <Content Include="Content\scss\forms\_dropdown.scss" />
     <Content Include="Content\scss\dashboard\dashusers.scss" />
     <Content Include="Content\scss\pages\_register.scss" />
+    <Content Include="Content\scss\dashboard\dashorders.scss" />
     <None Include="Content\scss\_normalize.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -1108,6 +1109,7 @@
     <Content Include="Views\Home\_ViewProdModal.cshtml" />
     <Content Include="Views\Home\DashUsers.cshtml" />
     <Content Include="Views\Home\SuccessPage.cshtml" />
+    <Content Include="Views\Home\DashOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

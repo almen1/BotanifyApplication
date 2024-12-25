@@ -215,6 +215,11 @@
         return $http.post('/Home/DeleteCartItems', { userId: userId });
     };
 
+    this.updateProductStock = function (productId, quantityToAdjust) {
+        return $http.post('/Home/UpdateStock', { productId: productId, quantityToAdjust: quantityToAdjust });
+    };
 
-
+    this.loadOrderFunc = function () {
+        return $http.get("/Home/LoadOrder");
+    }
 });

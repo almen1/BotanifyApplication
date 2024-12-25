@@ -72,6 +72,11 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
+        public ActionResult DashOrders()
+        {
+            return View();
+        }
+
         public void RegisterUser(RegistrationDTO regData)
         {
             using (var db = new BotanifyContext())
@@ -296,6 +301,27 @@ namespace BotanifyApplication.Controllers
 
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
+            }
+        }
+
+        public JsonResult LoadOrder ()
+        {
+            using (var db = new BotanifyContext())
+            {
+                var orderData = (from oData in db.orders_tbl
+                                 select new
+                                 {
+                                     oData.orderId,
+                                     oData.userId,
+                                     oData.checkoutSessionId,
+                                     oData.referenceNumber,
+                                     oData.totalAmount,
+                                     oData.paymentMethod,
+                                     oData.orderStatus,
+                                     oData.createAt
+                                 }).ToList();
+
+                return Json(orderData, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -592,7 +618,35 @@ namespace BotanifyApplication.Controllers
 
 
 
+        public JsonResult UpdateStock(int productId, int quantityToAdjust)
+        {
+            if (productId <= 0 || quantityToAdjust <= 0)
+            {
+                return Json(new { success = false, message = "Invalid product ID or quantity." });
+            }
 
+            using (var db = new BotanifyContext())
+            {
+                var product = db.products_tbl.FirstOrDefault(p => p.productId == productId);
+
+                if (product != null)
+                {
+                    if (product.productStock < quantityToAdjust)
+                    {
+                        return Json(new { success = false, message = "Insufficient stock to adjust." });
+                    }
+
+                    product.productStock -= quantityToAdjust;
+                    db.SaveChanges();
+
+                    return Json(new { success = true, message = "Stock updated successfully." });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Product not found." });
+                }
+            }
+        }
 
 
     }
