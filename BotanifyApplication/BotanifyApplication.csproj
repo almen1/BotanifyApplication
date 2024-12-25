@@ -262,6 +262,7 @@
     <Content Include="Content\scss\dashboard\dashusers.scss" />
     <Content Include="Content\scss\pages\_register.scss" />
     <Content Include="Content\scss\dashboard\dashorders.scss" />
+    <Content Include="Content\scss\pages\_success.scss" />
     <None Include="Content\scss\_normalize.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

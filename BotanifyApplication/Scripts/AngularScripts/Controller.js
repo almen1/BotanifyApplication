@@ -754,6 +754,7 @@
 
         BotanifyApplicationService.fetchCheckoutSessionDetails(checkoutSessionId, $scope.userDetails.userId)
             .then(function () {
+                console.log($scope.cartItems);
                 return $scope.adjustStock($scope.cartItems);
             })
             .then(function () {
@@ -788,25 +789,19 @@
             return;
         }
 
-        var promises = cartItems.map(function (item) {
-            var productId = item.productId;
-            var quantityToAdjust = item.productQty;
+        console.log('Adjusting stock for items: ', cartItems);
 
-            return BotanifyApplicationService.updateProductStock(productId, quantityToAdjust)
-                .then(function (response) {
+        return Promise.all(cartItems.map(item =>
+            BotanifyApplicationService.updateProductStock(item.productId, item.productQty)
+                .then(response => {
                     if (response.data.success) {
-                        console.log('Stock updated successfully for product ID: ' + productId);
+                        console.log(`Stock updated successfully for product ID: ${item.productId}`);
                     } else {
-                        console.log('Error updating stock for product ID: ' + productId + ' - ' + response.data.message);
+                        console.log(`Error updating stock for product ID: ${item.productId} - ${response.data.message}`);
                     }
                 })
-                .catch(function (error) {
-                    console.error('Error updating stock for product ID: ' + productId, error);
-                });
-        });
-
-        return Promise.all(promises);
+                .catch(error => console.error(`Error updating stock for product ID: ${item.productId}`, error))
+        ));
     };
-
 
 });

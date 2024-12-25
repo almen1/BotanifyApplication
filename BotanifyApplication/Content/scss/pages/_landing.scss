@@ -21,8 +21,7 @@
 }
 
 .section-popular {
-    margin-top: 5rem;
-    margin-bottom: 1rem;
+    margin: 5rem 0;
     height: 60vh;
 
     .popular-main {
@@ -30,18 +29,6 @@
         flex-direction:column;
         height:100%;
 
-    }
-}
-
-.section-newest {
-    margin-top: 1rem;
-    margin-bottom: 5rem;
-    height: 60vh;
-
-    .newest-main {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
     }
 }
 
@@ -104,7 +91,8 @@
         flex-direction: column;
 
         .card-container {
-        align-content: unset;
+            align-content: unset;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
 
             .header {
                 grid-template-columns: 1fr !important;

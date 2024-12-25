@@ -2429,22 +2429,10 @@ table tbody tr td:nth-child(7) {
 }
 
 .section-popular {
-  margin-top: 5rem;
-  margin-bottom: 1rem;
+  margin: 5rem 0;
   height: 60vh;
 }
 .section-popular .popular-main {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.section-newest {
-  margin-top: 1rem;
-  margin-bottom: 5rem;
-  height: 60vh;
-}
-.section-newest .newest-main {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -2505,6 +2493,7 @@ table tbody tr td:nth-child(7) {
 }
 .section-testimonials .testimonials-main .card-container {
   align-content: unset;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
 }
 .section-testimonials .testimonials-main .card-container .header {
   grid-template-columns: 1fr !important;
@@ -2909,6 +2898,30 @@ table tbody tr td:nth-child(7) {
 }
 .section-account .account-main button {
   background-color: #ff645c;
+}
+
+.section-success {
+  height: 90vh;
+  padding: 5rem 0;
+}
+.section-success .success-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.section-success .success-main .content-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+.section-success .success-main .content-wrapper .content-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section-success .success-main .content-wrapper i {
+  font-size: 5rem;
 }
 
 @media (max-width: 576px) {

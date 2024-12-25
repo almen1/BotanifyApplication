@@ -2,8 +2,23 @@
     Layout = "~/Views/Shared/_BotanifyLayout.cshtml";
 }
 
-<div style="height:100vh; padding-top:15rem;" ng-init="checkPaymentStatus()">
-    Payment Success!
 
-    <a href="@Url.Action("/LandingPage")">Go To Home</a>
+<div class="row section-success" ng-init="checkPaymentStatus()">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 success-main">
+        <div class="content-wrapper">
+            <i class='bx bxs-check-circle text-primary'></i>
+            <div class="content-text">
+                <h2>Payment Success</h2>
+                <p>Thank you for your purchase!</p>
+
+            </div>
+        </div>
+            <button class="btn btn-accent btn-rounded" ng-click="navigateTo('/Home')">Back to Home</button>
+    </div>
+    <div class="col-xs-1"></div>
+
 </div>
+
+
+

@@ -1,0 +1,28 @@
+﻿.section-success {
+    height: 90vh;
+    padding: 5rem 0;
+
+    .success-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        .content-wrapper {
+            display:flex;
+            gap:0.5rem;
+            .content-text {
+                display: flex;
+                flex-direction: column;
+                
+                justify-content:center;
+            }
+
+            i {
+                font-size: 5rem;
+            }
+        } 
+
+
+    }
+}
