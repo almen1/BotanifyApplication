@@ -226,4 +226,8 @@
     this.loadOrderFunc = function () {
         return $http.get("/Home/LoadOrder");
     }
+
+    this.getTopPurchasedProducts = function () {
+        return $http.get('/Home/GetTopPurchasedProducts');
+    };
 });

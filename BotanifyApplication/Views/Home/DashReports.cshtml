@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_BotanifyDashboard.cshtml";
+}
+
+
+<div class="col-xs-1">
+</div>
+<div class="col-xs-10 dash-reports" ng-init="loadChartFunc()">
+    <div class="dash-report-header">
+        <h2 class="text-black">View Reports</h2>
+    </div>
+    <div class="chart-wrapper">
+        <h3 class="text-black">Most Purchased Products</h3>
+        <canvas id="pie" class="chart chart-pie"
+                chart-data="data" chart-labels="labels" chart-options="options">
+        </canvas>
+    </div>
+
+
+</div>
+<div class="col-xs-1">
+</div>

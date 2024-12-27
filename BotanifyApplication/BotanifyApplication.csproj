@@ -254,7 +254,6 @@
     <Content Include="Content\scss\pages\_account.scss" />
     <Content Include="Content\scss\pages\_address.scss" />
     <Content Include="Content\scss\_modal.scss" />
-    <Content Include="Content\scss\_animations.scss" />
     <Content Include="Content\scss\dashboard\_sidebar.scss" />
     <Content Include="Content\scss\dashboard\dashmain.scss" />
     <Content Include="Content\scss\dashboard\dashproducts.scss" />
@@ -263,6 +262,7 @@
     <Content Include="Content\scss\pages\_register.scss" />
     <Content Include="Content\scss\dashboard\dashorders.scss" />
     <Content Include="Content\scss\pages\_success.scss" />
+    <Content Include="Content\scss\dashboard\dashreports.scss" />
     <None Include="Content\scss\_normalize.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -271,6 +271,8 @@
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
     <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-chart.js" />
+    <Content Include="Scripts\angular-chart.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
@@ -302,6 +304,8 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -1111,6 +1115,7 @@
     <Content Include="Views\Home\DashUsers.cshtml" />
     <Content Include="Views\Home\SuccessPage.cshtml" />
     <Content Include="Views\Home\DashOrders.cshtml" />
+    <Content Include="Views\Home\DashReports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

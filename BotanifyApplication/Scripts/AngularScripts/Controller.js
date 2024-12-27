@@ -841,4 +841,33 @@
             });
     };
 
+
+    //LOAD CHART
+    $scope.loadChartFunc = function () {
+        BotanifyApplicationService.getTopPurchasedProducts().then(function (response) {
+            var data = response.data;
+            $scope.labels = data.map(item => item.productName);
+            $scope.data = data.map(item => item.numberPurchased);
+
+            $scope.options = {
+                responsive: true,
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            };
+        }, function (error) {
+            console.error('Error fetching data:', error);
+        });
+    };
+
 });

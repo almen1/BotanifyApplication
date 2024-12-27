@@ -1,1 +1,1 @@
-﻿var app = angular.module("BotanifyApplication", []);
+﻿var app = angular.module("BotanifyApplication", ['chart.js']);

@@ -77,6 +77,11 @@ namespace BotanifyApplication.Controllers
             return View();
         }
 
+        public ActionResult DashReports()
+        {
+            return View();
+        }
+
         public void RegisterUser(RegistrationDTO regData)
         {
             using (var db = new BotanifyContext())
@@ -672,6 +677,26 @@ namespace BotanifyApplication.Controllers
                 }
             }
         }
+
+        public JsonResult GetTopPurchasedProducts()
+        {
+            using (var db = new BotanifyContext())
+            {
+                var topProducts = (from p in db.products_tbl
+                                   orderby p.numberPurchased descending
+                                   select new
+                                   {
+                                       p.productName,
+                                       p.numberPurchased
+                                   })
+                                  .Take(7)
+                                  .ToList();
+
+                return Json(topProducts, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
 
 
     }
